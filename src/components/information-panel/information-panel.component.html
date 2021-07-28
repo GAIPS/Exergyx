@@ -1,0 +1,58 @@
+<mat-toolbar class="toolbar">
+    <h1>{{title}}</h1>
+    <span class="example-spacer"></span>
+    <img src="../../assets/Logotipo_v1.png"/>
+  </mat-toolbar>
+
+<div class ="column-container">
+    <div class="column1">
+     <h3>MAIN INFORMATIONS</h3>
+     <mat-divider></mat-divider>
+     <h3>CURRENT YEAR</h3>
+     <span>{{this.year}}</span>
+     <mat-divider></mat-divider>
+     <h3>BUDGET</h3>
+     <span>{{this.budget}} K</span>
+    </div>
+    <div class="column2">
+      <h2>Column 2</h2>
+      <p>Some text..</p>
+    </div>
+    <div class="column3">
+      <h3>* EVENTS INFORMATION</h3>
+      <mat-divider></mat-divider>
+      <h3>Natural Events</h3>
+      <mat-card class="natural-event-card">
+      <div class="insideContainer">
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content>
+      </div>
+        <mat-card-actions>
+          <button class ="decision-button" mat-raised-button color="warn">Pay Maintenance</button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-divider></mat-divider>
+      <h3>Social Events</h3>
+      <mat-card class="natural-event-card">
+        <div class="insideContainer">
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+              bred for hunting.
+            </p>
+          </mat-card-content>
+        </div>
+          <mat-card-actions>
+            <button class ="decision-button" mat-raised-button color="warn">Pay Maintenance</button>
+          </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

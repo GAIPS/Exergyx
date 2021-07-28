@@ -1,0 +1,39 @@
+.container {
+  height: 100%;
+}
+
+.sidenav,
+.content {
+  padding: 16px;
+}
+
+.sidenav {
+  background: rgb(130, 210, 210);
+  background: linear-gradient(
+    180deg,
+    rgba(130, 210, 210, 1) 0%,
+    rgba(1, 157, 224, 1) 100%
+  );
+  width: 100px;
+}
+
+.menuIcon {
+  margin-top: 16px;
+  color: #009de0;
+}
+
+.menuIconFocused {
+  margin-top: 16px;
+  color: #f4fcff;
+  background-color: #009de0;
+}
+
+.menuIcon:hover {
+  background-color: #009de0;
+  color: #f4fcff;
+}
+
+.menuIcon:focus {
+  color: #f4fcff;
+  background-color: #009de0;
+}
