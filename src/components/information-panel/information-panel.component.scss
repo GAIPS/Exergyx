@@ -1,11 +1,5 @@
 body {
-  background: rgb(245, 253, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(245, 253, 255, 1) 0%,
-    rgba(249, 254, 255, 1) 52%,
-    rgba(245, 253, 255, 1) 100%
-  );
+  background: linear-gradient(71.68deg, #DEF7FF 3.33%, #FFFFFF 53.69%, #E4F8FF 100%);
 }
 
 // .column-container {
@@ -16,6 +10,16 @@ body {
 
 .example-spacer {
   flex: 1 1 auto;
+}
+
+.toolbar >h1 {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 38px;
+  
+  color: #46555F;
 }
 
 .column1 {
@@ -41,18 +45,21 @@ body {
 }
 
 .mat-card-image {
-  margin-top: 70px;
   height: 100px;
   width: 150px;
-  padding-top: 10px;
-  padding-left: 10px;
+  -webkit-clip-path: polygon(15% 0, 70% 0%, 100% 0, 100% 85%, 85% 100%, 30% 100%, 0 100%, 0 15%);
+  clip-path: polygon(15% 0, 70% 0%, 100% 0, 100% 85%, 85% 100%, 30% 100%, 0 100%, 0 15%);
+  box-shadow: 20px 20px 5px 0px rgba(0,0,0,0.75);
 }
+
 
 .insideContainer {
   display: flex;
   flex-direction: row;
   justify-items: flex-start;
   margin-top: 5px;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 .mat-card-content {
@@ -62,4 +69,16 @@ body {
 .decision-button {
   position: relative;
   left: 35%;
+}
+
+h3 {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 38px;
+  /* identical to box height */
+
+
+  color: #009DE0;
 }
