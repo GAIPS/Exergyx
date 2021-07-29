@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DecisionPanelComponent implements OnInit {
 
   constructor() { }
-  title: string = "Decision Panel";
+  title: string = "DECISION PANEL";
 
   ngOnInit(): void {
   }

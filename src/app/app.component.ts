@@ -1,38 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CurrentStateService } from 'src/services/current-state.service';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  title = 'exergyX';
   infoActive = false;
   decisionActive = false;
   historyActive = false;
-  title = 'exergyX';
-  
-public updateButtons (button: string) {
-  if(button === "info") {
-    this.infoActive = true;
-    this.decisionActive = false;
-    this.historyActive = false;
-  }
-  else if (button === "decision") {
-    this.infoActive = false;
-    this.decisionActive = true;
-    this.historyActive = false;
-  }
-  else if (button == "history") {
-    this.infoActive = false;
-    this.decisionActive = false;
-    this.historyActive = true;
+
+  constructor(private service: CurrentStateService) {
+
   }
 
-  else {
-    this.infoActive = false;
-    this.decisionActive = false;
-    this.historyActive = false;
+  ngOnInit() {
+    var option = localStorage.getItem("optionSelected");
+    if (option != null && option != "" && option != '') {
+      this.service.updateMenuSelection(option);
+    }
+    this.infoActive = this.service.infoActive;
+    this.decisionActive = this.service.decisionActive;
+    this.historyActive = this.service.historyActive;
   }
-}
+
+
+
+  public updateButtons(button: string) {
+    this.service.updateMenuSelection(button);
+
+    this.infoActive = this.service.infoActive;
+    this.decisionActive = this.service.decisionActive;
+    this.historyActive = this.service.historyActive;
+
+    localStorage.setItem("optionSelected", button);
+  }
 
 }

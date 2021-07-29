@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HistoryPanelComponent implements OnInit {
 
   constructor() { }
-  title: string = "History Panel";
+  title: string = "HISTORY PANEL";
 
   ngOnInit(): void {
   }
