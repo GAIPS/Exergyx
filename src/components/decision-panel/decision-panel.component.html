@@ -3,4 +3,90 @@
     <span class="example-spacer"></span>
     <img src="../../assets/Logotipo_v1.png" />
 </mat-toolbar>
-<p>decision-panel works!</p>
+
+<div class="column-container">
+    <div class="column1">
+        <p class="section-title">◖ MAIN INFORMATIONS</p>
+        <mat-divider></mat-divider>
+        <p class="field-title">CURRENT YEAR</p>
+        <p class="bigger-text">{{this.year}}</p>
+        <mat-divider></mat-divider>
+        <p class="field-title">CO2 EMISSIONS</p>
+        <p class="bigger-text">{{this.budget}} MT</p>
+        <mat-divider></mat-divider>
+        <p class="field-title">AGGREGATED EFFICIENCY(COUNTRY)</p>
+        <p class="bigger-text">{{this.efficiency}} %</p>
+        <mat-divider></mat-divider>
+        <p class="field-title">RENEWABLE RATIO</p>
+        <p class="bigger-text">{{this.ratio}} %</p>
+    </div>
+    <div class="column2">
+        <svg width="650" height="290" viewBox="0 0 976 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g>
+                <path d="M0.5 289.5V42.6794L35.236 0.5H975.5V256.319L947.766 289.5H0.5Z" fill="url(#paint1_linear)"
+                    stroke="#50CBFF" />
+                <path transform="translate(10,20)" d="M0.5 250.5V28.682L23.7331 1H242.503L243.999 224.826L223.466 250.5H0.5Z" fill="url(#pattern0)" />
+                <path transform="translate(10,20)" d="M0.5 250.5V28.682L23.7331 1H242.503L243.999 224.826L223.466 250.5H0.5Z" stroke="#C2EDFF"/>
+                <text x="300" y="30" class="svg-title">{{this.selectedPolitic?.title}}</text>
+                <text x="300" y="100" class="svg-desc">{{this.selectedPolitic?.desc}}</text>
+                <svg x="220" y="10" width="300" height="100" class="inner-svg">
+                    <rect x="90" y="30" class="svg-rect"></rect>
+                    <text x="50%" y="50%" dominant-baseline="middle" class="svg-type">#{{this.selectedPolitic?.type}}</text>
+                </svg>  
+            </g>
+
+            
+
+            <defs>
+                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0" transform="translate(0) scale(0.00255496)"/> 
+                </pattern>
+                <image id="image0" xlink:href="https://material.angular.io/assets/img/examples/shiba2.jpg"/>
+                <linearGradient id="paint0_linear" x1="124" y1="6" x2="124" y2="241" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#009DE0" stop-opacity="0.25"/>
+                <stop offset="1" stop-color="#009DE0"/>
+                </linearGradient>
+                <linearGradient id="paint1_linear" x1="437" y1="92" x2="943.355" y2="248.853"
+                    gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#009DE0" stop-opacity="0.04" />
+                    <stop offset="0.512984" stop-color="#E0F6FF" stop-opacity="0" />
+                    <stop offset="1" stop-color="#009DE0" stop-opacity="0.08" />
+                </linearGradient>
+            </defs>
+        </svg>
+            
+
+    </div>
+    <div class="column3">
+        <p class="section-title">◖SHOPPING CART</p>
+
+        <div class="shoppingCartItemsContainer">
+            <button>HELLO</button>
+            <button>BYEWWW</button>
+            <button>HELLO</button>
+            <button>BYEWWW</button>
+            <button>HELLO</button>
+            <button>BYEWWW</button>
+            <button>HELLO</button>
+            <button>BYEWWW</button>
+            <button>HELLO</button>
+            <button>BYEWWW</button>
+            <button>HELLO</button>
+            <button>BYEWWW</button>
+        </div>
+        <mat-divider></mat-divider>
+        <br>
+        <br>
+        <svg width="336" height="20" viewBox="0 0 336 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <style>
+                .small {
+                    font: italic 13px sans-serif;
+                }
+            </style>
+            <rect width="5" height="5" fill="#66C4EC" />
+            <rect x="331" y="15" width="5" height="5" fill="#66C4EC" />
+            <path d="M5 2.5H218.5L233.5 17.5H333" stroke="#66C4EC" />
+        </svg>
+
+    </div>
+</div>

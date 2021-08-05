@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Politic } from 'src/interfaces/politic';
 
 @Injectable({
   providedIn: 'root'
@@ -799,6 +800,19 @@ export class GameModelService {
       Math.exp((-1 * this.emissoes_totais_do_ano[this.ano_atual_indice]) / 10000000000)) / this.POPULACAO;
     var utilidade_relativa = utilidade_absoluta / this.UTILIDADE_DO_ANO_UM;
     this.utilidade_do_ano.push(utilidade_relativa);
+  }
+
+  public initPolitics() {
+    const politicsArray: Array<Politic> = [
+      { id: 1, title: "Trasports Eletrification", price: 400,
+      prob: 0.5,
+      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ",
+      isUsed: false,
+      type: "Transports",
+      impact: [3,5] }
+    ]
+
+    return politicsArray;
   }
 
 }
