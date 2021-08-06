@@ -21,6 +21,7 @@ export class DecisionPanelComponent implements OnInit {
   constructor( gameModel: GameModelService) {
    this.politics =  gameModel.initPolitics();
    this.selectedPolitic = this.politics[0];
+   console.log(this.selectedPolitic.desc);
    }
   
 

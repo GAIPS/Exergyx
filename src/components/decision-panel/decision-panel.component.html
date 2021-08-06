@@ -28,11 +28,16 @@
                 <path transform="translate(10,20)" d="M0.5 250.5V28.682L23.7331 1H242.503L243.999 224.826L223.466 250.5H0.5Z" fill="url(#pattern0)" />
                 <path transform="translate(10,20)" d="M0.5 250.5V28.682L23.7331 1H242.503L243.999 224.826L223.466 250.5H0.5Z" stroke="#C2EDFF"/>
                 <text x="300" y="30" class="svg-title">{{this.selectedPolitic?.title}}</text>
-                <text x="300" y="100" class="svg-desc">{{this.selectedPolitic?.desc}}</text>
+                <text x="300" y="100" class="svg-desc-title">Description:</text>
+                <!-- <text x="300" y="160" class="svg-desc">{{this.selectedPolitic?.desc}}</text> -->
+                <foreignObject x="300" y="120" width="600" height="120">
+                    <p xmlns="http://www.w3.org/1999/xhtml" class="svg-desc">{{this.selectedPolitic?.desc}}</p>
+                </foreignObject>
+                    
                 <svg x="220" y="10" width="300" height="100" class="inner-svg">
-                    <rect x="90" y="30" class="svg-rect"></rect>
+                    <rect x="80" y="35" class="svg-rect"></rect>
                     <text x="50%" y="50%" dominant-baseline="middle" class="svg-type">#{{this.selectedPolitic?.type}}</text>
-                </svg>  
+                </svg>    
             </g>
 
             

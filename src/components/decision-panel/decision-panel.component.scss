@@ -105,18 +105,33 @@
   font-weight: bold;
   font-size: 22px;
   text-align: center;
-  fill: blue;
+  fill: white;
   text-anchor: middle;
 }
 
 .svg-desc {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  color: #68a1b4;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.svg-desc-title {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  fill: #68a1b4;
 }
 
 .inner-svg {
 }
 
 .svg-rect {
-  width: 200px;
+  width: 150px;
   height: 30px;
   fill: #d4d900;
 }
