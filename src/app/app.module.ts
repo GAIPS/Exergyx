@@ -11,10 +11,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog'
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
+import { DialogLayoutComponent } from 'src/components/dialog-layout/dialog-layout.component';
 
 
 @NgModule({
@@ -23,6 +26,7 @@ import { RouterModule } from '@angular/router';
     DecisionPanelComponent,
     HistoryPanelComponent,
     InformationPanelComponent,
+    DialogLayoutComponent,
   
   ],
   imports: [
@@ -37,6 +41,8 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     MatTooltipModule,
     MatCardModule,
+    MatTableModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Politic } from 'src/interfaces/politic';
 import { GameModelService } from 'src/services/game-model.service';
+import { DialogLayoutComponent } from '../dialog-layout/dialog-layout.component';
 
 @Component({
   selector: 'app-decision-panel',
@@ -18,15 +20,22 @@ export class DecisionPanelComponent implements OnInit {
   politics: Array<Politic> = [];
   selectedPolitic: Politic | undefined;
 
-  constructor( gameModel: GameModelService) {
-   this.politics =  gameModel.initPolitics();
-   this.selectedPolitic = this.politics[0];
-   console.log(this.selectedPolitic.desc);
+  constructor( gameModel: GameModelService, public dialog: MatDialog) {
+    this.politics =  gameModel.initPolitics();
+    this.selectedPolitic = this.politics[0];
+    console.log(this.selectedPolitic.desc);
    }
+
+   displayedColumns: string[] = ['Economy Sector', 'Exergy Shares', 'Eletrification'];
   
 
 
   ngOnInit(): void {
 
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogLayoutComponent);
+  }
+
 }

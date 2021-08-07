@@ -127,9 +127,6 @@
   fill: #68a1b4;
 }
 
-.inner-svg {
-}
-
 .svg-rect {
   width: 150px;
   height: 30px;
@@ -162,4 +159,25 @@
 }
 svg {
   margin-left: 16px;
+}
+
+.see-more-button {
+  background-image: url(../../assets/seeMoreButton.png) !important;
+  background-size: contain;
+  width: 268px;
+  height: 94px;
+  font-family: Saira;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  text-align: center;
+  color: #46555f;
+  transition: all 0.3s ease-out;
+}
+
+.see-more-button:hover {
+  background-image: url(../../assets/seeMoreHover.png) !important;
+  background-size: contain;
+  color: white;
+  transition: all 0.3s ease-out;
 }
