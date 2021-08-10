@@ -804,12 +804,26 @@ export class GameModelService {
 
   public initPolitics() {
     const politicsArray: Array<Politic> = [
-      { id: 1, title: "Trasports Eletrification", price: 400,
+      { 
+        id: 1, title: "Trasports Eletrification", price: 400,
       prob: 0.5,
       desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ",
       isUsed: false,
       type: "Transports",
-      impact: [3,5] }
+      impact: [3,5] 
+      },
+      { 
+        id: 2, title: "Public Transportation Improvement", price: 800, prob: 0.6, desc: "The government will reward every person that switches from fuel car to eletric car." ,
+      isUsed:false,
+      type: "Transports",
+      impact: [4, 4]
+      },
+      {
+        id: 3, title: "Create Recharge Stations", price: 1000, prob: 0.8, desc: "Create more recharge units all over the country.",
+        isUsed: false,
+        type: "Transports",
+        impact: [1, 3]
+      }
     ]
 
     return politicsArray;

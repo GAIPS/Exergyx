@@ -23,20 +23,22 @@
              Distribution Table</button>
     </div>
     <div class="column2">
-        <div class="policy-container">
-            <svg width="650" height="290" viewBox="0 0 976 390" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g>
+        <div class="policy-container" height="290">
+            <svg width="682.6" height="220" viewBox="0 0 1000 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g width="650">
                     <path d="M0.5 289.5V42.6794L35.236 0.5H975.5V256.319L947.766 289.5H0.5Z" fill="url(#paint1_linear)"
                         stroke="#50CBFF" />
                     <path transform="translate(10,20)" d="M0.5 250.5V28.682L23.7331 1H242.503L243.999 224.826L223.466 250.5H0.5Z" fill="url(#pattern0)" />
                     <path transform="translate(10,20)" d="M0.5 250.5V28.682L23.7331 1H242.503L243.999 224.826L223.466 250.5H0.5Z" stroke="#C2EDFF"/>
                     <text x="300" y="30" class="svg-title">{{this.selectedPolitic?.title}}</text>
                     <text x="300" y="100" class="svg-desc-title">Description:</text>
-                    <!-- <text x="300" y="160" class="svg-desc">{{this.selectedPolitic?.desc}}</text> -->
                     <foreignObject x="300" y="120" width="600" height="120">
                         <p xmlns="http://www.w3.org/1999/xhtml" class="svg-desc">{{this.selectedPolitic?.desc}}</p>
                     </foreignObject>
-                        
+                    <foreignObject x="750" y="250" width="600" height="120">
+                        <p xmlns="http://www.w3.org/1999/xhtml" class="svg-price"><b>Price:</b> {{this.selectedPolitic?.price}}M €</p>
+                    </foreignObject>
+                    
                     <svg x="220" y="10" width="300" height="100" class="inner-svg">
                         <rect x="80" y="35" class="svg-rect"></rect>
                         <text x="50%" y="50%" dominant-baseline="middle" class="svg-type">#{{this.selectedPolitic?.type}}</text>
@@ -60,26 +62,48 @@
                 </defs>
             </svg>
         </div>
-        <div class="policies-table">
-         
+        <div class="policies-table-container">
+            <p class="section-title">◖ INVESTMENT POLICIES</p>
+            <table class="policies-table" mat-table [dataSource]="politics" class="mat-elevation-z8">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="Policy Name">
+                  <th mat-header-cell *matHeaderCellDef> Policy Name </th>
+                  <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="Economy Sector">
+                  <th mat-header-cell *matHeaderCellDef> Economy Sector </th>
+                  <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Price">
+                  <th mat-header-cell *matHeaderCellDef> Price </th>
+                  <td mat-cell *matCellDef="let element"> {{element.price}}M € </td>
+                </ng-container>
+
+                <ng-container matColumnDef="getdetails">
+                    <th mat-header-cell *matHeaderCellDef>  </th>
+                    <td align="right" mat-cell *matCellDef="let element">
+                         <button *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="addToCart(element.id); element.isUsed=!element.isUsed">Add to Cart</button> 
+                         <button *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element); element.isUsed=!element.isUsed">Remove from Cart</button> 
+                        </td>
+                  </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row (click)="changeSelectedPolicy(row)"[class.row-added]="cartHasRow(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
         </div>
     </div>
+
     <div class="column3">
         <p class="section-title">◖SHOPPING CART</p>
 
         <div class="shoppingCartItemsContainer">
-            <button>HELLO</button>
-            <button>BYEWWW</button>
-            <button>HELLO</button>
-            <button>BYEWWW</button>
-            <button>HELLO</button>
-            <button>BYEWWW</button>
-            <button>HELLO</button>
-            <button>BYEWWW</button>
-            <button>HELLO</button>
-            <button>BYEWWW</button>
-            <button>HELLO</button>
-            <button>BYEWWW</button>
+            <div *ngFor="let item of cartCollection">
+                <button mat-raised-button color="primary" (click)="removeFromCart(item)">{{item.title}}</button>
+            </div>
         </div>
         <mat-divider></mat-divider>
         <br>

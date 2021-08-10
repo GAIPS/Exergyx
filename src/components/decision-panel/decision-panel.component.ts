@@ -19,23 +19,57 @@ export class DecisionPanelComponent implements OnInit {
   ratio: number = 32;
   politics: Array<Politic> = [];
   selectedPolitic: Politic | undefined;
+  displayedColumns = ["Policy Name", "Economy Sector", "Price", "getdetails"];
+  clickedRow = new Set<Politic>();
+  cartCollection = new Set<Politic>();
+  use = false;
 
   constructor( gameModel: GameModelService, public dialog: MatDialog) {
     this.politics =  gameModel.initPolitics();
     this.selectedPolitic = this.politics[0];
     console.log(this.selectedPolitic.desc);
    }
-
-   displayedColumns: string[] = ['Economy Sector', 'Exergy Shares', 'Eletrification'];
   
-
-
   ngOnInit(): void {
 
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(DialogLayoutComponent);
+  }
+
+  public addToCart(id: number) {
+    this.politics.forEach(element => {
+      if(element.id === id) {
+        this.cartCollection.add(element);
+        return;
+      }
+    });
+  }
+
+  public changeSelectedPolicy(row: any) {
+    this.clickedRow.clear();
+    this.politics.forEach(x => {
+      if(x.id === row.id) {
+        this.selectedPolitic = x;
+        this.clickedRow.add(row);
+        return;
+      }
+    });
+  }
+
+  public isInCart(row: any) {
+    console.log(row);
+
+  }
+
+  public removeFromCart(item: Politic) {
+    this.cartCollection.delete(item);
+  }
+
+  public cartHasRow(row: any) {
+    console.log(row);
+    return false;
   }
 
 }

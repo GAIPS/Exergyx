@@ -1,9 +1,29 @@
 <h2 mat-dialog-title>Install Angular</h2>
 
 <mat-dialog-content class="mat-typography">
-	<h3 >Develop across all platforms</h3>
-	<p>Learn one way to build applications with Angular and reuse your code and abilities to build
-		apps for any deployment target. For web, mobile web, native mobile and native desktop.</p>
+	<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+		<!-- Position Column -->
+		<ng-container matColumnDef="Title">
+		  <th mat-header-cell *matHeaderCellDef> Economy Sector </th>
+		  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+		</ng-container>
+	  
+		<!-- Name Column -->
+		<ng-container matColumnDef="Exergy Shares">
+		  <th mat-header-cell *matHeaderCellDef> Exergy Shares </th>
+		  <td mat-cell *matCellDef="let element"> {{element.shares}} </td>
+		</ng-container>
+	  
+		<!-- Weight Column -->
+		<ng-container matColumnDef="Eletrification">
+		  <th mat-header-cell *matHeaderCellDef> Eletrification </th>
+		  <td mat-cell *matCellDef="let element"> {{element.eletrification}} </td>
+		</ng-container>
+
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	  </table>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">

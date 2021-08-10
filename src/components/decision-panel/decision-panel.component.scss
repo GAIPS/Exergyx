@@ -161,6 +161,14 @@ svg {
   margin-left: 16px;
 }
 
+.svg-price {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  color: #46555f;
+}
+
 .see-more-button {
   background-image: url(../../assets/seeMoreButton.png) !important;
   background-size: contain;
@@ -180,4 +188,99 @@ svg {
   background-size: contain;
   color: white;
   transition: all 0.3s ease-out;
+}
+
+.policies-table-container {
+  background: linear-gradient(
+    101.64deg,
+    #e8f7fc 39.55%,
+    #f7fcff 65.58%,
+    #e8f7fc 86.7%
+  );
+  border: 2px solid #92ebed;
+  box-sizing: border-box;
+  margin-left: 16px;
+  box-shadow: 0px 4px 4px rgba(0, 157, 224, 0.31), 0px 4px 20px #93eded;
+  height: 600px;
+}
+
+table {
+  width: 98%;
+  margin: 0 auto;
+}
+
+mat-header-cell,
+mat-cell {
+  justify-content: center;
+}
+
+th.mat-header-cell {
+  color: white;
+  background: #28bfc9;
+  font-family: Saira;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.mat-row:hover .mat-cell {
+  background-color: #28bfc9;
+  cursor: pointer;
+}
+
+.mat-row .mat-cell {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #46555f;
+}
+
+.policies-table-container .section-title {
+  margin-left: 16px;
+}
+
+.mat-row {
+  background-color: #84e7ed;
+  cursor: pointer;
+}
+.row-clicked {
+  background-color: #28bfc9 !important;
+}
+.row-added {
+  background-color: rgba(73, 190, 140, 0.3);
+}
+
+button.add-Button {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 14px;
+  text-align: center;
+  color: #46555f;
+  background: radial-gradient(
+    61.11% 1291.98% at 47.53% 18.06%,
+    rgba(132, 231, 237, 0.5) 21.24%,
+    #28bfc9 100%
+  );
+  border: 1px solid #28bfc9;
+  box-sizing: border-box;
+}
+
+.add-Button:hover {
+  color: white;
+  background: #28bfc9;
+  border: 1px solid #28bfc9;
+  box-sizing: border-box;
+}
+
+.added {
+  color: black;
+  background: radial-gradient(
+    61.11% 1291.98% at 47.53% 18.06%,
+    #ffe9df 21.24%,
+    #fd8b5a 100%
+  );
+  border: 1px solid #fd8b5a;
+  box-sizing: border-box;
 }
