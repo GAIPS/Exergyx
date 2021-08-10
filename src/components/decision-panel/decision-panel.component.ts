@@ -67,9 +67,4 @@ export class DecisionPanelComponent implements OnInit {
     this.cartCollection.delete(item);
   }
 
-  public cartHasRow(row: any) {
-    console.log(row);
-    return false;
-  }
-
 }

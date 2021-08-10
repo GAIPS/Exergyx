@@ -92,7 +92,7 @@
                         </td>
                   </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row (click)="changeSelectedPolicy(row)"[class.row-added]="cartHasRow(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+                <tr mat-row (click)="changeSelectedPolicy(row)"[class.row-added]="this.cartCollection.has(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
         </div>
     </div>
@@ -100,24 +100,26 @@
     <div class="column3">
         <p class="section-title">◖SHOPPING CART</p>
 
-        <div class="shoppingCartItemsContainer">
+        <div class="shoppingCartItemsContainer" id="style-5">
             <div *ngFor="let item of cartCollection">
-                <button mat-raised-button color="primary" (click)="removeFromCart(item)">{{item.title}}</button>
+                <button class="itemButton" mat-raised-button color="primary" (click)="removeFromCart(item)">{{item.title}}</button>
             </div>
         </div>
         <mat-divider></mat-divider>
         <br>
         <br>
-        <svg width="336" height="20" viewBox="0 0 336 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <style>
-                .small {
-                    font: italic 13px sans-serif;
-                }
-            </style>
-            <rect width="5" height="5" fill="#66C4EC" />
-            <rect x="331" y="15" width="5" height="5" fill="#66C4EC" />
-            <path d="M5 2.5H218.5L233.5 17.5H333" stroke="#66C4EC" />
-        </svg>
+        <div class="fancy-divider">
+            <svg width="336" height="20" viewBox="0 0 336 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <style>
+                    .small {
+                        font: italic 13px sans-serif;
+                    }
+                </style>
+                <rect width="5" height="5" fill="#66C4EC" />
+                <rect x="331" y="15" width="5" height="5" fill="#66C4EC" />
+                <path d="M5 2.5H218.5L233.5 17.5H333" stroke="#66C4EC" />
+            </svg>
+    </div>
 
     </div>
 </div>
