@@ -94,14 +94,16 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row (click)="changeSelectedPolicy(row)"[class.row-added]="this.cartCollection.has(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
+              <br>
+        
               <p class="section-title">◖ POWER TO INSTALL</p>
               <table class="power-to-install">
                   <tr>
-                      <td class="installed-power">Installed Renewable Power</td>
-                      <td>{{this.installedPower}}GW</td>
+                      <td class="installed-power"><p>Installed Renewable Power</p></td>
+                      <td class="installed-power-value"><p>{{this.installedPower}}GW</p></td>
                   </tr>
                   <tr>
-                      <td class="to-install">Power to Install</td>
+                      <td class="to-install"><p>Power to Install</p></td>
                       <td class="to-install-value">
                           <button class="minus" (click)="reducePower()"> - </button>
                           <p>{{this.powerToInstall |  number: '1.2-2'}}GW</p>
@@ -116,7 +118,12 @@
 
     <div class="column3">
         <p class="section-title">◖SHOPPING CART</p>
-
+        <tr>
+            <td> <p class="field-title">POWER TO <br> INSTALL</p></td>
+            <td class="power-to-install-cart"><p >{{this.powerToInstall |  number: '1.2-2'}}GW</p></td>
+        </tr>
+        <mat-divider></mat-divider>
+        <p class="field-title">INVESTMENT POLICIES</p>
         <div class="shoppingCartItemsContainer" id="style-5">
             <div *ngFor="let item of cartCollection">
                 <button class="itemButton" mat-raised-button color="primary" (click)="removeFromCart(item); item.isUsed=!item.isUsed">{{item.title}}</button>
@@ -124,8 +131,14 @@
         </div>
         <mat-divider></mat-divider>
         <br>
-        <br>
-        <div class="fancy-divider">
+        <tr>
+            <td> <p class="field-title">COST OF <br>
+                POWER TO <br>
+                INSTALL</p></td>
+            <td class="power-install-cost"><p>{{this.totalPowerCost |  number: '1.2-2'}}€</p></td>
+        </tr>
+        
+        <!-- <div class="fancy-divider">
             <svg width="336" height="20" viewBox="0 0 336 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <style>
                     .small {
@@ -135,8 +148,10 @@
                 <rect width="5" height="5" fill="#66C4EC" />
                 <rect x="331" y="15" width="5" height="5" fill="#66C4EC" />
                 <path d="M5 2.5H218.5L233.5 17.5H333" stroke="#66C4EC" />
+                <text class="installed-power">Description:</text>
             </svg>
-    </div>
+        </div> -->
+        <mat-divider></mat-divider>
 
     </div>
 </div>

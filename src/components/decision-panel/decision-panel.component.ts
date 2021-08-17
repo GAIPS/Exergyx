@@ -26,8 +26,12 @@ export class DecisionPanelComponent implements OnInit {
   use = false;
   installedPower = 0;
   powerToInstall = 0;
+  totalPowerCost = 0;
+  PlayerVariables: PlayerVariablesService;
+
 
   constructor( playerVariable: PlayerVariablesService , gameModel: GameModelService, public dialog: MatDialog) {
+    this.PlayerVariables = playerVariable;
     this.politics =  gameModel.initPolitics();
     this.selectedPolitic = this.politics[0];
     this.installedPower = playerVariable.total_installed_power;
@@ -85,6 +89,7 @@ export class DecisionPanelComponent implements OnInit {
     var tempVal = this.powerToInstall + 0.1;
     if(tempVal <= 10) {
       this.powerToInstall = tempVal;
+      this.totalPowerCost = this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
     }
     else {
       this.powerToInstall = 10;
