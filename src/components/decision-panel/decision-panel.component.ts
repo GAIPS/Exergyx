@@ -27,6 +27,8 @@ export class DecisionPanelComponent implements OnInit {
   installedPower = 0;
   powerToInstall = 0;
   totalPowerCost = 0;
+  addedPoliticsCost = 0;
+  remainingBudget = 0;
   PlayerVariables: PlayerVariablesService;
 
 
@@ -35,7 +37,7 @@ export class DecisionPanelComponent implements OnInit {
     this.politics =  gameModel.initPolitics();
     this.selectedPolitic = this.politics[0];
     this.installedPower = playerVariable.total_installed_power;
-    console.log(this.selectedPolitic.desc);
+    this.remainingBudget = gameModel.pib_do_ano[gameModel.ano_atual_indice]*0.01 * 1000;
    }
   
   ngOnInit(): void {
@@ -49,8 +51,14 @@ export class DecisionPanelComponent implements OnInit {
   public addToCart(id: number) {
     this.politics.forEach(element => {
       if(element.id === id) {
-        this.cartCollection.add(element);
-        return;
+        var tempcalc = this.remainingBudget-element.price;
+        if(tempcalc >= 0) {
+          element.isUsed=!element.isUsed;
+          this.cartCollection.add(element);
+          this.addedPoliticsCost += element.price;
+          this.remainingBudget -= element.price;
+          return;
+        }
       }
     });
   }
@@ -72,13 +80,18 @@ export class DecisionPanelComponent implements OnInit {
   }
 
   public removeFromCart(item: Politic) {
+    item.isUsed=!item.isUsed;
     this.cartCollection.delete(item);
+    this.addedPoliticsCost -= item.price;
+    this.remainingBudget += item.price;
   }
 
   public reducePower() {
     var tempVal = this.powerToInstall - 0.1;
     if(tempVal >= 0) {
       this.powerToInstall = tempVal;
+      this.totalPowerCost = this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
+      this.remainingBudget += this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
     }
     else {
       this.powerToInstall = 0;
@@ -88,8 +101,12 @@ export class DecisionPanelComponent implements OnInit {
   public addPower() {
     var tempVal = this.powerToInstall + 0.1;
     if(tempVal <= 10) {
-      this.powerToInstall = tempVal;
-      this.totalPowerCost = this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
+      var tempcalc= this.remainingBudget-this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
+      if(tempcalc >= 0) {
+        this.powerToInstall = tempVal;
+        this.totalPowerCost = this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
+        this.remainingBudget -= this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
+      }
     }
     else {
       this.powerToInstall = 10;

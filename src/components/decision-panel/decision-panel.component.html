@@ -87,8 +87,8 @@
                 <ng-container matColumnDef="getdetails">
                     <th mat-header-cell *matHeaderCellDef>  </th>
                     <td align="right" mat-cell *matCellDef="let element">
-                         <button *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); element.isUsed=!element.isUsed">Add to Cart</button> 
-                         <button *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element); element.isUsed=!element.isUsed">Remove from Cart</button> 
+                         <button *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); ">Add to Cart</button> 
+                         <button *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element);">Remove from Cart</button> 
                         </td>
                   </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -111,11 +111,14 @@
                       </td>
                   </tr>
               </table>
+              <br>
+        <br>
         </div>
-
-    
+        <br>
+        <br>
+        <br>
     </div>
-
+   
     <div class="column3">
         <p class="section-title">◖SHOPPING CART</p>
         <tr>
@@ -126,7 +129,7 @@
         <p class="field-title">INVESTMENT POLICIES</p>
         <div class="shoppingCartItemsContainer" id="style-5">
             <div *ngFor="let item of cartCollection">
-                <button class="itemButton" mat-raised-button color="primary" (click)="removeFromCart(item); item.isUsed=!item.isUsed">{{item.title}}</button>
+                <button class="itemButton" mat-raised-button color="primary" (click)="removeFromCart(item);">{{item.title}}</button>
             </div>
         </div>
         <mat-divider></mat-divider>
@@ -152,6 +155,13 @@
             </svg>
         </div> -->
         <mat-divider></mat-divider>
-
+        <tr>
+            <td> <p class="field-title">COST OF<br>INVESTIMENT<br>POLICIES</p>
+            </td>
+            <td><p class="total-politic-cost">{{this.addedPoliticsCost}}M€</p></td>
+        </tr>
+        <mat-divider></mat-divider>
+        <p class="field-title">REMAINING BUDGET</p>
+        <p class="bigger-text">{{this.remainingBudget |  number: '1.0-0'}}M€</p>
     </div>
 </div>
