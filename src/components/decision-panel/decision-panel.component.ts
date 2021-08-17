@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Politic } from 'src/interfaces/politic';
 import { GameModelService } from 'src/services/game-model.service';
+import { PlayerVariablesService } from 'src/services/player-variables.service';
 import { DialogLayoutComponent } from '../dialog-layout/dialog-layout.component';
 
 @Component({
@@ -23,10 +24,13 @@ export class DecisionPanelComponent implements OnInit {
   clickedRow = new Set<Politic>();
   cartCollection = new Set<Politic>();
   use = false;
+  installedPower = 0;
+  powerToInstall = 0;
 
-  constructor( gameModel: GameModelService, public dialog: MatDialog) {
+  constructor( playerVariable: PlayerVariablesService , gameModel: GameModelService, public dialog: MatDialog) {
     this.politics =  gameModel.initPolitics();
     this.selectedPolitic = this.politics[0];
+    this.installedPower = playerVariable.total_installed_power;
     console.log(this.selectedPolitic.desc);
    }
   
@@ -65,6 +69,26 @@ export class DecisionPanelComponent implements OnInit {
 
   public removeFromCart(item: Politic) {
     this.cartCollection.delete(item);
+  }
+
+  public reducePower() {
+    var tempVal = this.powerToInstall - 0.1;
+    if(tempVal >= 0) {
+      this.powerToInstall = tempVal;
+    }
+    else {
+      this.powerToInstall = 0;
+    }
+  }
+
+  public addPower() {
+    var tempVal = this.powerToInstall + 0.1;
+    if(tempVal <= 10) {
+      this.powerToInstall = tempVal;
+    }
+    else {
+      this.powerToInstall = 10;
+    }
   }
 
 }

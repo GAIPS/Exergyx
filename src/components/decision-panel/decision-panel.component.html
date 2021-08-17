@@ -87,14 +87,31 @@
                 <ng-container matColumnDef="getdetails">
                     <th mat-header-cell *matHeaderCellDef>  </th>
                     <td align="right" mat-cell *matCellDef="let element">
-                         <button *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="addToCart(element.id); element.isUsed=!element.isUsed">Add to Cart</button> 
+                         <button *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); element.isUsed=!element.isUsed">Add to Cart</button> 
                          <button *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element); element.isUsed=!element.isUsed">Remove from Cart</button> 
                         </td>
                   </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row (click)="changeSelectedPolicy(row)"[class.row-added]="this.cartCollection.has(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
+              <p class="section-title">◖ POWER TO INSTALL</p>
+              <table class="power-to-install">
+                  <tr>
+                      <td class="installed-power">Installed Renewable Power</td>
+                      <td>{{this.installedPower}}GW</td>
+                  </tr>
+                  <tr>
+                      <td class="to-install">Power to Install</td>
+                      <td class="to-install-value">
+                          <button class="minus" (click)="reducePower()"> - </button>
+                          <p>{{this.powerToInstall |  number: '1.2-2'}}GW</p>
+                          <button class="plus" (click)="addPower()"> + </button>
+                      </td>
+                  </tr>
+              </table>
         </div>
+
+    
     </div>
 
     <div class="column3">
@@ -102,7 +119,7 @@
 
         <div class="shoppingCartItemsContainer" id="style-5">
             <div *ngFor="let item of cartCollection">
-                <button class="itemButton" mat-raised-button color="primary" (click)="removeFromCart(item)">{{item.title}}</button>
+                <button class="itemButton" mat-raised-button color="primary" (click)="removeFromCart(item); item.isUsed=!item.isUsed">{{item.title}}</button>
             </div>
         </div>
         <mat-divider></mat-divider>

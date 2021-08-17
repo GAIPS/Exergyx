@@ -181,14 +181,14 @@ svg {
   font-size: 24px;
   text-align: center;
   color: #46555f;
-  transition: all 0.3s ease-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .see-more-button:hover {
   background-image: url(../../assets/seeMoreHover.png) !important;
   background-size: contain;
   color: white;
-  transition: all 0.3s ease-out;
+  transform: scale(1.05);
 }
 
 .policies-table-container {
@@ -254,11 +254,11 @@ th.mat-header-cell {
   background-color: rgba(73, 190, 140, 0.3);
 }
 
-button.add-Button {
+button.add-button {
   font-family: Saira;
-  font-style: normal;
-  font-weight: 200;
-  font-size: 14px;
+  font-style: norma;
+  font-weight: 500;
+  font-size: 16px;
   text-align: center;
   color: #46555f;
   background: radial-gradient(
@@ -268,16 +268,25 @@ button.add-Button {
   );
   border: 1px solid #28bfc9;
   box-sizing: border-box;
+
+  transition: all 0.2s ease-in-out;
 }
 
-.add-Button:hover {
+.add-button:hover {
   color: white;
   background: #28bfc9;
   border: 1px solid #28bfc9;
   box-sizing: border-box;
+  transform: scale(1.1);
 }
 
 .added {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  color: #087948;
   color: black;
   background: radial-gradient(
     61.11% 1291.98% at 47.53% 18.06%,
@@ -286,6 +295,11 @@ button.add-Button {
   );
   border: 1px solid #fd8b5a;
   box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+}
+
+.added:hover {
+  transform: scale(1.1);
 }
 
 .itemButton {
@@ -322,4 +336,9 @@ button.add-Button {
     color-stop(0.5, transparent),
     to(transparent)
   );
+}
+
+.to-install-value {
+  display: flex;
+  flex-direction: row;
 }
