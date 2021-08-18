@@ -16,7 +16,7 @@ export class PlayerVariablesService {
   utility: number = 100;
   co2_emissions: number = 70;
   economic_growth: number = 1;
-  cost_per_gigawatt: number = 20100;
+  cost_per_gigawatt: number = 1935; //M€
   efficiency: number = 0.7;
   total_installed_power: number = 0.00;
   renewable_energy: number = 0.00;

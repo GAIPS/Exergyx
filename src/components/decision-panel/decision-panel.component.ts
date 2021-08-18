@@ -87,11 +87,12 @@ export class DecisionPanelComponent implements OnInit {
   }
 
   public reducePower() {
+    var ticCost = 0.1*this.PlayerVariables.cost_per_gigawatt;
     var tempVal = this.powerToInstall - 0.1;
     if(tempVal >= 0) {
       this.powerToInstall = tempVal;
+      this.remainingBudget += ticCost; 
       this.totalPowerCost = this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
-      this.remainingBudget += this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
     }
     else {
       this.powerToInstall = 0;
@@ -99,17 +100,19 @@ export class DecisionPanelComponent implements OnInit {
   }
 
   public addPower() {
+    var ticCost = 0.1*this.PlayerVariables.cost_per_gigawatt;
     var tempVal = this.powerToInstall + 0.1;
-    if(tempVal <= 10) {
-      var tempcalc= this.remainingBudget-this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
-      if(tempcalc >= 0) {
+    var tempcalc= this.remainingBudget - ticCost;
+    if(tempcalc >= 0) {
+      if(tempVal <= 10) {
+        this.remainingBudget = tempcalc;
         this.powerToInstall = tempVal;
         this.totalPowerCost = this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
-        this.remainingBudget -= this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
+        
       }
-    }
-    else {
-      this.powerToInstall = 10;
+      else {
+        this.powerToInstall = 10;
+      }
     }
   }
 

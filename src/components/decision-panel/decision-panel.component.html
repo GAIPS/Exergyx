@@ -135,10 +135,10 @@
         <mat-divider></mat-divider>
         <br>
         <tr>
-            <td> <p class="field-title">COST OF <br>
+            <td> <p class="special-title">COST OF <br>
                 POWER TO <br>
                 INSTALL</p></td>
-            <td class="power-install-cost"><p>{{this.totalPowerCost |  number: '1.2-2'}}€</p></td>
+            <td class="power-install-cost"><p>{{this.totalPowerCost |  number: '1.0-0'}}M€</p></td>
         </tr>
         
         <!-- <div class="fancy-divider">
@@ -156,12 +156,13 @@
         </div> -->
         <mat-divider></mat-divider>
         <tr>
-            <td> <p class="field-title">COST OF<br>INVESTIMENT<br>POLICIES</p>
+            <td> <p class="special-title">COST OF<br>INVESTIMENT<br>POLICIES</p>
             </td>
-            <td><p class="total-politic-cost">{{this.addedPoliticsCost}}M€</p></td>
+            <td class="total-politic-cost"><p>{{this.addedPoliticsCost}}M€</p></td>
         </tr>
         <mat-divider></mat-divider>
         <p class="field-title">REMAINING BUDGET</p>
         <p class="bigger-text">{{this.remainingBudget |  number: '1.0-0'}}M€</p>
+        <button mat-button class="confirm-button" (click)="openDialog()">Confirm<br>Investment</button>
     </div>
 </div>
