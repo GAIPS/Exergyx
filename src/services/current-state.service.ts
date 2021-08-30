@@ -7,6 +7,7 @@ export class CurrentStateService {
 
   constructor() { }
 
+  isFirstRun = true;
   infoActive = false;
   decisionActive = false;
   historyActive = false;

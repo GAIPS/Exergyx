@@ -7,7 +7,7 @@ export class PlayerVariablesService {
 
   constructor() { }
 
-  starting_year = 2019;
+  starting_year = 2015;
 
   // Current year Variables
   current_year: number = 2019;

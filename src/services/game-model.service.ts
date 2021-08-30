@@ -7,7 +7,7 @@ import { Politic } from 'src/interfaces/politic';
 export class GameModelService {
 
   constructor() { }
-  ANO_INICIAL: number = 2019;
+  ANO_INICIAL: number = 2015;
 
   POTENCIA_MAXIMA_SOLAR: number = 18.6; //GW
   POTENCIA_MAXIMA_VENTO: number = 15.0;

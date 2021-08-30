@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Politic } from 'src/interfaces/politic';
+import { CurrentStateService } from 'src/services/current-state.service';
 import { GameModelService } from 'src/services/game-model.service';
 import { PlayerVariablesService } from 'src/services/player-variables.service';
 import { DialogLayoutComponent } from '../dialog-layout/dialog-layout.component';
@@ -71,11 +72,19 @@ export class DecisionPanelComponent implements OnInit {
     this.selectedPolitic = this.politics[0];
     this.installedPower = this.PlayerVariables.total_installed_power;
     this.remainingBudget = this.Model.pib_do_ano[this.Model.ano_atual_indice]*0.01 * 1000;
-    this.initial_model_loading();
+
+    var isFirstRun = sessionStorage.getItem("firstRunFlag");
+    console.log(isFirstRun);
+    if(isFirstRun ==="true") {
+      console.log("inside IF");
+      this.initial_model_loading();
+      this.firstRun();
+      sessionStorage.setItem("firstRunFlag", "false");
+    }
    }
 
   ngOnInit(): void {
-    
+   
   }
 
   openDialog() {
@@ -153,6 +162,7 @@ export class DecisionPanelComponent implements OnInit {
   public submitDecision() {
     this.process_politic();
     this.processNextYear();
+    this.sendGameDecisionsToModel();
     this.updateModel();
     this.updateGameAfterModel();
 
@@ -356,6 +366,13 @@ export class DecisionPanelComponent implements OnInit {
     this.PlayerVariables.electrification_by_sector_percentage_industry = this.Model.shares_exergia_final_industria_eletricidade_do_ano[this.Model.ano_atual_indice] * 100.0;
     this.PlayerVariables.electrification_by_sector_percentage_residential = this.Model.shares_exergia_final_residencial_eletricidade_do_ano[this.Model.ano_atual_indice] * 100.0;
     this.PlayerVariables.electrification_by_sector_percentage_services = this.Model.shares_exergia_final_servicos_eletricidade_do_ano[this.Model.ano_atual_indice] * 100.0;
+  }
+
+  public firstRun() {
+    this.processNextYear();
+    this.sendGameDecisionsToModel();
+    this.updateModel();
+    this.updateGameAfterModel();
   }
 
 }

@@ -26,6 +26,8 @@ export class AppComponent implements OnInit {
     this.infoActive = this.service.infoActive;
     this.decisionActive = this.service.decisionActive;
     this.historyActive = this.service.historyActive;
+
+    sessionStorage.setItem("firstRunFlag", "true");
   }
 
 
