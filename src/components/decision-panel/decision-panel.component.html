@@ -9,16 +9,16 @@
         <p class="section-title">◖ MAIN INFORMATIONS</p>
         <mat-divider></mat-divider>
         <p class="field-title">CURRENT YEAR</p>
-        <p class="bigger-text">{{this.year}}</p>
+        <p class="bigger-text">{{this.PlayerVariables.current_year}}</p>
         <mat-divider></mat-divider>
         <p class="field-title">CO2 EMISSIONS</p>
-        <p class="bigger-text">{{this.budget}} MT</p>
+        <p class="bigger-text">{{this.PlayerVariables.co2_emissions |  number: '1.0-2'}} MT</p>
         <mat-divider></mat-divider>
         <p class="field-title">AGGREGATED EFFICIENCY(COUNTRY)</p>
-        <p class="bigger-text">{{this.efficiency}} %</p>
+        <p class="bigger-text">{{this.PlayerVariables.efficiency * 100 |  number: '1.2-2'}} %</p>
         <mat-divider></mat-divider>
         <p class="field-title">RENEWABLE RATIO</p>
-        <p class="bigger-text">{{this.ratio}} %</p>
+        <p class="bigger-text">{{this.get_renewable_ratio() |  number: '1.2-2' }} %</p>
         <button mat-button class="see-more-button" (click)="openDialog()">See Exergy <br>
              Distribution Table</button>
     </div>
@@ -100,7 +100,7 @@
               <table class="power-to-install">
                   <tr>
                       <td class="installed-power"><p>Installed Renewable Power</p></td>
-                      <td class="installed-power-value"><p>{{this.installedPower}}GW</p></td>
+                      <td class="installed-power-value"><p>{{this.PlayerVariables.total_installed_power | number:'1.0-2'}}GW</p></td>
                   </tr>
                   <tr>
                       <td class="to-install"><p>Power to Install</p></td>
@@ -162,7 +162,7 @@
         </tr>
         <mat-divider></mat-divider>
         <p class="field-title">REMAINING BUDGET</p>
-        <p class="bigger-text">{{this.remainingBudget |  number: '1.0-0'}}M€</p>
-        <button mat-button class="confirm-button" (click)="openDialog()">Confirm<br>Investment</button>
+        <p class="bigger-text">{{this.PlayerVariables.money |  number: '1.0-0'}}M€</p>
+        <button mat-button class="confirm-button" (click)="submitDecision()">Confirm<br>Investment</button>
     </div>
 </div>

@@ -7,10 +7,10 @@ export class PlayerVariablesService {
 
   constructor() { }
 
-  starting_year = 2011;
+  starting_year = 2019;
 
   // Current year Variables
-  current_year: number = 2011;
+  current_year: number = 2019;
   money: number = 50000000;
   expenditure: number = 0; //"consumo"
   utility: number = 100;

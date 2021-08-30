@@ -440,21 +440,22 @@ button.add-button {
 
 .confirm-button {
   background-image: url(../../assets/seeMoreButton.png) !important;
-  background-size: contain;
-  width: 268px;
-  height: 94px;
+  background-size: cover;
+  width: 200px;
+  height: 70px;
   font-family: Saira;
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
   text-align: center;
+  margin-left: 25%;
   color: #46555f;
   transition: all 0.2s ease-in-out;
 }
 
 .confirm-button:hover {
   background-image: url(../../assets/seeMoreHover.png) !important;
-  background-size: contain;
+  background-size: cover;
   color: white;
   transform: scale(1.05);
 }

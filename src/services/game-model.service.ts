@@ -7,7 +7,7 @@ import { Politic } from 'src/interfaces/politic';
 export class GameModelService {
 
   constructor() { }
-  ANO_INICIAL: number = 2011;
+  ANO_INICIAL: number = 2019;
 
   POTENCIA_MAXIMA_SOLAR: number = 18.6; //GW
   POTENCIA_MAXIMA_VENTO: number = 15.0;
@@ -92,7 +92,7 @@ export class GameModelService {
   CUSTO_DO_ANO_ZERO_VENTO: number = 0.00;
   CUSTO_DO_ANO_ZERO_VENTO_OFFSHORE: number = 0.00;
 
-  PIB_DO_ANO_ZERO: number = 169.11; //milhares de milhões de euros
+  PIB_DO_ANO_ZERO: number = 169000; //milhares de milhões de euros
   ORCAMENTO_ANO_ZERO: number = this.PIB_DO_ANO_ZERO * 0.01;
   CAPITAL_DO_ANO_ZERO: number = 532.63; //milhares de milhões de euros
 
