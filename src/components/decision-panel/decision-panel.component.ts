@@ -71,12 +71,9 @@ export class DecisionPanelComponent implements OnInit {
     this.politics =  gameModel.initPolitics();
     this.selectedPolitic = this.politics[0];
     this.installedPower = this.PlayerVariables.total_installed_power;
-    this.remainingBudget = this.Model.pib_do_ano[this.Model.ano_atual_indice]*0.01 * 1000;
 
     var isFirstRun = sessionStorage.getItem("firstRunFlag");
-    console.log(isFirstRun);
     if(isFirstRun ==="true") {
-      console.log("inside IF");
       this.initial_model_loading();
       this.firstRun();
       sessionStorage.setItem("firstRunFlag", "false");
@@ -94,12 +91,12 @@ export class DecisionPanelComponent implements OnInit {
   public addToCart(id: number) {
     this.politics.forEach(element => {
       if(element.id === id) {
-        var tempcalc = this.remainingBudget-element.price;
+        var tempcalc = this.PlayerVariables.budget-element.price;
         if(tempcalc >= 0) {
           element.isUsed=!element.isUsed;
           this.cartCollection.add(element);
           this.addedPoliticsCost += element.price;
-          this.remainingBudget -= element.price;
+          this.PlayerVariables.budget -= element.price;
           return;
         }
       }
@@ -126,7 +123,7 @@ export class DecisionPanelComponent implements OnInit {
     item.isUsed=!item.isUsed;
     this.cartCollection.delete(item);
     this.addedPoliticsCost -= item.price;
-    this.remainingBudget += item.price;
+    this.PlayerVariables.budget += item.price;
   }
 
   public reducePower() {
@@ -134,7 +131,7 @@ export class DecisionPanelComponent implements OnInit {
     var tempVal = this.powerToInstall - 0.1;
     if(tempVal >= 0) {
       this.powerToInstall = tempVal;
-      this.remainingBudget += ticCost; 
+      this.PlayerVariables.budget += ticCost; 
       this.totalPowerCost = this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
     }
     else {
@@ -145,10 +142,10 @@ export class DecisionPanelComponent implements OnInit {
   public addPower() {
     var ticCost = 0.1*this.PlayerVariables.cost_per_gigawatt;
     var tempVal = this.powerToInstall + 0.1;
-    var tempcalc= this.remainingBudget - ticCost;
+    var tempcalc= this.PlayerVariables.budget - ticCost;
     if(tempcalc >= 0) {
       if(tempVal <= 10) {
-        this.remainingBudget = tempcalc;
+        this.PlayerVariables.budget = tempcalc;
         this.powerToInstall = tempVal;
         this.totalPowerCost = this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
         
@@ -206,7 +203,7 @@ export class DecisionPanelComponent implements OnInit {
     this.PlayerVariables.electrification_by_sector_percentage_residential = this.Model.shares_exergia_final_residencial_eletricidade_do_ano[this.Model.ano_atual_indice] * 100.0;
     this.PlayerVariables.electrification_by_sector_percentage_services = this.Model.shares_exergia_final_servicos_eletricidade_do_ano[this.Model.ano_atual_indice] * 100.0;
     
-    this.PlayerVariables.budget = this.Model.pib_do_ano[this.Model.ano_atual_indice]*0.01 * 1000;
+    this.PlayerVariables.budget = this.Model.pib_do_ano[this.Model.ano_atual_indice]*0.01;
 
      // Storage of the history of the player's decisions
      this.decisions_investment_renewables = [this.PlayerVariables.investment_renewables_percentage];
