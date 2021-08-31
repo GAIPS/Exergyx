@@ -393,7 +393,7 @@ button.add-button {
   margin: 0 auto;
   cursor: pointer;
   width: 34px;
-  z-index: 11;
+  z-index: 21;
 }
 .power-to-install-cart {
   font-family: Saira;
@@ -470,7 +470,7 @@ button.add-button {
 
 .confirmationPopup {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 30%;
   z-index: 1000;
   border: 1px solid #92ebed;

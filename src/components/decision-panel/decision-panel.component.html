@@ -167,8 +167,7 @@
     </div>
 </div>
 
-<div *ngIf ="showActive" class="confirmationPopup">
-    <mat-card>
+    <mat-card *ngIf = "showActive" class="confirmationPopup">
         <mat-card-header>
             <mat-card-title>Warning</mat-card-title>
         </mat-card-header>
@@ -182,4 +181,4 @@
         <button mat-raised-button (click)="decline()" color="warn">NO</button>
       </mat-card-actions>
     </mat-card>
-</div>
+
