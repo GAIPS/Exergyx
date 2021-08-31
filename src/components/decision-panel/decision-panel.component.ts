@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Politic } from 'src/interfaces/politic';
-import { CurrentStateService } from 'src/services/current-state.service';
 import { GameModelService } from 'src/services/game-model.service';
 import { PlayerVariablesService } from 'src/services/player-variables.service';
-import { DialogLayoutComponent } from '../dialog-layout/dialog-layout.component';
+
 
 @Component({
   selector: 'app-decision-panel',
@@ -14,6 +13,9 @@ import { DialogLayoutComponent } from '../dialog-layout/dialog-layout.component'
 export class DecisionPanelComponent implements OnInit {
 
   title: string = "DECISION PANEL";
+  showActive = false;
+
+
   // Temp values for testing
   FINAL_YEAR: number = 2050;
   year: number = 2019;
@@ -84,9 +86,6 @@ export class DecisionPanelComponent implements OnInit {
    
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(DialogLayoutComponent);
-  }
 
   public addToCart(id: number) {
     this.politics.forEach(element => {
@@ -159,15 +158,11 @@ export class DecisionPanelComponent implements OnInit {
   public submitDecision() {
     this.process_politic();
     this.processNextYear();
-    this.sendGameDecisionsToModel();
-    this.updateModel();
-    this.updateGameAfterModel();
-
   }
 
   public get_renewable_ratio() {
     if(this.Model.eletricidade_nao_renovavel_do_ano.length > 2) {
-      var total_energy = this.Model.eletricidade_nao_renovavel_do_ano[-1] + this.PlayerVariables.renewable_energy;
+      var total_energy = this.Model.eletricidade_nao_renovavel_do_ano[this.Model.eletricidade_nao_renovavel_do_ano.length-1] + this.PlayerVariables.renewable_energy;
       var result = Math.min(((this.PlayerVariables.renewable_energy/total_energy) * 100), 100);
       this.current_ratio = result;
       return result
@@ -184,9 +179,10 @@ export class DecisionPanelComponent implements OnInit {
     this.PlayerVariables.current_year = this.Model.ano_atual;
     this.PlayerVariables.final_year = this.FINAL_YEAR;
     this.PlayerVariables.money = this.Model.pib_do_ano[this.Model.ano_atual_indice];
-    this.PlayerVariables.expenditure = this.Model.consumo_do_ano[-1];
+    this.PlayerVariables.expenditure = this.Model.consumo_do_ano[this.Model.consumo_do_ano.length-1];
     this.PlayerVariables.utility = this.Model.utilidade_do_ano[this.Model.ano_atual_indice];
-    this.PlayerVariables.co2_emissions = this.Model.emissoes_totais_do_ano[this.Model.ano_atual_indice]  * Math.pow(10, -9);
+    this.PlayerVariables.co2_emissions = this.Model.emissoes_totais_do_ano[this.Model.emissoes_totais_do_ano.length-1]  * Math.pow(10, -9);
+    console.log("@INITIAL MODEL LOADING: " + this.PlayerVariables.co2_emissions );
     this.PlayerVariables.economic_growth = 1;
     this.PlayerVariables.cost_per_gigawatt = this.Model.CUSTO_POR_GIGAWATT_INSTALADO;
     this.PlayerVariables.efficiency = this.Model.eficiencia_agregada_do_ano[this.Model.ano_atual_indice];
@@ -277,6 +273,14 @@ export class DecisionPanelComponent implements OnInit {
   }
 
   public processNextYear() {
+    this.storeDecisionHistory();
+    this.sendGameDecisionsToModel();
+    this.updateModel();
+    this.updateGameAfterModel();
+	
+  }
+
+  public storeDecisionHistory() {
     this.decisions_investment_renewables.push(this.PlayerVariables.investment_renewables_percentage);
     this.decisions_shares_transportation.push(this.PlayerVariables.economy_type_level_transportation);
     this.decisions_shares_industry.push(this.PlayerVariables.economy_type_level_industry);
@@ -288,6 +292,7 @@ export class DecisionPanelComponent implements OnInit {
     this.decisions_eletrification_services.push(this.PlayerVariables.electrification_by_sector_level_services);
     this.renewable_energy_amounts.push(this.PlayerVariables.renewable_energy);
     this.total_co2_emissions.push(this.PlayerVariables.co2_emissions);
+    console.log("@PROCESS NEXT YEAR: " +  this.total_co2_emissions );
     this.total_efficiency_results.push(this.PlayerVariables.efficiency);
     this.decisions_transports_eletrification.push(this.PlayerVariables.electrification_by_sector_percentage_transportation);
     this.decisions_industries_eletrification.push(this.PlayerVariables.electrification_by_sector_percentage_industry);
@@ -343,11 +348,12 @@ export class DecisionPanelComponent implements OnInit {
 
   public updateGameAfterModel() {
     this.PlayerVariables.current_year = this.Model.ano_atual;
-    this.PlayerVariables.money = this.Model.pib_do_ano[-1];
+    this.PlayerVariables.money = this.Model.pib_do_ano[this.Model.pib_do_ano.length-1];
     this.calculated_budget = this.PlayerVariables.money;
-    this.PlayerVariables.expenditure = this.Model.consumo_do_ano[-1];
+    this.PlayerVariables.expenditure = this.Model.consumo_do_ano[this.Model.consumo_do_ano.length-1];
     this.PlayerVariables.utility = this.Model.utilidade_do_ano[this.Model.ano_atual_indice];
     this.PlayerVariables.co2_emissions = this.Model.emissoes_totais_do_ano[this.Model.ano_atual_indice]  * Math.pow(10, -9);
+    console.log("@UPDATE GAME AFTER MODEL: " + this.PlayerVariables.co2_emissions );
     this.PlayerVariables.economic_growth = 1;
     this.PlayerVariables.cost_per_gigawatt = this.Model.CUSTO_POR_GIGAWATT_INSTALADO;
     this.PlayerVariables.efficiency = this.Model.eficiencia_agregada_do_ano[this.Model.ano_atual_indice];
@@ -367,9 +373,19 @@ export class DecisionPanelComponent implements OnInit {
 
   public firstRun() {
     this.processNextYear();
-    this.sendGameDecisionsToModel();
-    this.updateModel();
-    this.updateGameAfterModel();
+  }
+
+  public openConfirmationDialog() {
+    this.showActive = true;
+  }
+
+  public confirm() {
+    this.submitDecision();
+    this.showActive = false;
+  }
+
+  public decline() {
+    this.showActive = false;
   }
 
 }

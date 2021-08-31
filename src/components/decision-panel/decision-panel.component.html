@@ -3,7 +3,7 @@
     <span class="example-spacer"></span>
     <img src="../../assets/Logotipo_v1.png" />
 </mat-toolbar>
-
+<div *ngIf="showActive" [ngClass]=" showActive ? 'hideButtons' : 'showButtons'"></div>
 <div class="column-container">
     <div class="column1">
         <p class="section-title">◖ MAIN INFORMATIONS</p>
@@ -19,7 +19,7 @@
         <mat-divider></mat-divider>
         <p class="field-title">RENEWABLE RATIO</p>
         <p class="bigger-text">{{this.get_renewable_ratio() |  number: '1.2-2' }} %</p>
-        <button mat-button class="see-more-button" (click)="openDialog()">See Exergy <br>
+        <button mat-button class="see-more-button">See Exergy <br>
              Distribution Table</button>
     </div>
     <div class="column2">
@@ -163,6 +163,23 @@
         <mat-divider></mat-divider>
         <p class="field-title">REMAINING BUDGET</p>
         <p class="bigger-text">{{this.PlayerVariables.budget |  number: '1.0-0'}}M€</p>
-        <button mat-button class="confirm-button" (click)="submitDecision()">Confirm<br>Investment</button>
+        <button mat-button class="confirm-button" (click)="openConfirmationDialog()">Confirm<br>Investment</button>
     </div>
+</div>
+
+<div *ngIf ="showActive" class="confirmationPopup">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Warning</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+         <p>
+            Are you sure about submitting your decisions now?
+            </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="confirm()" color="primary">YES</button>
+        <button mat-raised-button (click)="decline()" color="warn">NO</button>
+      </mat-card-actions>
+    </mat-card>
 </div>

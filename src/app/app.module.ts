@@ -17,7 +17,6 @@ import {MatDialogModule} from '@angular/material/dialog'
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { DialogLayoutComponent } from 'src/components/dialog-layout/dialog-layout.component';
 
 
 @NgModule({
@@ -26,7 +25,6 @@ import { DialogLayoutComponent } from 'src/components/dialog-layout/dialog-layou
     DecisionPanelComponent,
     HistoryPanelComponent,
     InformationPanelComponent,
-    DialogLayoutComponent,
   
   ],
   imports: [
