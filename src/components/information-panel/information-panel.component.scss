@@ -1,9 +1,14 @@
 .column-container {
-  background: linear-gradient(71.68deg, #DEF7FF 3.33%, #FFFFFF 53.69%, #E4F8FF 100%);
+  background: linear-gradient(
+    71.68deg,
+    #def7ff 3.33%,
+    #ffffff 53.69%,
+    #e4f8ff 100%
+  );
 }
 
 .mat-divider {
-  border-top-color: #50CBFF;
+  border-top-color: #50cbff;
 }
 
 .example-spacer {
@@ -11,16 +16,21 @@
 }
 
 .toolbar {
-  background: linear-gradient(71.68deg, #DEF7FF 3.33%, #FFFFFF 53.69%, #E4F8FF 100%);
+  background: linear-gradient(
+    71.68deg,
+    #def7ff 3.33%,
+    #ffffff 53.69%,
+    #e4f8ff 100%
+  );
 }
 
-.toolbar >h1 {
+.toolbar > h1 {
   font-family: Saira;
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
   line-height: 47px;
-  color: #009DE0;
+  color: #009de0;
 }
 
 .column1 {
@@ -30,14 +40,12 @@
   float: left;
   width: 27%;
   height: 100%;
-
 }
 
 .column2 {
   float: left;
   width: 36.5%;
   height: 100%;
-  
 }
 
 .column3 {
@@ -49,11 +57,28 @@
 .mat-card-image {
   width: 244.5px;
   height: 250.5px;
-  -webkit-clip-path: polygon(15% 0, 70% 0%, 100% 0, 100% 85%, 85% 100%, 30% 100%, 0 100%, 0 15%);
-  clip-path: polygon(15% 0, 70% 0%, 100% 0, 100% 85%, 85% 100%, 30% 100%, 0 100%, 0 15%);
-  box-shadow: 20px 20px 5px 0px rgba(0,0,0,0.75);
+  -webkit-clip-path: polygon(
+    15% 0,
+    70% 0%,
+    100% 0,
+    100% 85%,
+    85% 100%,
+    30% 100%,
+    0 100%,
+    0 15%
+  );
+  clip-path: polygon(
+    15% 0,
+    70% 0%,
+    100% 0,
+    100% 85%,
+    85% 100%,
+    30% 100%,
+    0 100%,
+    0 15%
+  );
+  box-shadow: 20px 20px 5px 0px rgba(0, 0, 0, 0.75);
 }
-
 
 .insideContainer {
   display: flex;
@@ -73,14 +98,13 @@
   left: 35%;
 }
 
-
 .section-title {
-  margin-top: 20px;;
+  margin-top: 20px;
   font-family: Saira;
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
-  color: #46555F;
+  color: #46555f;
 }
 
 .field-title {
@@ -90,7 +114,7 @@
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
-  color: #009DE0;
+  color: #009de0;
 }
 
 .card-title {
@@ -99,7 +123,7 @@
   font-weight: bold;
   font-size: 20px;
   line-height: 31px;
-  color: #50CBFF;
+  color: #50cbff;
 }
 
 .bigger-text {
@@ -108,18 +132,30 @@
   font-style: normal;
   font-weight: bold;
   font-size: 26px;
-  color: #50CBFF;
+  color: #50cbff;
 }
 
-.co2-box, .happiness-box {
-  background: linear-gradient(93.58deg, rgba(0, 157, 224, 0.04) 8.4%, rgba(224, 246, 255, 0) 52.4%, rgba(0, 157, 224, 0.08) 94.17%);
+.co2-box,
+.happiness-box {
+  background-image: url(../../assets/seeMoreButton.png) !important;
+  background-size: cover;
   margin-left: 20px;
   margin-top: 16px;
   width: 328px;
   height: 70px;
-  clip-path: polygon(5% 0, 100% 0, 100% 30%, 100% 77%, 95% 100%, 0 100%, 0% 70%, 0 23%);
-  border: 1px solid #95D8F3;
+  clip-path: polygon(
+    5% 0,
+    100% 0,
+    100% 30%,
+    100% 77%,
+    95% 100%,
+    0 100%,
+    0% 70%,
+    0 23%
+  );
   box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
 }
 
 .section-title2 {
@@ -133,27 +169,82 @@
   font-weight: normal;
   font-size: 20px;
   line-height: 31px;
-  color: #46555F;
+  color: #46555f;
 }
 
-
-.happy-icon-container, .co2-icon-container {
-  background: linear-gradient(96.95deg, rgba(0, 157, 224, 0.85) 4.77%, rgba(0, 157, 224, 0.64) 92.07%);
+.happy-icon-container,
+.co2-icon-container {
+  background: linear-gradient(
+    96.95deg,
+    rgba(0, 157, 224, 0.85) 4.77%,
+    rgba(0, 157, 224, 0.64) 92.07%
+  );
   width: 55px;
   height: 55px;
   display: flex;
   vertical-align: middle;
   margin-top: 7.5px;
   margin-left: 10px;
-  clip-path: polygon(20% 0, 100% 0, 100% 30%, 100% 70%, 100% 100%, 0 100%, 0% 70%, 0 20%);
+  clip-path: polygon(
+    20% 0,
+    100% 0,
+    100% 30%,
+    100% 70%,
+    100% 100%,
+    0 100%,
+    0% 70%,
+    0 20%
+  );
 }
 
-.happy-icon, .co2-icon{
+.happy-icon,
+.co2-icon {
   width: fit-content;
   height: fit-content;
   color: white;
   font-size: 48px;
   margin: auto auto;
-  
 }
 
+.bars-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+
+.small-label {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  color: #009de0;
+  margin: 0;
+}
+
+.small-value {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  color: #fd8b5a;
+  margin: 0;
+  max-width: fit-content;
+}
+
+.bars {
+  display: flex;
+  flex-direction: row;
+}
+.chart-bar {
+  width: 5px;
+  height: 18px;
+  background: rgba(70, 85, 95, 0.2);
+  margin-right: 4px;
+}
+
+.chart-bar-big {
+  width: 5px;
+  height: 30px;
+  background: rgba(70, 85, 95, 0.2);
+  margin-right: 4px;
+}

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GameModelService } from 'src/services/game-model.service';
+import { PlayerVariablesService } from 'src/services/player-variables.service';
 
 @Component({
   selector: 'app-information-panel',
@@ -8,12 +9,15 @@ import { GameModelService } from 'src/services/game-model.service';
 })
 export class InformationPanelComponent implements OnInit {
 
-  PIB: number = 0; 
-  constructor(private gameModelService: GameModelService) { }
-  
   title: string = "INFORMATION PANEL";
-  year: number = 2019;
-  budget: number = 2000;
+
+  PlayerVariables: PlayerVariablesService;
+
+  constructor(private gameModelService: GameModelService, private playerVariables: PlayerVariablesService) { 
+    this.PlayerVariables = playerVariables;
+  }
+  
+  
   ngOnInit(): void {
     
   }
