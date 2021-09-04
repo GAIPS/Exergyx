@@ -15,6 +15,9 @@ export class AppComponent implements OnInit {
   historyActive = false;
 
   constructor(private service: CurrentStateService) {
+    service.infoActive.subscribe((newBool: boolean) => { this.infoActive = newBool; });
+    service.decisionActive.subscribe((newBool: boolean) => { this.decisionActive = newBool; });
+    service.historyActive.subscribe((newBool: boolean) => { this.historyActive = newBool; });
 
   }
 
@@ -23,9 +26,9 @@ export class AppComponent implements OnInit {
     if (option != null && option != "" && option != '') {
       this.service.updateMenuSelection(option);
     }
-    this.infoActive = this.service.infoActive;
-    this.decisionActive = this.service.decisionActive;
-    this.historyActive = this.service.historyActive;
+    this.service.infoActive.subscribe((newBool: boolean) => { this.infoActive = newBool; });
+    this.service.decisionActive.subscribe((newBool: boolean) => { this.decisionActive = newBool; });
+    this.service.historyActive.subscribe((newBool: boolean) => { this.historyActive = newBool; });
 
     sessionStorage.setItem("firstRunFlag", "true");
   }
@@ -35,10 +38,9 @@ export class AppComponent implements OnInit {
   public updateButtons(button: string) {
     this.service.updateMenuSelection(button);
 
-    this.infoActive = this.service.infoActive;
-    this.decisionActive = this.service.decisionActive;
-    this.historyActive = this.service.historyActive;
-
+    this.service.infoActive.subscribe((newBool: boolean) => { this.infoActive = newBool; });
+    this.service.decisionActive.subscribe((newBool: boolean) => { this.decisionActive = newBool; });
+    this.service.historyActive.subscribe((newBool: boolean) => { this.historyActive = newBool; });
     localStorage.setItem("optionSelected", button);
   }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Politic } from 'src/interfaces/politic';
+import { CurrentStateService } from 'src/services/current-state.service';
 import { GameModelService } from 'src/services/game-model.service';
 import { PlayerVariablesService } from 'src/services/player-variables.service';
 
@@ -70,7 +71,7 @@ export class DecisionPanelComponent implements OnInit {
 
 
   constructor( playerVariable: PlayerVariablesService , gameModel: GameModelService, private route: ActivatedRoute,
-    private router: Router ) {
+    private router: Router, private currentState: CurrentStateService ) {
     this.PlayerVariables = playerVariable;
     this.Model = gameModel;
     this.politics =  gameModel.initPolitics();
@@ -160,8 +161,7 @@ export class DecisionPanelComponent implements OnInit {
 
   public submitDecision() {
     this.process_politic();
-    this.processNextYear();
-    this.router.navigate(["/information"]);
+    this.processNextYear();    
   }
 
   public get_renewable_ratio() {
@@ -388,6 +388,9 @@ export class DecisionPanelComponent implements OnInit {
   public confirm() {
     this.submitDecision();
     this.showActive = false;
+    this.currentState.updateMenuSelection("info");
+    console.log(this.currentState.infoActive);
+    this.router.navigateByUrl("/information"); 
   }
 
   public decline() {

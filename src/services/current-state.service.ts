@@ -1,38 +1,46 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrentStateService {
 
-  constructor() { }
+  infoActive: BehaviorSubject<boolean>;
+  decisionActive: BehaviorSubject<boolean>;
+  historyActive: BehaviorSubject<boolean>;
 
-  isFirstRun = true;
-  infoActive = false;
-  decisionActive = false;
-  historyActive = false;
+
+  constructor() {
+    this.infoActive = new BehaviorSubject<boolean>(false);
+    this.decisionActive = new BehaviorSubject<boolean>(false);
+    this.historyActive = new BehaviorSubject<boolean>(false);
+  }
+
+    isFirstRun = true;
+  
 
   public updateMenuSelection(option: string) {
 
     if (option === "info") {
-      this.infoActive = true;
-      this.decisionActive = false;
-      this.historyActive = false;
+      this.infoActive.next(true);
+      this.decisionActive.next(false);
+      this.historyActive.next(false);
     }
     else if (option === "decision") {
-      this.infoActive = false;
-      this.decisionActive = true;
-      this.historyActive = false;
+      this.infoActive.next(false);
+      this.decisionActive.next(true);
+      this.historyActive.next(false);
     }
     else if (option == "history") {
-      this.infoActive = false;
-      this.decisionActive = false;
-      this.historyActive = true;
+      this.infoActive.next(false);
+      this.decisionActive.next(false);
+      this.historyActive.next(true);
     }
     else {
-      this.infoActive = false;
-      this.decisionActive = false;
-      this.historyActive = false;
+      this.infoActive.next(false);
+      this.decisionActive.next(false);
+      this.historyActive.next(false);
     }
   }
 }
