@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Politic } from 'src/interfaces/politic';
 import { GameModelService } from 'src/services/game-model.service';
 import { PlayerVariablesService } from 'src/services/player-variables.service';
@@ -14,6 +14,8 @@ export class DecisionPanelComponent implements OnInit {
 
   title: string = "DECISION PANEL";
   showActive = false;
+  calculated_budget = 0;
+
 
 
   // Temp values for testing
@@ -61,13 +63,14 @@ export class DecisionPanelComponent implements OnInit {
    simulator_used = false //true when the model debug simulator is used
  
    total_cost = 0
-   calculated_budget = 0
+   
 
   PlayerVariables: PlayerVariablesService;
   Model: GameModelService;
 
 
-  constructor( playerVariable: PlayerVariablesService , gameModel: GameModelService, public dialog: MatDialog) {
+  constructor( playerVariable: PlayerVariablesService , gameModel: GameModelService, private route: ActivatedRoute,
+    private router: Router ) {
     this.PlayerVariables = playerVariable;
     this.Model = gameModel;
     this.politics =  gameModel.initPolitics();
@@ -158,6 +161,7 @@ export class DecisionPanelComponent implements OnInit {
   public submitDecision() {
     this.process_politic();
     this.processNextYear();
+    this.router.navigate(["/information"]);
   }
 
   public get_renewable_ratio() {
@@ -281,6 +285,7 @@ export class DecisionPanelComponent implements OnInit {
   }
 
   public storeDecisionHistory() {
+    this.PlayerVariables.investment_renewables_percentage += this.powerToInstall;
     this.decisions_investment_renewables.push(this.PlayerVariables.investment_renewables_percentage);
     this.decisions_shares_transportation.push(this.PlayerVariables.economy_type_level_transportation);
     this.decisions_shares_industry.push(this.PlayerVariables.economy_type_level_industry);
@@ -292,7 +297,7 @@ export class DecisionPanelComponent implements OnInit {
     this.decisions_eletrification_services.push(this.PlayerVariables.electrification_by_sector_level_services);
     this.renewable_energy_amounts.push(this.PlayerVariables.renewable_energy);
     this.total_co2_emissions.push(this.PlayerVariables.co2_emissions);
-    console.log("@PROCESS NEXT YEAR: " +  this.total_co2_emissions );
+ 
     this.total_efficiency_results.push(this.PlayerVariables.efficiency);
     this.decisions_transports_eletrification.push(this.PlayerVariables.electrification_by_sector_percentage_transportation);
     this.decisions_industries_eletrification.push(this.PlayerVariables.electrification_by_sector_percentage_industry);
@@ -349,10 +354,11 @@ export class DecisionPanelComponent implements OnInit {
   public updateGameAfterModel() {
     this.PlayerVariables.current_year = this.Model.ano_atual;
     this.PlayerVariables.money = this.Model.pib_do_ano[this.Model.pib_do_ano.length-1];
-    this.calculated_budget = this.PlayerVariables.money;
+    this.calculated_budget = (this.PlayerVariables.money * 1000) * 0.01; //1% of PIB in Millions
+    this.PlayerVariables.budget = (this.PlayerVariables.money * 1000) * 0.01;
     this.PlayerVariables.expenditure = this.Model.consumo_do_ano[this.Model.consumo_do_ano.length-1];
     this.PlayerVariables.utility = this.Model.utilidade_do_ano[this.Model.ano_atual_indice];
-    this.PlayerVariables.co2_emissions = this.Model.emissoes_totais_do_ano[this.Model.ano_atual_indice]  * Math.pow(10, -9);
+    this.PlayerVariables.co2_emissions = this.Model.emissoes_totais_do_ano[this.Model.ano_atual_indice] * Math.pow(10, -9);
     console.log("@UPDATE GAME AFTER MODEL: " + this.PlayerVariables.co2_emissions );
     this.PlayerVariables.economic_growth = 1;
     this.PlayerVariables.cost_per_gigawatt = this.Model.CUSTO_POR_GIGAWATT_INSTALADO;
