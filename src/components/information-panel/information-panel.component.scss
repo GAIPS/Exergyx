@@ -265,3 +265,41 @@
   background: #50cbff;
   margin-right: 4px;
 }
+
+.info-icon {
+  color: #50cbff;
+}
+
+.gdp-group,
+.happiness-group,
+.expenditure-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.gdp-title,
+.happiness-title,
+.expenditure-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.gdp-value,
+.happiness-value,
+.expenditure-value {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.value-diff {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: right;
+  color: #49be8c;
+}
