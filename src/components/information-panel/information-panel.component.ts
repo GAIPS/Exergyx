@@ -10,6 +10,8 @@ import { PlayerVariablesService } from 'src/services/player-variables.service';
 export class InformationPanelComponent implements OnInit {
 
   title: string = "INFORMATION PANEL";
+  value: number = 0;
+  happiness: number = 0;
 
   PlayerVariables: PlayerVariablesService;
 
@@ -20,6 +22,8 @@ export class InformationPanelComponent implements OnInit {
   
   ngOnInit(): void {
     
+    this.value = Math.floor((this.PlayerVariables.co2_emissions * 25) / 100);
+    this.happiness = Math.floor((this.PlayerVariables.utility * 25) / 100);
   }
 
 }

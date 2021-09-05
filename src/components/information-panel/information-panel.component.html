@@ -21,7 +21,53 @@
       </div>
       <div class="bars-container">
         <p class="small-label">CO2 EMISSIONS</p>
-        <p class="small-value">{{this.PlayerVariables.co2_emissions |  number: '1.0-0'}}MT</p>
+        <div class="value-inline-bars">
+          <p class="small-value">{{this.PlayerVariables.co2_emissions |  number: '1.0-0'}}MT</p>
+           <!-- <div class="chart-bar-big-first"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div> -->
+        </div>
+        <div class="bars">
+          <div [ngClass]="this.value >0 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >1 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >2 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >3 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >4 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >5 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >6 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >7 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >8 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >9 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >10 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >11 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >12 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >13 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >14 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >15 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >16 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >17 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >18 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >19 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >20 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >21 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >22 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >23 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.value >24 ? 'chart-bar-colored' : 'chart-bar'"></div>
+         </div>
       </div>
     </div>
     <div class="happiness-box">
@@ -30,16 +76,52 @@
       </div>
       <div class="bars-container">
         <p class="small-label">POPULATION HAPPINESS</p>
-        <p class="small-value">{{this.PlayerVariables.utility}}</p>
-        
+        <div class="value-inline-bars">
+          <p class="small-value">{{this.PlayerVariables.utility | number: '1.0-2'}}</p>
+          <!-- <div class="chart-bar-big-first"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div>
+          <div class="chart-bar-big"></div> -->
+        </div>
         <div class="bars">
-         <div class="chart-bar"></div>
-         <div class="chart-bar"></div>
-         <div class="chart-bar"></div>
-         <div class="chart-bar"></div>
-         <div class="chart-bar"></div>
-         <div class="chart-bar"></div>
-        
+          <div [ngClass]="this.happiness >0 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >1 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >2 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >3 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >4 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >5 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >6 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >7 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >8 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >9 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >10 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >11 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >12 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >13 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >14 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >15 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >16 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >17 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >18 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >19 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >20 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >21 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >22 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >23 ? 'chart-bar-colored' : 'chart-bar'"></div>
+          <div [ngClass]="this.happiness >24 ? 'chart-bar-colored' : 'chart-bar'"></div>
         </div>
       </div>
     </div>

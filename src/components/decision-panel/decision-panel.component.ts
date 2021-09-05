@@ -117,11 +117,6 @@ export class DecisionPanelComponent implements OnInit {
     });
   }
 
-  public isInCart(row: any) {
-    console.log(row);
-
-  }
-
   public removeFromCart(item: Politic) {
     item.isUsed=!item.isUsed;
     this.cartCollection.delete(item);
@@ -185,8 +180,8 @@ export class DecisionPanelComponent implements OnInit {
     this.PlayerVariables.money = this.Model.pib_do_ano[this.Model.ano_atual_indice];
     this.PlayerVariables.expenditure = this.Model.consumo_do_ano[this.Model.consumo_do_ano.length-1];
     this.PlayerVariables.utility = this.Model.utilidade_do_ano[this.Model.ano_atual_indice];
+    console.log(this.Model.utilidade_do_ano);
     this.PlayerVariables.co2_emissions = this.Model.emissoes_totais_do_ano[this.Model.emissoes_totais_do_ano.length-1]  * Math.pow(10, -9);
-    console.log("@INITIAL MODEL LOADING: " + this.PlayerVariables.co2_emissions );
     this.PlayerVariables.economic_growth = 1;
     this.PlayerVariables.cost_per_gigawatt = this.Model.CUSTO_POR_GIGAWATT_INSTALADO;
     this.PlayerVariables.efficiency = this.Model.eficiencia_agregada_do_ano[this.Model.ano_atual_indice];
@@ -359,7 +354,6 @@ export class DecisionPanelComponent implements OnInit {
     this.PlayerVariables.expenditure = this.Model.consumo_do_ano[this.Model.consumo_do_ano.length-1];
     this.PlayerVariables.utility = this.Model.utilidade_do_ano[this.Model.ano_atual_indice];
     this.PlayerVariables.co2_emissions = this.Model.emissoes_totais_do_ano[this.Model.ano_atual_indice] * Math.pow(10, -9);
-    console.log("@UPDATE GAME AFTER MODEL: " + this.PlayerVariables.co2_emissions );
     this.PlayerVariables.economic_growth = 1;
     this.PlayerVariables.cost_per_gigawatt = this.Model.CUSTO_POR_GIGAWATT_INSTALADO;
     this.PlayerVariables.efficiency = this.Model.eficiencia_agregada_do_ano[this.Model.ano_atual_indice];
@@ -389,7 +383,6 @@ export class DecisionPanelComponent implements OnInit {
     this.submitDecision();
     this.showActive = false;
     this.currentState.updateMenuSelection("info");
-    console.log(this.currentState.infoActive);
     this.router.navigateByUrl("/information"); 
   }
 

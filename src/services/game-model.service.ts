@@ -441,7 +441,6 @@ export class GameModelService {
     this.custo_do_ano_vento_offshore.push(custo_vento_offshore_instantaneo);
 
     this.custo_total_do_ano.push(custo_solar_instantaneo + custo_vento_instantaneo + custo_vento_offshore_instantaneo);
-
   }
 
   // FUNCS 3) - INVESTIMENTO (milhares de milhões de euros)
@@ -451,21 +450,11 @@ export class GameModelService {
 
     this.investimento_total_do_ano.push(investimento_total_instantaneo);
     this.investimento_para_capital_do_ano.push(investimento_total_instantaneo - (this.custo_total_do_ano[this.ano_atual_indice] * Math.pow(10, -9)));
-    console.log("Print Investimento");
-    console.log(investimento_total_instantaneo);
-    console.log(this.PERCENTAGEM_A_RETIRAR_DO_PIB);
-    console.log()
-    console.log("FIM Investimento");
   }
 
   // FUNCS 4) - CAPITAL (milhares de milhões de euros)
   public calcular_capital() {
     this.capital_do_ano.push(this.capital_do_ano[this.ano_atual_indice - 1] + this.investimento_para_capital_do_ano[this.ano_atual_indice]);
-    console.log("Print Capital do Ano");
-    console.log(this.capital_do_ano);
-    console.log(this.capital_do_ano[this.ano_atual_indice - 1]);
-    console.log(this.investimento_para_capital_do_ano[this.ano_atual_indice]);
-    console.log("FIM Capital do Ano");
   }
 
   // FUNCS 5) - LABOUR (horas de trabalho realizadas por trabalhadores ativos)
@@ -481,10 +470,6 @@ export class GameModelService {
   // FUNCS 7) - PIB (milhares de milhões de euros)
   public calcular_pib() {
     this.pib_do_ano.push(this.tfp_do_ano[this.tfp_do_ano.length-1] * Math.pow(this.capital_do_ano[this.capital_do_ano.length-1], 0.3) * Math.pow(this.labour_do_ano[this.labour_do_ano.length-1], 0.7));
-    console.log("PIB CALCULADO: " + this.tfp_do_ano[this.tfp_do_ano.length-1] );
-    console.log(Math.pow(this.capital_do_ano[this.capital_do_ano.length-1], 0.3));
-    console.log(Math.pow(this.labour_do_ano[this.labour_do_ano.length-1], 0.7));
-    console.log("---------------END------------");
   }
 
   // FUNCS 8) - EXERGIA ÚTIL ANUAL (terajoule) (1 megajoule = 1 euro)
@@ -804,7 +789,7 @@ export class GameModelService {
 
   // FUNCS 24) - CONSUMO(milhares de milhões de euros)
   public calcular_consumo() {
-    this.consumo_do_ano.push(this.pib_do_ano[-1] - this.investimento_total_do_ano[this.ano_atual_indice]);
+    this.consumo_do_ano.push(this.pib_do_ano[this.ano_atual_indice] - this.investimento_total_do_ano[this.ano_atual_indice]);
   }
 
   // FUNCS 25) - UTILIDADE (Felicidade dos cidadãos; um dos objetivos do jogo) (Atenção: para efeitos de apresentação no jogo, estamos a dividir os resultados pelo resultado do ano 1)
@@ -813,6 +798,7 @@ export class GameModelService {
     var utilidade_absoluta = ((Math.pow(this.consumo_do_ano[this.ano_atual_indice] * Math.pow(10, 9), 2)) *
       Math.exp((-1 * this.emissoes_totais_do_ano[this.ano_atual_indice]) / 10000000000)) / this.POPULACAO;
     var utilidade_relativa = utilidade_absoluta / this.UTILIDADE_DO_ANO_UM;
+    console.log("UTILIDADE ABS : " + this.consumo_do_ano[this.ano_atual_indice]) ;
     this.utilidade_do_ano.push(utilidade_relativa);
   }
 

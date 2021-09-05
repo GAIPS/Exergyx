@@ -137,7 +137,7 @@
 
 .co2-box,
 .happiness-box {
-  background-image: url(../../assets/seeMoreButton.png) !important;
+  background-image: url(../../assets/barsbg.png) !important;
   background-size: cover;
   margin-left: 20px;
   margin-top: 16px;
@@ -242,9 +242,26 @@
   margin-right: 4px;
 }
 
-.chart-bar-big {
+.chart-bar-big,
+.chart-bar-big-first {
   width: 5px;
-  height: 30px;
+  height: 20px;
   background: rgba(70, 85, 95, 0.2);
+  margin-right: 4px;
+}
+
+.value-inline-bars {
+  display: flex;
+  flex-direction: row;
+}
+
+.chart-bar-big-first {
+  margin-left: 24px;
+}
+
+.chart-bar-colored {
+  width: 5px;
+  height: 18px;
+  background: #50cbff;
   margin-right: 4px;
 }
