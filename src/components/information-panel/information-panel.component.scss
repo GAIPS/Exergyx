@@ -308,3 +308,20 @@
   text-align: right;
   color: #49be8c;
 }
+
+.dist-table-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.table-title {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+  color: #50cbff;
+}

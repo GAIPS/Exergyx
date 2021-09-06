@@ -13,6 +13,8 @@ export class InformationPanelComponent implements OnInit {
   title: string = "INFORMATION PANEL";
   value: number = 0;
   happiness: number = 0;
+  currentRatio = 0;
+  renewableRatioArray: Array<number> = [];
 
   PlayerVariables: PlayerVariablesService;
   Model: GameModelService
@@ -85,6 +87,46 @@ export class InformationPanelComponent implements OnInit {
       diff = renEleArray[renEleArray.length-1] - renEleArray[renEleArray.length-2];
     }
     return diff;
+  }
+
+  public getRenewableRatio() {
+    if(this.Model.eletricidade_nao_renovavel_do_ano.length > 0) {
+      var total_energy = this.Model.eletricidade_nao_renovavel_do_ano[this.Model.eletricidade_nao_renovavel_do_ano.length-1] + this.PlayerVariables.renewable_energy;
+      var result = Math.min(((this.PlayerVariables.renewable_energy/total_energy) * 100), 100);
+      this.currentRatio = result;
+      this.PlayerVariables.renewableRatioArray.push(result);
+      return result;
+    }
+    else {
+      return 33.95;
+    }
+  }
+
+  public getRenewableRatioDiff() {
+    var renewableRatioArray =  this.PlayerVariables.renewableRatioArray;
+    var diff = 0;
+    if(renewableRatioArray.length > 2) {
+      diff = renewableRatioArray[renewableRatioArray.length-1] - renewableRatioArray[renewableRatioArray.length-2];
+    }
+    return diff;
+  }
+
+  public getEmissionsDiff() {
+    var emissionsArray = this.Model.emissoes_totais_do_ano;
+    var diff = 0;
+    if (emissionsArray.length > 2) {
+      diff = emissionsArray[emissionsArray.length-1] - emissionsArray[emissionsArray.length-2];
+    }
+    return diff * Math.pow(10, -9);
+  }
+
+  public getEfficiencyDiff() {
+    var efficiencyArray = this.Model.eficiencia_agregada_do_ano;
+    var diff = 0;
+    if (efficiencyArray.length > 2) {
+      diff = efficiencyArray[efficiencyArray.length-1] - efficiencyArray[efficiencyArray.length-2];
+    }
+    return diff*100;
   }
 
 }

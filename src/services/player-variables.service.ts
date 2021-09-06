@@ -57,4 +57,6 @@ export class PlayerVariablesService {
 
   extra_year_text: string = "";
   budget: number = this.money * 0.01;
+
+  renewableRatioArray: Array<number> = [];
 }

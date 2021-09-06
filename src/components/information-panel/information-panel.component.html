@@ -185,6 +185,44 @@
         <p class="value-diff">{{this.getRenweableElectricityDiff() <= 0 ? '' : '+' }}{{this.getRenweableElectricityDiff() | number: '1.0-0'}} GWh</p>
       </div>
     </div>
+    <mat-divider></mat-divider>
+    <div class=gdp-group>
+      <div class="gdp-title">
+        <mat-icon class="info-icon">info_outline</mat-icon>
+        <p class="field-title" style="margin-left: 8px;">RENEWABLE<br>RATIO</p>
+      </div>
+      <div class="gdp-values">
+        <p class="bigger-text">{{this.getRenewableRatio() | number: '1.0-2'}} %</p>
+        <p class="value-diff">{{this.getRenewableRatioDiff() <= 0 ? '' : '+' }}{{this.getRenewableRatioDiff() | number: '1.0-2'}} %</p>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class=gdp-group>
+      <div class="gdp-title">
+        <mat-icon class="info-icon">info_outline</mat-icon>
+        <p class="field-title" style="margin-left: 8px;">CO2<br>EMISSIONS</p>
+      </div>
+      <div class="gdp-values">
+        <p class="bigger-text">{{this.PlayerVariables.co2_emissions | number: '1.0-2'}} MT</p>
+        <p class="value-diff">{{this.getEmissionsDiff() <= 0 ? '' : '+' }}{{this.getEmissionsDiff() | number: '1.0-2'}} MT</p>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class=gdp-group>
+      <div class="gdp-title">
+        <mat-icon class="info-icon">info_outline</mat-icon>
+        <p class="field-title" style="margin-left: 8px;">AGGREGATED<br>EFFICIENCY</p>
+      </div>
+      <div class="gdp-values">
+        <p class="bigger-text">{{this.PlayerVariables.efficiency*100 | number: '1.0-2'}} %</p>
+        <p class="value-diff">{{this.getEfficiencyDiff() <= 0 ? '' : '+' }}{{this.getEfficiencyDiff() | number: '1.0-2'}} %</p>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="dist-table-title">
+      <mat-icon class="info-icon">info_outline</mat-icon>
+      <p class="table-title" style="margin-left: 8px;">Exergy Destribution by sector</p>
+    </div>
   </div>
   <div class="column3">
     <p class="section-title">◖ EVENTS INFORMATION</p>
