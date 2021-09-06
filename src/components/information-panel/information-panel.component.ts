@@ -26,7 +26,7 @@ export class InformationPanelComponent implements OnInit {
   ngOnInit(): void {
     
     this.value = Math.floor((this.PlayerVariables.co2_emissions * 25) / 100);
-    this.happiness =Math.floor(this.PlayerVariables.utility);
+    this.happiness =this.PlayerVariables.utility;
     console.log(this.happiness);
   }
 
@@ -53,6 +53,36 @@ export class InformationPanelComponent implements OnInit {
     var diff = 0;
     if (expendArray.length > 2) {
       diff = expendArray[expendArray.length-1] - expendArray[expendArray.length-2];
+    }
+    return diff;
+  }
+
+  public getInstalledPowerDiff() {
+    this.Model.potencia_do_ano_solar[this.Model.ano_atual_indice] + 
+    this.Model.potencia_do_ano_vento_offshore[this.Model.ano_atual_indice] + 
+    this.Model.potencia_do_ano_vento[this.Model.ano_atual_indice] + 
+    this.Model.POTENCIA_ANUAL_HIDRO;
+
+    var diff = 0;
+    if(this.Model.potencia_do_ano_solar.length > 2) {
+      var oldVal = this.Model.potencia_do_ano_solar[this.Model.potencia_do_ano_solar.length-2] + 
+      this.Model.potencia_do_ano_vento_offshore[this.Model.potencia_do_ano_vento_offshore.length-2] +
+      this.Model.potencia_do_ano_vento[this.Model.potencia_do_ano_vento.length-2] + this.Model.POTENCIA_ANUAL_HIDRO;
+
+      var newVal = this.Model.potencia_do_ano_solar[this.Model.potencia_do_ano_solar.length-1] + 
+      this.Model.potencia_do_ano_vento_offshore[this.Model.potencia_do_ano_vento_offshore.length-1] +
+      this.Model.potencia_do_ano_vento[this.Model.potencia_do_ano_vento.length-1] + this.Model.POTENCIA_ANUAL_HIDRO;
+
+      diff = newVal - oldVal;
+    }
+    return diff;
+  }
+
+  public getRenweableElectricityDiff() {
+    var renEleArray = this.Model.eletricidade_renovavel_do_ano;
+    var diff = 0;
+    if (renEleArray.length > 2) {
+      diff = renEleArray[renEleArray.length-1] - renEleArray[renEleArray.length-2];
     }
     return diff;
   }

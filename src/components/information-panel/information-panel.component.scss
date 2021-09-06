@@ -38,20 +38,25 @@
   flex-direction: column;
   justify-content: space-evenly;
   float: left;
-  width: 27%;
+  width: 29%;
   height: 100%;
 }
 
 .column2 {
   float: left;
-  width: 36.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 32%;
   height: 100%;
+  margin-left: 20px;
 }
 
 .column3 {
   float: left;
-  width: 36.5%;
+  width: 36%;
   height: 100%;
+  margin-left: 20px;
 }
 
 .mat-card-image {

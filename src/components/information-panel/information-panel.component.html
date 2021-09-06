@@ -170,8 +170,19 @@
         <p class="field-title" style="margin-left: 8px;">INSTALLED<br>RENEWABLE<br> POWER</p>
       </div>
       <div class="gdp-values">
-        <p class="bigger-text">{{this.PlayerVariables.money*1000 | number: '1.0-0'}} M€</p>
-        <p class="value-diff">{{this.getGdpDiff() <= 0 ? '' : '+' }}{{this.getGdpDiff()*1000 | number: '1.0-0'}} M€</p>
+        <p class="bigger-text">{{this.PlayerVariables.total_installed_power | number: '1.0-2'}} GW</p>
+        <p class="value-diff">{{this.getInstalledPowerDiff() <= 0 ? '' : '+' }}{{this.getInstalledPowerDiff() | number: '1.0-2'}} GW</p>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class=gdp-group>
+      <div class="gdp-title">
+        <mat-icon class="info-icon">info_outline</mat-icon>
+        <p class="field-title" style="margin-left: 8px;">RENEWABLE<br>ELECTRICITY</p>
+      </div>
+      <div class="gdp-values">
+        <p class="bigger-text">{{this.PlayerVariables.renewable_energy | number: '1.0-0'}} GWh</p>
+        <p class="value-diff">{{this.getRenweableElectricityDiff() <= 0 ? '' : '+' }}{{this.getRenweableElectricityDiff() | number: '1.0-0'}} GWh</p>
       </div>
     </div>
   </div>
