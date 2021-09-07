@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+
 import { GameModelService } from 'src/services/game-model.service';
 import { PlayerVariablesService } from 'src/services/player-variables.service';
 
@@ -19,11 +19,12 @@ export class InformationPanelComponent implements OnInit {
   PlayerVariables: PlayerVariablesService;
   Model: GameModelService
 
+
+
   constructor(private gameModelService: GameModelService, private playerVariables: PlayerVariablesService) { 
     this.PlayerVariables = playerVariables;
     this.Model = gameModelService;
   }
-  
   
   ngOnInit(): void {
     

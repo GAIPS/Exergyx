@@ -16,6 +16,7 @@ export class DecisionPanelComponent implements OnInit {
   title: string = "DECISION PANEL";
   showActive = false;
   calculated_budget = 0;
+  showTable = false;
 
 
 
@@ -377,6 +378,7 @@ export class DecisionPanelComponent implements OnInit {
 
   public openConfirmationDialog() {
     this.showActive = true;
+    this.showTable = false;
   }
 
   public confirm() {
@@ -388,6 +390,10 @@ export class DecisionPanelComponent implements OnInit {
 
   public decline() {
     this.showActive = false;
+  }
+
+  public toggleTable() {
+    this.showTable = !this.showTable;
   }
 
 }

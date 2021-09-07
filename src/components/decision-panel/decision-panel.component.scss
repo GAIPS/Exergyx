@@ -173,22 +173,22 @@ svg {
 
 .see-more-button {
   background-image: url(../../assets/seeMoreButton.png) !important;
-  background-size: contain;
-  width: 268px;
-  height: 94px;
+  background-size: cover;
+  width: 220px;
+  height: 76px;
   font-family: Saira;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
   text-align: center;
-  align-self: center;
+  margin: auto;
   color: #46555f;
   transition: all 0.2s ease-in-out;
 }
 
 .see-more-button:hover {
   background-image: url(../../assets/seeMoreHover.png) !important;
-  background-size: contain;
+  background-size: cover;
   color: white;
   transform: scale(1.05);
 }
@@ -505,4 +505,74 @@ button.add-button {
   z-index: 100;
   background-color: black;
   opacity: 0.8;
+}
+
+thead {
+  background-color: #009de0;
+  border-left: solid #009de0 1px;
+  border-top: solid #009de0 1px;
+}
+
+th:nth-child(1) {
+  border-top-left-radius: 6px;
+}
+
+th:nth-last-child(1) {
+  border-top-right-radius: 6px;
+}
+
+.table-header-aligner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0px;
+}
+
+.table-header-title {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+  margin: 0px;
+}
+
+.table-header-icon {
+  color: #ffffff;
+  font-size: 18px;
+  margin-top: 3px;
+}
+
+tbody > tr {
+  background-color: rgba(158, 219, 244, 0.4);
+}
+
+tbody > tr > td:nth-last-child(1) {
+  text-align: center;
+}
+tbody > tr > td:nth-last-child(2) {
+  text-align: center;
+}
+
+tbody > tr > td {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #68a1b4;
+}
+
+.exergy-dist-table {
+  position: absolute;
+  top: 80%;
+  left: 0%;
+  z-index: 1000;
+  border: 1px solid #92ebed;
+  box-shadow: 0px 4px 4px rgb(0 157 224 / 31%), 0px 4px 20px #93eded;
+  background: linear-gradient(
+    101.64deg,
+    #e8f7fc 39.55%,
+    #f7fcff 65.58%,
+    #e8f7fc 86.7%
+  );
 }

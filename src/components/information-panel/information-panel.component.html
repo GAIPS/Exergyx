@@ -221,8 +221,55 @@
     <mat-divider></mat-divider>
     <div class="dist-table-title">
       <mat-icon class="info-icon">info_outline</mat-icon>
-      <p class="table-title" style="margin-left: 8px;">Exergy Destribution by sector</p>
+      <p class="table-title" style="margin-left: 8px;">Exergy Destribution by Sector</p>
     </div>
+      <table>
+        <thead>
+          <tr>
+            <th class="table-header-cell">
+              <div class = "table-header-aligner">
+                <p class="table-header-title">Economy Sector</p>
+                <mat-icon class="table-header-icon">info_outline</mat-icon>
+              </div>
+            </th>
+            <th class="table-header-cell">
+              <div class = "table-header-aligner">
+                <p class="table-header-title">Exergy Shares</p>
+                <mat-icon class="table-header-icon">info_outline</mat-icon>
+              </div>
+            </th>
+            <th class="table-header-cell">
+              <div class = "table-header-aligner">
+                <p class="table-header-title">Eletrification</p>
+                <mat-icon class="table-header-icon">info_outline</mat-icon>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Transports</td>
+            <td>{{this.PlayerVariables.economy_type_percentage_transportation | number:'1.0-2'}}%</td>
+            <td>{{this.PlayerVariables.electrification_by_sector_percentage_transportation | number:'1.0-2'}}%</td>
+          </tr>
+          <tr>
+            <td >Industry</td>
+            <td>{{this.PlayerVariables.economy_type_percentage_industry | number:'1.0-2'}}%</td>
+            <td>{{this.PlayerVariables.electrification_by_sector_percentage_industry | number:'1.0-2'}}%</td>
+          </tr>
+          <tr>
+            <td >Residential</td>
+            <td>{{this.PlayerVariables.economy_type_percentage_residential | number:'1.0-2'}}%</td>
+            <td>{{this.PlayerVariables.electrification_by_sector_percentage_residential | number:'1.0-2'}}%</td>
+          </tr>
+          <tr>
+            <td >Services</td>
+            <td>{{this.PlayerVariables.economy_type_percentage_services | number:'1.0-2'}}%</td>
+            <td>{{this.PlayerVariables.electrification_by_sector_percentage_services | number:'1.0-2'}}%</td>
+          </tr>
+        </tbody>
+      </table>
+ 
   </div>
   <div class="column3">
     <p class="section-title">◖ EVENTS INFORMATION</p>
