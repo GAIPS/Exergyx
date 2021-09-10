@@ -66,6 +66,7 @@
         </div>
         <div class="policies-table-container">
             <p class="section-title">◖ INVESTMENT POLICIES</p>
+            <div class="example-container">
             <table class="policies-table" mat-table [dataSource]="politics" class="mat-elevation-z8">
 
                 <!-- Position Column -->
@@ -96,6 +97,7 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row (click)="changeSelectedPolicy(row)"[class.row-added]="this.cartCollection.has(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
+            </div>
               <br>
         
               <p class="section-title">◖ POWER TO INSTALL</p>

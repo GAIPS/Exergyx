@@ -576,3 +576,9 @@ tbody > tr > td {
     #e8f7fc 86.7%
   );
 }
+
+.example-container {
+  height: 210px;
+  max-width: 100%;
+  overflow: auto;
+}
