@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Politic } from 'src/interfaces/politic';
 import { CurrentStateService } from 'src/services/current-state.service';
@@ -9,7 +10,7 @@ import { PlayerVariablesService } from 'src/services/player-variables.service';
 @Component({
   selector: 'app-decision-panel',
   templateUrl: './decision-panel.component.html',
-  styleUrls: ['./decision-panel.component.scss']
+  styleUrls: ['./decision-panel.component.scss'],
 })
 export class DecisionPanelComponent implements OnInit {
 
@@ -17,6 +18,8 @@ export class DecisionPanelComponent implements OnInit {
   showActive = false;
   calculated_budget = 0;
   showTable = false;
+  tab = "Transports";
+
 
 
 
@@ -28,6 +31,7 @@ export class DecisionPanelComponent implements OnInit {
   ratio: number = 32;
 
   politics: Array<Politic> = [];
+  allPolitics: Array<Array<Politic>> = [];
   selectedPolitic: Politic | undefined;
   displayedColumns = ["Policy Name", "Economy Sector", "Price", "getdetails"];
   clickedRow = new Set<Politic>();
@@ -75,7 +79,8 @@ export class DecisionPanelComponent implements OnInit {
     private router: Router, private currentState: CurrentStateService ) {
     this.PlayerVariables = playerVariable;
     this.Model = gameModel;
-    this.politics =  gameModel.initPolitics();
+    this.allPolitics =  gameModel.initPolitics();
+    this.politics = this.allPolitics[0];
     this.selectedPolitic = this.politics[0];
     this.installedPower = this.PlayerVariables.total_installed_power;
 
@@ -394,6 +399,28 @@ export class DecisionPanelComponent implements OnInit {
 
   public toggleTable() {
     this.showTable = !this.showTable;
+  }
+
+  public onTabChange(event: MatTabChangeEvent) {
+    var clickedTab = event.index;
+    if(clickedTab == 0) {
+      this.tab = "Transports";
+      this.politics = this.allPolitics[0];
+    }
+    else if(clickedTab == 1) {
+      this.tab ="Industry";
+      this.politics = this.allPolitics[1];
+    }
+    else if(clickedTab == 2) {
+      this.tab = "Residential";
+      this.politics = this.allPolitics[2];
+    }
+
+    else if(clickedTab == 3) {
+      this.tab = "Services";
+      this.politics = this.allPolitics[3];
+    }
+
   }
 
 }

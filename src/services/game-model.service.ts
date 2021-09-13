@@ -803,7 +803,7 @@ export class GameModelService {
   }
 
   public initPolitics() {
-    const politicsArray: Array<Politic> = [
+    const TransportsPoliticsArray: Array<Politic> = [
       { 
         id: 1, title: "Trasports Eletrification", price: 400,
       prob: 0.5,
@@ -825,6 +825,73 @@ export class GameModelService {
         impact: [1, 3]
       }
     ]
+
+    const IndustryPoliticArray = [
+      {
+        id: 1, title: "Industry Eletrification", price: 300,
+        prob: 0.5,
+        desc: "Invest on Industry Eletrification, switching between fossil fuels to eletric power",
+        isUsed: false,
+        type: "Industry",
+        impact: [1,2] 
+      },
+      {
+        id: 2, title: "Limit Industries polution", price: 700,
+        prob: 0.5,
+        desc: "Establish a new polution limit to industries",
+        isUsed: false,
+        type: "Industry",
+        impact: [3,5] 
+      },
+      {
+        id: 3, title: "Improve machines efficiency", price: 1200,
+        prob: 0.5,
+        desc: "Pay a bonus to industries that replace older equipments by new ones that are more efficient.",
+        isUsed: false,
+        type: "Industry",
+        impact: [5,5] 
+      }
+  ]
+
+  const ResidentialPoliticsArray = [
+    {
+      id: 1, title: "House Eletrification", price: 300,
+      prob: 0.5,
+      desc: "Invest on House Eletrification, switching between fossil fuels to eletric power",
+      isUsed: false,
+      type: "Residential",
+      impact: [1,2]
+    },
+    {
+      id: 2, title: "House Isolation", price: 600,
+      prob: 0.5,
+      desc: "Invest on House Isolation, switching from traditional windows and doors to double glass and isolation ones.",
+      isUsed: false,
+      type: "Residential",
+      impact: [3,3]
+    }
+  ]
+
+  const ServicesPoliticsArray = [
+    {
+      id: 1, title: "Higher performance systems", price: 300,
+      prob: 0.5,
+      desc: "Invest systems able to consume less power",
+      isUsed: false,
+      type: "Services",
+      impact: [1,2]
+    },
+    {
+      id: 1, title: "Efficient hospitals", price: 300,
+      prob: 0.5,
+      desc: "Investon Hospitals power efficiency",
+      isUsed: false,
+      type: "Services",
+      impact: [4,3]
+    },
+  ]
+
+  var politicsArray = [TransportsPoliticsArray, IndustryPoliticArray, ResidentialPoliticsArray, ServicesPoliticsArray]
 
     return politicsArray;
   }
