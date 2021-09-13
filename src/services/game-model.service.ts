@@ -882,7 +882,7 @@ export class GameModelService {
       impact: [1,2]
     },
     {
-      id: 1, title: "Efficient hospitals", price: 300,
+      id: 2, title: "Efficient hospitals", price: 300,
       prob: 0.5,
       desc: "Investon Hospitals power efficiency",
       isUsed: false,

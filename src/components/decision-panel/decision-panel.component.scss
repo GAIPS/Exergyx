@@ -582,3 +582,21 @@ tbody > tr > td {
   max-width: 100%;
   overflow: auto;
 }
+
+.transports-label {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: #17969c;
+  margin: 0px;
+}
+
+.transports-icon {
+  background: #17969c;
+  color: white;
+}
+
+mat-tab {
+  background-color: yellow;
+}

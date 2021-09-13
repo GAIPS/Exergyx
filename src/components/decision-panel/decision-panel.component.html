@@ -68,13 +68,13 @@
             <p class="section-title">◖ INVESTMENT POLICIES</p>
             <div class="example-container">
               <mat-tab-group class="tab-group" (selectedTabChange)="onTabChange($event)">
-                <mat-tab style="color: bisque;">
-                  <ng-template  class="transports" *ngIf="this.tab != 'Transports'" mat-tab-label>
-                    <mat-icon class="example-tab-icon">directions_bus</mat-icon>
+                <mat-tab class="transports">
+                  <ng-template class="transports" *ngIf="this.tab != 'Transports'" mat-tab-label>
+                    <mat-icon class="transports-icon">directions_bus</mat-icon>
                   </ng-template>
                   <ng-template  class="transports" *ngIf="this.tab === 'Transports'" mat-tab-label>
-                    <mat-icon class="example-tab-icon">directions_bus</mat-icon>
-                    Transports
+                    <mat-icon class="transports-icon">directions_bus</mat-icon>
+                    <p class="transports-label">Transports</p>
                   </ng-template>
                   <table class="policies-table" mat-table [dataSource]="politics" class="mat-elevation-z8">
 

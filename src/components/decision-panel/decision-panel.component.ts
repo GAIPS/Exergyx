@@ -162,7 +162,8 @@ export class DecisionPanelComponent implements OnInit {
 
   public submitDecision() {
     this.process_politic();
-    this.processNextYear();    
+    this.processNextYear();
+    this.checkGame();    
   }
 
   public get_renewable_ratio() {
@@ -420,7 +421,38 @@ export class DecisionPanelComponent implements OnInit {
       this.tab = "Services";
       this.politics = this.allPolitics[3];
     }
+  }
 
+  public checkGame() {
+    if(this.PlayerVariables.current_year >= this.PlayerVariables.final_year) {
+      this.validateGame();
+    }
+  }
+
+  public validateGame() {
+    var emissionsSuccess = false;
+    var happynessSuccess = false;
+    if(this.PlayerVariables.co2_emissions <= this.PlayerVariables.final_year_emissions) {
+      emissionsSuccess = true;
+      if(this.PlayerVariables.utility >= this.PlayerVariables.utility_goals) {
+        happynessSuccess = true;
+        this.winGame();
+      }
+      else {
+        this.loseGame();
+      }
+    }
+    else {
+      this.loseGame();
+    }
+  }
+
+  public winGame() {
+    console.log("VICTORY!");
+  }
+
+  public loseGame() {
+    console.log("GAME OVER!");
   }
 
 }
