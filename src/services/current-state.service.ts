@@ -9,19 +9,19 @@ export class CurrentStateService {
   infoActive: BehaviorSubject<boolean>;
   decisionActive: BehaviorSubject<boolean>;
   historyActive: BehaviorSubject<boolean>;
+  isOpened: BehaviorSubject<boolean>;
 
 
   constructor() {
     this.infoActive = new BehaviorSubject<boolean>(false);
     this.decisionActive = new BehaviorSubject<boolean>(false);
     this.historyActive = new BehaviorSubject<boolean>(false);
+    this.isOpened = new BehaviorSubject<boolean>(false);
   }
 
     isFirstRun = true;
   
-
   public updateMenuSelection(option: string) {
-
     if (option === "info") {
       this.infoActive.next(true);
       this.decisionActive.next(false);

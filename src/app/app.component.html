@@ -1,17 +1,18 @@
+
 <mat-sidenav-container class="container">
-  <mat-sidenav mode="side" class="sidenav" opened>
+  <mat-sidenav mode="side" class="sidenav" [(opened)]="this.isOpened">
     <button [ngClass]="(infoActive)?'menuIconFocused':'menuIcon'" mat-fab color="Basic" #tooltip="matTooltip"
-      matTooltip="Info about the action" matTooltipPosition="right" routerLink="information"
+      matTooltip="Information Panel" matTooltipPosition="right" routerLink="information"
       (click)="updateButtons('info')">
       <mat-icon>flash_on</mat-icon>
     </button>
     <button [ngClass]="(decisionActive)?'menuIconFocused':'menuIcon'" mat-fab color="Basic" #tooltip="matTooltip"
-      matTooltip="Info about the action" matTooltipPosition="right" routerLink="decision"
+      matTooltip="Decision Panel" matTooltipPosition="right" routerLink="decision"
       (click)="updateButtons('decision')">
       <mat-icon>engineering</mat-icon>
     </button>
     <button [ngClass]="(historyActive)?'menuIconFocused':'menuIcon'" mat-fab color="Basic" #tooltip="matTooltip"
-      matTooltip="Info about the action" matTooltipPosition="right" routerLink="history"
+      matTooltip="History Panel" matTooltipPosition="right" routerLink="history"
       (click)="updateButtons('history')">
       <mat-icon>query_stats</mat-icon>
     </button>

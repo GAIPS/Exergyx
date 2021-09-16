@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { CurrentStateService } from 'src/services/current-state.service';
 
 import { GameModelService } from 'src/services/game-model.service';
 import { PlayerVariablesService } from 'src/services/player-variables.service';
@@ -21,9 +22,10 @@ export class InformationPanelComponent implements OnInit {
 
 
 
-  constructor(private gameModelService: GameModelService, private playerVariables: PlayerVariablesService) { 
+  constructor(private gameModelService: GameModelService, private playerVariables: PlayerVariablesService, private currentState: CurrentStateService) { 
     this.PlayerVariables = playerVariables;
     this.Model = gameModelService;
+    currentState.isOpened.next(true);
   }
   
   ngOnInit(): void {

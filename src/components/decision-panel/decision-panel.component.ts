@@ -77,19 +77,20 @@ export class DecisionPanelComponent implements OnInit {
 
   constructor( playerVariable: PlayerVariablesService , gameModel: GameModelService, private route: ActivatedRoute,
     private router: Router, private currentState: CurrentStateService ) {
-    this.PlayerVariables = playerVariable;
-    this.Model = gameModel;
-    this.allPolitics =  gameModel.initPolitics();
-    this.politics = this.allPolitics[0];
-    this.selectedPolitic = this.politics[0];
-    this.installedPower = this.PlayerVariables.total_installed_power;
+      currentState.isOpened.next(true);
+      this.PlayerVariables = playerVariable;
+      this.Model = gameModel;
+      this.allPolitics =  gameModel.initPolitics();
+      this.politics = this.allPolitics[0];
+      this.selectedPolitic = this.politics[0];
+      this.installedPower = this.PlayerVariables.total_installed_power;
 
-    var isFirstRun = sessionStorage.getItem("firstRunFlag");
-    if(isFirstRun ==="true") {
-      this.initial_model_loading();
-      this.firstRun();
-      sessionStorage.setItem("firstRunFlag", "false");
-    }
+      var isFirstRun = sessionStorage.getItem("firstRunFlag");
+      if(isFirstRun ==="true") {
+        this.initial_model_loading();
+        this.firstRun();
+        sessionStorage.setItem("firstRunFlag", "false");
+      }
    }
 
   ngOnInit(): void {

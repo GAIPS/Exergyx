@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { CurrentStateService } from 'src/services/current-state.service';
 
 @Component({
   selector: 'app-history-panel',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(currentState: CurrentStateService) 
+  {
+    currentState.isOpened.next(true);
+   }
   title: string = "HISTORY PANEL";
 
   ngOnInit(): void {

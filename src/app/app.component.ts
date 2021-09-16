@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CurrentStateService } from 'src/services/current-state.service';
 
 
@@ -13,11 +14,15 @@ export class AppComponent implements OnInit {
   infoActive = false;
   decisionActive = false;
   historyActive = false;
+  isOpened = false;
+  
 
-  constructor(private service: CurrentStateService) {
+  constructor(private service: CurrentStateService, private router: Router) {
+    this.router.navigateByUrl("");
     service.infoActive.subscribe((newBool: boolean) => { this.infoActive = newBool; });
     service.decisionActive.subscribe((newBool: boolean) => { this.decisionActive = newBool; });
     service.historyActive.subscribe((newBool: boolean) => { this.historyActive = newBool; });
+    service.isOpened.subscribe((newBool: boolean) => { this.isOpened = newBool; });
 
   }
 
@@ -29,6 +34,7 @@ export class AppComponent implements OnInit {
     this.service.infoActive.subscribe((newBool: boolean) => { this.infoActive = newBool; });
     this.service.decisionActive.subscribe((newBool: boolean) => { this.decisionActive = newBool; });
     this.service.historyActive.subscribe((newBool: boolean) => { this.historyActive = newBool; });
+    this.service.isOpened.subscribe((newBool: boolean) => { this.isOpened = newBool; });
 
     sessionStorage.setItem("firstRunFlag", "true");
   }

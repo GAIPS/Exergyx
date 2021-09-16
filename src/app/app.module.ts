@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
+import { WelcomePageComponent } from 'src/components/welcome-page/welcome-page.component';
 
 
 
@@ -29,6 +30,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     DecisionPanelComponent,
     HistoryPanelComponent,
     InformationPanelComponent,
+    WelcomePageComponent,
   
   ],
   imports: [
