@@ -3,4 +3,19 @@
     <span class="example-spacer"></span>
     <img src="../../assets/Logotipo_v1.png" />
 </mat-toolbar>
-<p>history-panel works!</p>
+<div class="column-container">
+    <div class="column1">
+        <div class="graph-container">
+            <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            chartType='line'>
+    </canvas>
+
+        </div>
+    </div>
+    <div class="column2">
+    </div>
+</div>

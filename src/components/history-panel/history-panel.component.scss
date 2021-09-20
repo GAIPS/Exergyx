@@ -3,18 +3,38 @@
 }
 
 .mat-divider {
-  border-top-color: #50CBFF;
+  border-top-color: #50cbff;
 }
 
 .toolbar {
-  background: linear-gradient(71.68deg, #DEF7FF 3.33%, #FFFFFF 53.69%, #E4F8FF 100%);
+  background: linear-gradient(
+    71.68deg,
+    #def7ff 3.33%,
+    #ffffff 53.69%,
+    #e4f8ff 100%
+  );
 }
 
-.toolbar >h1 {
+.toolbar > h1 {
   font-family: Saira;
   font-style: normal;
   font-weight: bold;
   font-size: 30px;
   line-height: 47px;
-  color: #009DE0;
+  color: #009de0;
+}
+
+.column1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+
+.column2 {
+  float: left;
+  width: 50%;
+  height: 100%;
 }
