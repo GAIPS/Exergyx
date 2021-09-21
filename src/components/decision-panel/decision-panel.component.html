@@ -69,161 +69,161 @@
             <div class="example-container">
               <mat-tab-group class="tab-group" (selectedTabChange)="onTabChange($event)">
                 <mat-tab class="transports">
-                  <ng-template class="transports" *ngIf="this.tab != 'Transports'" mat-tab-label>
+                  <ng-template  *ngIf="this.tab != 'Transports'" mat-tab-label>
                     <mat-icon class="transports-icon">directions_bus</mat-icon>
                   </ng-template>
-                  <ng-template  class="transports" *ngIf="this.tab === 'Transports'" mat-tab-label>
+                  <ng-template *ngIf="this.tab === 'Transports'" mat-tab-label>
                     <mat-icon class="transports-icon">directions_bus</mat-icon>
-                    <p class="transports-label">Transports</p>
+                    Transports
                   </ng-template>
                   <table class="policies-table" mat-table [dataSource]="politics" class="mat-elevation-z8">
 
                     <!-- Position Column -->
                     <ng-container matColumnDef="Policy Name">
-                      <th mat-header-cell *matHeaderCellDef> Policy Name </th>
+                      <th mat-header-cell class="transports-table-header-cell" *matHeaderCellDef> Policy Name </th>
                       <td mat-cell *matCellDef="let element"> {{element.title}} </td>
                     </ng-container>
                   
                     <!-- Name Column -->
                     <ng-container matColumnDef="Economy Sector">
-                      <th mat-header-cell *matHeaderCellDef> Economy Sector </th>
+                      <th mat-header-cell class="transports-table-header-cell" *matHeaderCellDef> Economy Sector </th>
                       <td mat-cell *matCellDef="let element"> {{element.type}} </td>
                     </ng-container>
                   
                     <!-- Weight Column -->
                     <ng-container matColumnDef="Price">
-                      <th mat-header-cell *matHeaderCellDef> Price </th>
+                      <th mat-header-cell class="transports-table-header-cell" *matHeaderCellDef> Price </th>
                       <td mat-cell *matCellDef="let element"> {{element.price}}M € </td>
                     </ng-container>
     
                     <ng-container matColumnDef="getdetails">
-                        <th mat-header-cell *matHeaderCellDef>  </th>
+                        <th mat-header-cell class="transports-table-header-cell" *matHeaderCellDef>  </th>
                         <td align="right" mat-cell *matCellDef="let element">
                              <button *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); ">Add to Cart</button> 
                              <button *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element);">Remove from Cart</button> 
                             </td>
                       </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row (click)="changeSelectedPolicy(row)"[class.row-added]="this.cartCollection.has(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr mat-row class="transports-table-row" (click)="changeSelectedPolicy(row)"[class.row-added]="this.cartCollection.has(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
                   </table>
                 </mat-tab>
               
                 <mat-tab class="industry">
                   <ng-template *ngIf="this.tab != 'Industry'" mat-tab-label>
-                    <mat-icon class="example-tab-icon">precision_manufacturing</mat-icon>
+                    <mat-icon class="industry-icon">precision_manufacturing</mat-icon>
                   </ng-template>
                   <ng-template *ngIf="this.tab === 'Industry'" mat-tab-label>
-                    <mat-icon class="example-tab-icon">precision_manufacturing</mat-icon>
+                    <mat-icon class="industry-icon">precision_manufacturing</mat-icon>
                     Industry
                   </ng-template>
                   <table class="policies-table" mat-table [dataSource]="politics" class="mat-elevation-z8">
 
                     <!-- Position Column -->
                     <ng-container matColumnDef="Policy Name">
-                      <th mat-header-cell *matHeaderCellDef> Policy Name </th>
+                      <th mat-header-cell class="industry-table-header-cell" *matHeaderCellDef> Policy Name </th>
                       <td mat-cell *matCellDef="let element"> {{element.title}} </td>
                     </ng-container>
                   
                     <!-- Name Column -->
                     <ng-container matColumnDef="Economy Sector">
-                      <th mat-header-cell *matHeaderCellDef> Economy Sector </th>
+                      <th mat-header-cell class="industry-table-header-cell" *matHeaderCellDef> Economy Sector </th>
                       <td mat-cell *matCellDef="let element"> {{element.type}} </td>
                     </ng-container>
                   
                     <!-- Weight Column -->
                     <ng-container matColumnDef="Price">
-                      <th mat-header-cell *matHeaderCellDef> Price </th>
+                      <th mat-header-cell class="industry-table-header-cell" *matHeaderCellDef> Price </th>
                       <td mat-cell *matCellDef="let element"> {{element.price}}M € </td>
                     </ng-container>
     
                     <ng-container matColumnDef="getdetails">
-                        <th mat-header-cell *matHeaderCellDef>  </th>
+                        <th mat-header-cell class="industry-table-header-cell" *matHeaderCellDef>  </th>
                         <td align="right" mat-cell *matCellDef="let element">
                              <button *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); ">Add to Cart</button> 
                              <button *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element);">Remove from Cart</button> 
                             </td>
                       </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row (click)="changeSelectedPolicy(row)"[class.row-added]="this.cartCollection.has(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr mat-row class="industry-table-row" (click)="changeSelectedPolicy(row)"[class.row-added]="this.cartCollection.has(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
                   </table>
                 </mat-tab>
               
                 <mat-tab class="residential">
                   <ng-template *ngIf="this.tab !='Residential'" mat-tab-label>
-                    <mat-icon class="example-tab-icon">house</mat-icon>
+                    <mat-icon class="residential-icon">house</mat-icon>
                   </ng-template>
                   <ng-template *ngIf="this.tab === 'Residential'" mat-tab-label>
-                    <mat-icon class="example-tab-icon">house</mat-icon>
+                    <mat-icon class="residential-icon">house</mat-icon>
                     Residential
                   </ng-template>
                   <table class="policies-table" mat-table [dataSource]="politics" class="mat-elevation-z8">
 
                     <!-- Position Column -->
                     <ng-container matColumnDef="Policy Name">
-                      <th mat-header-cell *matHeaderCellDef> Policy Name </th>
+                      <th mat-header-cell class="residential-table-header-cell" *matHeaderCellDef> Policy Name </th>
                       <td mat-cell *matCellDef="let element"> {{element.title}} </td>
                     </ng-container>
                   
                     <!-- Name Column -->
                     <ng-container matColumnDef="Economy Sector">
-                      <th mat-header-cell *matHeaderCellDef> Economy Sector </th>
+                      <th mat-header-cell class="residential-table-header-cell" *matHeaderCellDef> Economy Sector </th>
                       <td mat-cell *matCellDef="let element"> {{element.type}} </td>
                     </ng-container>
                   
                     <!-- Weight Column -->
                     <ng-container matColumnDef="Price">
-                      <th mat-header-cell *matHeaderCellDef> Price </th>
+                      <th mat-header-cell class="residential-table-header-cell" *matHeaderCellDef> Price </th>
                       <td mat-cell *matCellDef="let element"> {{element.price}}M € </td>
                     </ng-container>
     
                     <ng-container matColumnDef="getdetails">
-                        <th mat-header-cell *matHeaderCellDef>  </th>
+                        <th mat-header-cell class="residential-table-header-cell" *matHeaderCellDef>  </th>
                         <td align="right" mat-cell *matCellDef="let element">
                              <button *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); ">Add to Cart</button> 
                              <button *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element);">Remove from Cart</button> 
                             </td>
                       </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row (click)="changeSelectedPolicy(row)"[class.row-added]="this.cartCollection.has(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr mat-row class="residential-table-row" (click)="changeSelectedPolicy(row)"[class.row-added]="this.cartCollection.has(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
                   </table>
                 </mat-tab>
                 <mat-tab class="services">
                   <ng-template *ngIf="this.tab != 'Services'" mat-tab-label>
-                    <mat-icon class="example-tab-icon">miscellaneous_services</mat-icon>
+                    <mat-icon class="services-icon">miscellaneous_services</mat-icon>
                   </ng-template>
                   <ng-template *ngIf="this.tab === 'Services'" mat-tab-label>
-                    <mat-icon class="example-tab-icon">miscellaneous_services</mat-icon>
+                    <mat-icon class="services-icon">miscellaneous_services</mat-icon>
                     Services
                   </ng-template>
                   <table class="policies-table" mat-table [dataSource]="politics" class="mat-elevation-z8">
 
                     <!-- Position Column -->
                     <ng-container matColumnDef="Policy Name">
-                      <th mat-header-cell *matHeaderCellDef> Policy Name </th>
+                      <th mat-header-cell class="services-table-header-cell" *matHeaderCellDef> Policy Name </th>
                       <td mat-cell *matCellDef="let element"> {{element.title}} </td>
                     </ng-container>
                   
                     <!-- Name Column -->
                     <ng-container matColumnDef="Economy Sector">
-                      <th mat-header-cell *matHeaderCellDef> Economy Sector </th>
+                      <th mat-header-cell class="services-table-header-cell" *matHeaderCellDef> Economy Sector </th>
                       <td mat-cell *matCellDef="let element"> {{element.type}} </td>
                     </ng-container>
                   
                     <!-- Weight Column -->
                     <ng-container matColumnDef="Price">
-                      <th mat-header-cell *matHeaderCellDef> Price </th>
+                      <th mat-header-cell class="services-table-header-cell" *matHeaderCellDef> Price </th>
                       <td mat-cell *matCellDef="let element"> {{element.price}}M € </td>
                     </ng-container>
     
                     <ng-container matColumnDef="getdetails">
-                        <th mat-header-cell *matHeaderCellDef>  </th>
+                        <th mat-header-cell class="services-table-header-cell" *matHeaderCellDef>  </th>
                         <td align="right" mat-cell *matCellDef="let element">
                              <button *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); ">Add to Cart</button> 
                              <button *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element);">Remove from Cart</button> 
                             </td>
                       </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row (click)="changeSelectedPolicy(row)"[class.row-added]="this.cartCollection.has(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <tr mat-row class="services-table-row" (click)="changeSelectedPolicy(row)"[class.row-added]="this.cartCollection.has(row)" [class.row-clicked]="clickedRow.has(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
                   </table>
                 </mat-tab>
               </mat-tab-group>
@@ -264,7 +264,10 @@
         <p class="field-title">INVESTMENT POLICIES</p>
         <div class="shoppingCartItemsContainer" id="style-5">
             <div *ngFor="let item of cartCollection">
-                <button class="itemButton" mat-raised-button color="primary" (click)="removeFromCart(item);">{{item.title}}</button>
+                <button class="itemButton" mat-raised-button color="primary" (click)="removeFromCart(item);">
+                  <span class="item-title">{{item.title}}</span>
+                  <mat-icon class="delete-icon">delete</mat-icon>
+                </button>
             </div>
         </div>
         <mat-divider></mat-divider>

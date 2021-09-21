@@ -24,6 +24,9 @@ export class HistoryPanelComponent implements OnInit {
    }
 
   title: string = "HISTORY PANEL";
+  
+  public tabs: Array<any> = this.playerVariables.yearsArray;
+
   public barChartOptions = {
     responsive: true,
     elements: {
@@ -31,16 +34,6 @@ export class HistoryPanelComponent implements OnInit {
         radius: 5
       }
     }
-      // scales: {
-      //   xAxes:[ {
-      //     display: true,
-      //     type: 'Year'
-      //   }],
-      //     yAxes: [{
-      //       display: true,
-      //       type: 'Emissions (MT)'
-      //     }]
-      // }
   };
   public barChartLabels = this.playerVariables.yearsArray;
   public barChartLegend = true;
