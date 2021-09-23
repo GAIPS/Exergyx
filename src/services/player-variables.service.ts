@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Politic } from 'src/interfaces/politic';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class PlayerVariablesService {
 
   starting_year = 2015;
   yearsArray: Array<any> = [2019, 2023, 2027, 2031, 2035, 2039, 2043, 2047, 2050];
+  policiesHistoryArray: Map<number,Set<Politic>> = new Map<number, Set<Politic>>(); 
 
   // Current year Variables
   current_year: number = 2019;

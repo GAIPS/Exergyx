@@ -164,6 +164,7 @@ export class DecisionPanelComponent implements OnInit {
   public submitDecision() {
     this.process_politic();
     this.processNextYear();
+    this.updateHistory();
     this.checkGame();    
   }
 
@@ -454,6 +455,10 @@ export class DecisionPanelComponent implements OnInit {
 
   public loseGame() {
     console.log("GAME OVER!");
+  }
+
+  public updateHistory() {
+    this.PlayerVariables.policiesHistoryArray.set(this.PlayerVariables.current_year-4,this.cartCollection);
   }
 
 }

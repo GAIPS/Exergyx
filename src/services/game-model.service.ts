@@ -9,11 +9,11 @@ export class GameModelService {
   constructor() { }
   ANO_INICIAL: number = 2015;
 
-  POTENCIA_MAXIMA_SOLAR: number = 18.6; //GW
+  POTENCIA_MAXIMA_SOLAR: number = 18.6; //GW revisto
   POTENCIA_MAXIMA_VENTO: number = 15.0;
   POTENCIA_MAXIMA_VENTO_OFFSHORE: number = 10;
 
-  CUSTO_POR_GIGAWATT_INSTALADO_SOLAR: number = 995000000; //euro/GW
+  CUSTO_POR_GIGAWATT_INSTALADO_SOLAR: number = 995000000; // euro/GW
   CUSTO_POR_GIGAWATT_INSTALADO_VENTO: number = 1231000000;
   CUSTO_POR_GIGAWATT_INSTALADO_VENTO_OFFSHORE: number = 3581000000;
 
@@ -85,7 +85,7 @@ export class GameModelService {
   // VALORES DO ANO ZERO (e.g. 2014)
   POTENCIA_DO_ANO_ZERO_SOLAR: number = 0.493; //GW
   POTENCIA_DO_ANO_ZERO_VENTO: number = 5.099;
-  POTENCIA_DO_ANO_ZERO_VENTO_OFFSHORE: number = 0.5;
+  POTENCIA_DO_ANO_ZERO_VENTO_OFFSHORE: number = 0;
 
   CUSTO_TOTAL_DO_ANO_ZERO: number = 0.00; //i.e. custo da potência de todas as fontes renováveis consideradas. Preencher se houver necessidade de mostrar ao jogador.
   CUSTO_DO_ANO_ZERO_SOLAR: number = 0.00;
@@ -805,24 +805,24 @@ export class GameModelService {
   public initPolitics() {
     const TransportsPoliticsArray: Array<Politic> = [
       { 
-        id: 1, title: "Trasports Eletrification", price: 400,
+        id: 1, title: "Transports Eletrification", price: 400,
       prob: 0.5,
       desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ",
       isUsed: false,
       type: "Transports",
-      impact: [3,5] 
+      impact: [0,3] 
       },
       { 
         id: 2, title: "Public Transportation Improvement", price: 800, prob: 0.6, desc: "The government will reward every person that switches from fuel car to eletric car." ,
       isUsed:false,
       type: "Transports",
-      impact: [4, 4]
+      impact: [-2, 4]
       },
       {
-        id: 3, title: "Create Recharge Stations", price: 1000, prob: 0.8, desc: "Create more recharge units all over the country.",
+        id: 3, title: "Create Recharge Stations", price: 600, prob: 0.8, desc: "Create more recharge units all over the country.",
         isUsed: false,
         type: "Transports",
-        impact: [1, 3]
+        impact: [0, 2]
       }
     ]
 
@@ -833,23 +833,23 @@ export class GameModelService {
         desc: "Invest on Industry Eletrification, switching between fossil fuels to eletric power",
         isUsed: false,
         type: "Industry",
-        impact: [1,2] 
+        impact: [0,2] 
       },
+      // {
+      //   id: 2, title: "Limit Industries polution", price: 700,
+      //   prob: 0.5,
+      //   desc: "Establish a new polution limit to industries",
+      //   isUsed: false,
+      //   type: "Industry",
+      //   impact: [3,5] 
+      // },
       {
-        id: 2, title: "Limit Industries polution", price: 700,
-        prob: 0.5,
-        desc: "Establish a new polution limit to industries",
-        isUsed: false,
-        type: "Industry",
-        impact: [3,5] 
-      },
-      {
-        id: 3, title: "Improve machines efficiency", price: 1200,
+        id: 3, title: "Improve industries efficiency", price: 1200,
         prob: 0.5,
         desc: "Pay a bonus to industries that replace older equipments by new ones that are more efficient.",
         isUsed: false,
         type: "Industry",
-        impact: [5,5] 
+        impact: [0,5] 
       }
   ]
 
@@ -860,7 +860,7 @@ export class GameModelService {
       desc: "Invest on House Eletrification, switching between fossil fuels to eletric power",
       isUsed: false,
       type: "Residential",
-      impact: [1,2]
+      impact: [0,2]
     },
     {
       id: 2, title: "House Isolation", price: 600,
@@ -868,7 +868,7 @@ export class GameModelService {
       desc: "Invest on House Isolation, switching from traditional windows and doors to double glass and isolation ones.",
       isUsed: false,
       type: "Residential",
-      impact: [3,3]
+      impact: [-2,0]
     }
   ]
 
@@ -894,6 +894,12 @@ export class GameModelService {
   var politicsArray = [TransportsPoliticsArray, IndustryPoliticArray, ResidentialPoliticsArray, ServicesPoliticsArray]
 
     return politicsArray;
+  }
+
+  public initEvents() {
+    const naturalEvents = [
+      {}
+    ]
   }
 
 }

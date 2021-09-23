@@ -97,3 +97,22 @@
 :host ::ng-deep .mat-tab-label-active {
   min-width: 0 !important;
 }
+
+.sub-title {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #66c4ec;
+}
+
+table {
+  width: 98%;
+  margin: 0 auto;
+}
+
+mat-header-cell,
+mat-cell {
+  background: rgba(0, 157, 224, 0.04);
+  justify-content: center;
+}

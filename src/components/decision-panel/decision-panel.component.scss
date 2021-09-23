@@ -408,12 +408,13 @@ button.add-button {
   box-sizing: border-box;
 
   &:hover {
+    animation: pulse-animation 2s infinite;
     .item-title {
       width: 0%;
     }
     .delete-icon {
       opacity: 1;
-      width: 50%;
+      width: 20%;
     }
   }
 }
@@ -558,6 +559,15 @@ button.add-button {
   margin-left: 25%;
   color: #46555f;
   transition: all 0.2s ease-in-out;
+}
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0px rgba(70, 85, 95, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 5px rgba(70, 85, 95, 0);
+  }
 }
 
 .confirm-button:hover {
