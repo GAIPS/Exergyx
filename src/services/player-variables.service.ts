@@ -10,7 +10,9 @@ export class PlayerVariablesService {
 
   starting_year = 2015;
   yearsArray: Array<any> = [2019, 2023, 2027, 2031, 2035, 2039, 2043, 2047, 2050];
-  policiesHistoryArray: Map<number,Set<Politic>> = new Map<number, Set<Politic>>(); 
+  policiesHistoryArray: Map<number,Set<Politic>> = new Map<number, Set<Politic>>();
+  powerToInstallHistoryArray: Array<number> = [];
+  costOfInstallationHistoryArray: Array<number> = [];
 
   // Current year Variables
   current_year: number = 2019;

@@ -24,14 +24,17 @@
         </div>
     </div>
     <div class="column2">
+        <p class="section-title">◖ FULL HISTORY</p>
         <div class="full-history-container">
-            <p class="section-title">◖ FULL HISTORY</p>
+            <p class="sub-title select-year">Select a Year:</p>
             <mat-tab-group (selectedTabChange)="onTabChange($event)">
                 <mat-tab *ngFor="let tab of tabs;" [label]="tab"> 
+                    <br>
                     <p class="sub-title">Decisions</p>
                     <mat-tab-group>
                         <mat-tab label="POLICIES INVESTED">
-                            <div></div>
+                            <div class="content-container">
+                                <br>
                             <table class="policies-table" mat-table [dataSource]="selectedYearPolicies" class="mat-elevation-z8">
                                 <!-- Position Column -->
                                 <ng-container matColumnDef="Policy Name">
@@ -53,12 +56,36 @@
                                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                               </table>
+                              <br>
+                            </div>
                         </mat-tab>
                         
-                        <mat-tab label="POWER INSTALLATIONS"></mat-tab>
+                        <mat-tab label="POWER INSTALLATIONS">
+                            <div class="content-container">
+                                <br>
+                                <div class="installed-power-group">
+                                    <p class="bold-label">
+                                        <b>Total Installed Power:</b> {{this.selectedYearInstalledPower | number:'1.0-2'}} GW
+                                    </p>
+                                    <p class="bold-label">
+                                        <b>Total Installation Cost:</b> {{this.selectedYearPowerCost | number:'1.0-0'}} M€
+                                    </p>
+                                </div>
+                                <br>
+                            </div>
+                        </mat-tab>
                     </mat-tab-group>
-                
-                
+                    <br>
+                    <br>
+                    <p class="sub-title">Result</p>
+                    <mat-tab-group (selectedTabChange)="onTabChange2($event)">
+                        <mat-tab label="Socioeconomics"> 
+                        </mat-tab>
+                        <mat-tab label="Exergy Distribution"> 
+                        </mat-tab>
+                        <mat-tab label="Energetics"> 
+                        </mat-tab>
+                    </mat-tab-group>
                 </mat-tab>
               </mat-tab-group>
         </div>

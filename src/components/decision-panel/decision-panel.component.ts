@@ -132,12 +132,13 @@ export class DecisionPanelComponent implements OnInit {
   }
 
   public reducePower() {
-    var ticCost = 0.1*this.PlayerVariables.cost_per_gigawatt;
+    var pricePerYear = this.PlayerVariables.cost_per_gigawatt/4;
+    var ticCost = 0.1*pricePerYear;
     var tempVal = this.powerToInstall - 0.1;
     if(tempVal >= 0) {
       this.powerToInstall = tempVal;
       this.PlayerVariables.budget += ticCost; 
-      this.totalPowerCost = this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
+      this.totalPowerCost = this.powerToInstall * pricePerYear;
     }
     else {
       this.powerToInstall = 0;
@@ -145,14 +146,15 @@ export class DecisionPanelComponent implements OnInit {
   }
 
   public addPower() {
-    var ticCost = 0.1*this.PlayerVariables.cost_per_gigawatt;
+    var pricePerYear = this.PlayerVariables.cost_per_gigawatt/4;
+    var ticCost = 0.1*pricePerYear;
     var tempVal = this.powerToInstall + 0.1;
     var tempcalc= this.PlayerVariables.budget - ticCost;
     if(tempcalc >= 0) {
       if(tempVal <= 10) {
         this.PlayerVariables.budget = tempcalc;
         this.powerToInstall = tempVal;
-        this.totalPowerCost = this.powerToInstall * this.PlayerVariables.cost_per_gigawatt;
+        this.totalPowerCost = this.powerToInstall * pricePerYear;
         
       }
       else {
@@ -247,31 +249,35 @@ export class DecisionPanelComponent implements OnInit {
 	
   this.cartCollection.forEach(politic => {
     var impactArray = politic.impact;
-    if(this.PlayerVariables.investment_renewables_percentage < 20.00) {
-      this.PlayerVariables.investment_renewables_percentage += impactArray[0];
+    if(this.PlayerVariables.investment_renewables_percentage < 60.00) {
+      this.PlayerVariables.investment_renewables_percentage += impactArray[2];
     }
-    if(this.PlayerVariables.investment_renewables_percentage > 19.99) {
-      this.PlayerVariables.investment_renewables_percentage = 20.00;
+    if(this.PlayerVariables.investment_renewables_percentage > 59.99) {
+      this.PlayerVariables.investment_renewables_percentage = 60.00;
     }
 
     if(politic.type == "Transports") {
-			if(this.PlayerVariables.electrification_by_sector_level_transportation < 30) {
+			if(this.PlayerVariables.electrification_by_sector_level_transportation < 50) {
 				this.PlayerVariables.electrification_by_sector_level_transportation += impactArray[1];
+        this.PlayerVariables.economy_type_level_transportation += impactArray[0];
       }
     }
 		else if(politic.type == "Industry") {
-			if(this.PlayerVariables.electrification_by_sector_level_industry < 30) {
+			if(this.PlayerVariables.electrification_by_sector_level_industry < 50) {
 				this.PlayerVariables.electrification_by_sector_level_industry += impactArray[1];
+        this.PlayerVariables.economy_type_level_transportation += impactArray[0];
       }
     }
 		else if(politic.type == "Services") {
-			if(this.PlayerVariables.electrification_by_sector_level_services < 30){
+			if(this.PlayerVariables.electrification_by_sector_level_services < 50){
 				this.PlayerVariables.electrification_by_sector_level_services += impactArray[1];	
+        this.PlayerVariables.economy_type_level_transportation += impactArray[0];
       }
     }	
 		else if(politic.type == "Residential"){
-			if(this.PlayerVariables.electrification_by_sector_level_residential < 30){
+			if(this.PlayerVariables.electrification_by_sector_level_residential < 50){
 				this.PlayerVariables.electrification_by_sector_level_residential += impactArray[1];
+        this.PlayerVariables.economy_type_level_transportation += impactArray[0];
       }
     }
 		else {
@@ -290,6 +296,8 @@ export class DecisionPanelComponent implements OnInit {
 
   public storeDecisionHistory() {
     this.PlayerVariables.investment_renewables_percentage += this.powerToInstall;
+    this.PlayerVariables.powerToInstallHistoryArray.push(this.powerToInstall);
+    this.PlayerVariables.costOfInstallationHistoryArray.push(this.totalPowerCost);
     this.decisions_investment_renewables.push(this.PlayerVariables.investment_renewables_percentage);
     this.decisions_shares_transportation.push(this.PlayerVariables.economy_type_level_transportation);
     this.decisions_shares_industry.push(this.PlayerVariables.economy_type_level_industry);

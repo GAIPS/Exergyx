@@ -32,7 +32,8 @@ export class InformationPanelComponent implements OnInit {
     
     this.value = Math.floor((this.PlayerVariables.co2_emissions * 25) / 100);
     this.happiness =this.PlayerVariables.utility;
-    console.log(this.happiness);
+
+    this.currentRatio = this.getRenewableRatio();
   }
 
   public getGdpDiff() {
@@ -96,7 +97,6 @@ export class InformationPanelComponent implements OnInit {
     if(this.Model.eletricidade_nao_renovavel_do_ano.length > 0) {
       var total_energy = this.Model.eletricidade_nao_renovavel_do_ano[this.Model.eletricidade_nao_renovavel_do_ano.length-1] + this.PlayerVariables.renewable_energy;
       var result = Math.min(((this.PlayerVariables.renewable_energy/total_energy) * 100), 100);
-      this.currentRatio = result;
       this.PlayerVariables.renewableRatioArray.push(result);
       return result;
     }

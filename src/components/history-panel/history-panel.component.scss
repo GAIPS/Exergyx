@@ -91,6 +91,7 @@
   );
   border: 1px solid #50cbff;
   box-sizing: border-box;
+  min-height: 100%;
 }
 
 :host ::ng-deep .mat-tab-label,
@@ -104,6 +105,7 @@
   font-weight: bold;
   font-size: 18px;
   color: #66c4ec;
+  margin-left: 16px;
 }
 
 table {
@@ -115,4 +117,26 @@ mat-header-cell,
 mat-cell {
   background: rgba(0, 157, 224, 0.04);
   justify-content: center;
+}
+
+.select-year {
+  margin-top: 16px;
+}
+
+.bold-label {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: #009de0;
+  margin-left: 16px;
+  margin-top: 16px;
+}
+
+.content-container {
+  border: 1px solid #009de0;
+  box-sizing: border-box;
+}
+
+.policies-table {
 }

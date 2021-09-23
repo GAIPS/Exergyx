@@ -192,8 +192,8 @@
         <p class="field-title" style="margin-left: 8px;">RENEWABLE<br>RATIO</p>
       </div>
       <div class="gdp-values">
-        <p class="bigger-text">{{this.getRenewableRatio() | number: '1.0-2'}} %</p>
-        <p class="value-diff">{{this.getRenewableRatioDiff() <= 0 ? '' : '+' }}{{this.getRenewableRatioDiff() | number: '1.0-2'}} %</p>
+        <p class="bigger-text">{{this.currentRatio | number: '1.0-2'}} %</p>
+        <p class="value-diff">{{this.currentRatio <= 0 ? '' : '+' }}{{this.currentRatio | number: '1.0-2'}} %</p>
       </div>
     </div>
     <mat-divider></mat-divider>

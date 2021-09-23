@@ -396,7 +396,7 @@ export class GameModelService {
     this.potencia_solar_instantanea = 0.0;
     this.potencia_vento_instantanea = 0.0;
     this.potencia_vento_offshore_instantanea = 0.0;
-
+  
     if (!potencia_maxima_solar_alcancada && !potencia_maxima_vento_alcancada) {
       this.potencia_solar_instantanea = this.input_potencia_a_instalar / 2;
       this.potencia_vento_instantanea = this.input_potencia_a_instalar / 2;
@@ -805,35 +805,35 @@ export class GameModelService {
   public initPolitics() {
     const TransportsPoliticsArray: Array<Politic> = [
       { 
-        id: 1, title: "Transports Eletrification", price: 400,
+        id: 1, title: "Transports Eletrification", price: 200,
       prob: 0.5,
       desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, ",
       isUsed: false,
       type: "Transports",
-      impact: [0,3] 
+      impact: [0,5,2] 
       },
       { 
-        id: 2, title: "Public Transportation Improvement", price: 800, prob: 0.6, desc: "The government will reward every person that switches from fuel car to eletric car." ,
+        id: 2, title: "Public Transportation Improvement", price: 450, prob: 0.6, desc: "The government will reward every person that switches from fuel car to eletric car." ,
       isUsed:false,
       type: "Transports",
-      impact: [-2, 4]
+      impact: [-2, 6,3]
       },
       {
         id: 3, title: "Create Recharge Stations", price: 600, prob: 0.8, desc: "Create more recharge units all over the country.",
         isUsed: false,
         type: "Transports",
-        impact: [0, 2]
+        impact: [-4, 8,1]
       }
     ]
 
     const IndustryPoliticArray = [
       {
-        id: 1, title: "Industry Eletrification", price: 300,
+        id: 1, title: "Industry Eletrification", price: 200,
         prob: 0.5,
         desc: "Invest on Industry Eletrification, switching between fossil fuels to eletric power",
         isUsed: false,
         type: "Industry",
-        impact: [0,2] 
+        impact: [0,4] 
       },
       // {
       //   id: 2, title: "Limit Industries polution", price: 700,
@@ -844,12 +844,12 @@ export class GameModelService {
       //   impact: [3,5] 
       // },
       {
-        id: 3, title: "Improve industries efficiency", price: 1200,
+        id: 3, title: "Improve industries efficiency", price: 400,
         prob: 0.5,
         desc: "Pay a bonus to industries that replace older equipments by new ones that are more efficient.",
         isUsed: false,
         type: "Industry",
-        impact: [0,5] 
+        impact: [-8,6] 
       }
   ]
 
@@ -860,7 +860,7 @@ export class GameModelService {
       desc: "Invest on House Eletrification, switching between fossil fuels to eletric power",
       isUsed: false,
       type: "Residential",
-      impact: [0,2]
+      impact: [0,2,3]
     },
     {
       id: 2, title: "House Isolation", price: 600,
@@ -868,7 +868,7 @@ export class GameModelService {
       desc: "Invest on House Isolation, switching from traditional windows and doors to double glass and isolation ones.",
       isUsed: false,
       type: "Residential",
-      impact: [-2,0]
+      impact: [-2,0,3]
     }
   ]
 
@@ -879,7 +879,7 @@ export class GameModelService {
       desc: "Invest systems able to consume less power",
       isUsed: false,
       type: "Services",
-      impact: [1,2]
+      impact: [-1,2,1]
     },
     {
       id: 2, title: "Efficient hospitals", price: 300,

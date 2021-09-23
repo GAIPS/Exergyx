@@ -21,6 +21,10 @@ export class HistoryPanelComponent implements OnInit {
   public policiesArray: Map<number,Set<Politic>> = new Map<number, Set<Politic>>(); 
   public selectedYearPolicies: Array<Politic> =  [];
   public displayedColumns = ["Policy Name", "Economy Sector", "Price"];
+  public currentTabYear = 2019;
+  public currentTabIndex = 0;
+  public selectedYearInstalledPower: number = 0;
+  public selectedYearPowerCost:number = 0; 
 
 
   constructor(currentState: CurrentStateService, private playerVariables: PlayerVariablesService, private model: GameModelService) 
@@ -40,6 +44,12 @@ export class HistoryPanelComponent implements OnInit {
     console.log(this.happinessArray);
 
     this.policiesArray = this.playerVariables.policiesHistoryArray;
+    var tempSet = this.policiesArray.get(this.currentTabYear);
+    this.selectedYearPolicies = Array.from(tempSet ? tempSet : []);
+
+    this.selectedYearInstalledPower = playerVariables.powerToInstallHistoryArray[this.currentTabIndex+1] | 0;
+    this.selectedYearPowerCost = playerVariables.costOfInstallationHistoryArray[this.currentTabIndex+1] | 0;
+    
    }
 
   title: string = "HISTORY PANEL";
@@ -91,7 +101,6 @@ export class HistoryPanelComponent implements OnInit {
         ticks: {
           min: 0,
           beginAtZero:true,
-          stepSize:0.2
         },
         scaleLabel: {
           display: true,
@@ -116,9 +125,16 @@ export class HistoryPanelComponent implements OnInit {
     
   }
   onTabChange(event: MatTabChangeEvent) {
-    var currentTabYear = parseInt(event.tab.textLabel);
-    var tempSet = this.policiesArray.get(currentTabYear);
+    this.currentTabIndex = event.index;
+    this.currentTabYear = parseInt(event.tab.textLabel);
+    var tempSet = this.policiesArray.get(this.currentTabYear);
     this.selectedYearPolicies = Array.from(tempSet ? tempSet : []);
+    this.selectedYearInstalledPower = this.playerVariables.powerToInstallHistoryArray[this.currentTabIndex+1];
+    this.selectedYearPowerCost = this.playerVariables.costOfInstallationHistoryArray[this.currentTabIndex+1];
+    console.log(this.playerVariables.powerToInstallHistoryArray);
+  }
+  onTabChange2(event: MatTabChangeEvent) {
+    
   }
 }
 
