@@ -22,6 +22,7 @@
             <div class="achievments-list">            
             </div>
         </div>
+        <div class="footer-space"></div>
     </div>
     <div class="column2">
         <p class="section-title">◖ FULL HISTORY</p>
@@ -79,15 +80,23 @@
                     <br>
                     <p class="sub-title">Result</p>
                     <mat-tab-group (selectedTabChange)="onTabChange2($event)">
-                        <mat-tab label="Socioeconomics"> 
+                        <mat-tab label="Socioeconomics">
+                            <p class="bold-label"><b>BUDGET:</b> {{this.selectedYearBudget | number:'1.0-0'}} M€</p>
+                            <p class="bold-label"><b>GDP:</b> {{this.selectedYearGDP | number:'1.0-0'}} M€</p>
+                            <p class="bold-label"><b>POPULATION HAPPINESS:</b> {{this.selectedYearHappiness | number:'1.0-2'}}</p>
+                            <p class="bold-label"><b>EXPENDITURE:</b> {{this.selectedYearExpenditure | number:'1.0-0'}} M€</p>  
                         </mat-tab>
-                        <mat-tab label="Exergy Distribution"> 
+                        <mat-tab label="Exergy Distribution">
+                            <p class="bold-label"><b>CO2 EMISSIONS:</b> {{this.selectedYearEmissions | number:'1.0-2'}} MT</p>
+                            <p class="bold-label"><b>AGGREGATED EFFICIENCY:</b> {{this.selectedYearAggregatedEfficiency | number:'1.0-2'}} %</p>
                         </mat-tab>
                         <mat-tab label="Energetics"> 
                         </mat-tab>
                     </mat-tab-group>
+                    
                 </mat-tab>
               </mat-tab-group>
         </div>
+        <div class="footer-space"></div>
     </div>
 </div>

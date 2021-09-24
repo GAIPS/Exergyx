@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import * as Chart from 'chart.js';
 import { ChartDataSets, ChartOptions, ChartPluginsOptions } from 'chart.js';
@@ -14,7 +16,7 @@ import { PlayerVariablesService } from 'src/services/player-variables.service';
   templateUrl: './history-panel.component.html',
   styleUrls: ['./history-panel.component.scss']
 })
-export class HistoryPanelComponent implements OnInit {
+export class HistoryPanelComponent implements OnInit{
 
   public dataArray: Array<any> = [];
   public happinessArray: Array<any> = [];
@@ -25,6 +27,13 @@ export class HistoryPanelComponent implements OnInit {
   public currentTabIndex = 0;
   public selectedYearInstalledPower: number = 0;
   public selectedYearPowerCost:number = 0; 
+
+  public selectedYearBudget: number = 0;
+  public selectedYearGDP: number = 0;
+  public selectedYearHappiness:number = 0;
+  public selectedYearExpenditure: number = 0;
+  public selectedYearEmissions: number = 0;
+  public selectedYearAggregatedEfficiency: number = 0;
 
 
   constructor(currentState: CurrentStateService, private playerVariables: PlayerVariablesService, private model: GameModelService) 
@@ -41,14 +50,22 @@ export class HistoryPanelComponent implements OnInit {
       this.happinessArray.push(roundedValue);
     })
     this.happinessArray.shift();
-    console.log(this.happinessArray);
+   
 
     this.policiesArray = this.playerVariables.policiesHistoryArray;
     var tempSet = this.policiesArray.get(this.currentTabYear);
     this.selectedYearPolicies = Array.from(tempSet ? tempSet : []);
 
-    this.selectedYearInstalledPower = playerVariables.powerToInstallHistoryArray[this.currentTabIndex+1] | 0;
-    this.selectedYearPowerCost = playerVariables.costOfInstallationHistoryArray[this.currentTabIndex+1] | 0;
+    this.selectedYearInstalledPower = playerVariables.powerToInstallHistoryArray[this.currentTabIndex+1];
+    this.selectedYearPowerCost = playerVariables.costOfInstallationHistoryArray[this.currentTabIndex+1];
+    this.selectedYearBudget = playerVariables.budgetHistory[this.currentTabIndex+1];
+    console.log(this.happinessArray);
+    
+    this.selectedYearGDP = playerVariables.pibHistory[this.currentTabIndex+1];
+    this.selectedYearHappiness = this.happinessArray[this.currentTabIndex];
+    this.selectedYearExpenditure = playerVariables.expenditureHistory[this.currentTabIndex+1];
+    this.selectedYearEmissions = this.dataArray[this.currentTabIndex];
+    this.selectedYearAggregatedEfficiency = playerVariables.aggregatedEfficiencyHistory[this.currentTabIndex+1];
     
    }
 
@@ -118,12 +135,13 @@ export class HistoryPanelComponent implements OnInit {
     {data:[14,14,14,14,14,14,14,14,14], label: 'Goal', fill: false,   yAxisID: 'y', pointRadius:0},
     {data: this.dataArray, label: 'Co2 Emissions', fill: false,   yAxisID: 'y'},
     {data: this.happinessArray, label: 'Happiness', fill: false, yAxisID: 'y1' }
-    
   ];
 
   ngOnInit(): void {
     
   }
+
+
   onTabChange(event: MatTabChangeEvent) {
     this.currentTabIndex = event.index;
     this.currentTabYear = parseInt(event.tab.textLabel);
@@ -131,7 +149,12 @@ export class HistoryPanelComponent implements OnInit {
     this.selectedYearPolicies = Array.from(tempSet ? tempSet : []);
     this.selectedYearInstalledPower = this.playerVariables.powerToInstallHistoryArray[this.currentTabIndex+1];
     this.selectedYearPowerCost = this.playerVariables.costOfInstallationHistoryArray[this.currentTabIndex+1];
-    console.log(this.playerVariables.powerToInstallHistoryArray);
+    this.selectedYearBudget = this.playerVariables.budgetHistory[this.currentTabIndex+1];
+    this.selectedYearGDP = this.playerVariables.pibHistory[this.currentTabIndex+1];
+    this.selectedYearHappiness = this.happinessArray[this.currentTabIndex];
+    this.selectedYearExpenditure = this.playerVariables.expenditureHistory[this.currentTabIndex+1];
+    this.selectedYearEmissions = this.dataArray[this.currentTabIndex];
+    this.selectedYearAggregatedEfficiency = this.playerVariables.aggregatedEfficiencyHistory[this.currentTabIndex+1];
   }
   onTabChange2(event: MatTabChangeEvent) {
     

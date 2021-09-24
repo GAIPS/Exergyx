@@ -26,7 +26,7 @@ export class DecisionPanelComponent implements OnInit {
   // Temp values for testing
   FINAL_YEAR: number = 2050;
   year: number = 2019;
-  budget: number = 2000;
+  budget: number = 0;
   efficiency: number = 99;
   ratio: number = 32;
 
@@ -84,6 +84,7 @@ export class DecisionPanelComponent implements OnInit {
       this.politics = this.allPolitics[0];
       this.selectedPolitic = this.politics[0];
       this.installedPower = this.PlayerVariables.total_installed_power;
+      this.budget = this.PlayerVariables.budget;
 
       var isFirstRun = sessionStorage.getItem("firstRunFlag");
       if(isFirstRun ==="true") {
@@ -191,7 +192,7 @@ export class DecisionPanelComponent implements OnInit {
     this.PlayerVariables.money = this.Model.pib_do_ano[this.Model.ano_atual_indice];
     this.PlayerVariables.expenditure = this.Model.consumo_do_ano[this.Model.consumo_do_ano.length-1];
     this.PlayerVariables.utility = this.Model.utilidade_do_ano[this.Model.ano_atual_indice];
-    console.log(this.Model.utilidade_do_ano);
+
     this.PlayerVariables.co2_emissions = this.Model.emissoes_totais_do_ano[this.Model.emissoes_totais_do_ano.length-1]  * Math.pow(10, -9);
     this.PlayerVariables.economic_growth = 1;
     this.PlayerVariables.cost_per_gigawatt = this.Model.CUSTO_POR_GIGAWATT_INSTALADO;
@@ -298,6 +299,12 @@ export class DecisionPanelComponent implements OnInit {
     this.PlayerVariables.investment_renewables_percentage += this.powerToInstall;
     this.PlayerVariables.powerToInstallHistoryArray.push(this.powerToInstall);
     this.PlayerVariables.costOfInstallationHistoryArray.push(this.totalPowerCost);
+
+    this.PlayerVariables.budgetHistory.push(this.PlayerVariables.money*1000*0.01);
+    this.PlayerVariables.pibHistory.push(this.PlayerVariables.money*1000);
+    this.PlayerVariables.expenditureHistory.push(this.PlayerVariables.expenditure*1000);
+    this.PlayerVariables.aggregatedEfficiencyHistory.push(this.PlayerVariables.efficiency * 100);
+
     this.decisions_investment_renewables.push(this.PlayerVariables.investment_renewables_percentage);
     this.decisions_shares_transportation.push(this.PlayerVariables.economy_type_level_transportation);
     this.decisions_shares_industry.push(this.PlayerVariables.economy_type_level_industry);

@@ -15,6 +15,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ChartsModule } from 'ng2-charts';
+import {MatSortModule} from '@angular/material/sort';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -49,7 +50,8 @@ import { WelcomePageComponent } from 'src/components/welcome-page/welcome-page.c
     MatDialogModule,
     MatProgressSpinnerModule,
     MatTabsModule,
-    ChartsModule
+    ChartsModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,6 +13,12 @@ export class PlayerVariablesService {
   policiesHistoryArray: Map<number,Set<Politic>> = new Map<number, Set<Politic>>();
   powerToInstallHistoryArray: Array<number> = [];
   costOfInstallationHistoryArray: Array<number> = [];
+  budgetHistory: Array<number> = [];
+  pibHistory: Array<number> = [];
+  expenditureHistory: Array<number> = [];
+  aggregatedEfficiencyHistory: Array<number> = [];
+
+
 
   // Current year Variables
   current_year: number = 2019;
