@@ -19,9 +19,9 @@
         <mat-divider></mat-divider>
         <p class="field-title">RENEWABLE RATIO</p>
         <p class="bigger-text">{{this.get_renewable_ratio() |  number: '1.2-2' }} %</p>
-        <button *ngIf="!showTable" mat-button class="see-more-button" (click)="toggleTable()">See Exergy <br>
+        <button [disabled]="this.buttonsEnabled" *ngIf="!showTable" mat-button class="see-more-button" (click)="toggleTable()">See Exergy <br>
              Distribution Table</button>
-        <button *ngIf="showTable" mat-button class="see-more-button" (click)="toggleTable()">Hide Exergy <br>
+        <button *ngIf="showTable" [disabled]="this.buttonsEnabled" mat-button class="see-more-button" (click)="toggleTable()">Hide Exergy <br>
                 Distribution Table</button>
     </div>
     <div class="column2">
@@ -99,8 +99,8 @@
                     <ng-container matColumnDef="getdetails">
                         <th mat-header-cell class="transports-table-header-cell" *matHeaderCellDef>  </th>
                         <td align="right" mat-cell *matCellDef="let element">
-                             <button *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); ">Add to Cart</button> 
-                             <button *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element);">Remove from Cart</button> 
+                             <button [disabled]="this.buttonsEnabled" *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); ">Add to Cart</button> 
+                             <button [disabled]="this.buttonsEnabled" *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element);">Remove from Cart</button> 
                             </td>
                       </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -139,8 +139,8 @@
                     <ng-container matColumnDef="getdetails">
                         <th mat-header-cell class="industry-table-header-cell" *matHeaderCellDef>  </th>
                         <td align="right" mat-cell *matCellDef="let element">
-                             <button *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); ">Add to Cart</button> 
-                             <button *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element);">Remove from Cart</button> 
+                             <button [disabled]="this.buttonsEnabled" *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); ">Add to Cart</button> 
+                             <button [disabled]="this.buttonsEnabled" *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element);">Remove from Cart</button> 
                             </td>
                       </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -179,8 +179,8 @@
                     <ng-container matColumnDef="getdetails">
                         <th mat-header-cell class="residential-table-header-cell" *matHeaderCellDef>  </th>
                         <td align="right" mat-cell *matCellDef="let element">
-                             <button *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); ">Add to Cart</button> 
-                             <button *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element);">Remove from Cart</button> 
+                             <button [disabled]="this.buttonsEnabled" *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); ">Add to Cart</button> 
+                             <button [disabled]="this.buttonsEnabled" *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element);">Remove from Cart</button> 
                             </td>
                       </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -218,8 +218,8 @@
                     <ng-container matColumnDef="getdetails">
                         <th mat-header-cell class="services-table-header-cell" *matHeaderCellDef>  </th>
                         <td align="right" mat-cell *matCellDef="let element">
-                             <button *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); ">Add to Cart</button> 
-                             <button *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element);">Remove from Cart</button> 
+                             <button [disabled]="this.buttonsEnabled" *ngIf="!element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button color="primary" (click)="addToCart(element.id); ">Add to Cart</button> 
+                             <button [disabled]="this.buttonsEnabled" *ngIf="element.isUsed" [ngClass]="element.isUsed ? 'added' : 'add-button'" mat-raised-button (click)="removeFromCart(element);">Remove from Cart</button> 
                             </td>
                       </ng-container>
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -240,9 +240,9 @@
                   <tr>
                       <td class="to-install"><p style="margin:0px;">Power to Install</p></td>
                       <td class="to-install-value">
-                          <button class="minus" (click)="reducePower()"> - </button>
+                          <button [disabled]="this.buttonsEnabled" class="minus" (click)="reducePower()"> - </button>
                           <p style="margin:0px;">{{this.powerToInstall |  number: '1.2-2'}}GW</p>
-                          <button class="plus" (click)="addPower()"> + </button>
+                          <button [disabled]="this.buttonsEnabled" class="plus" (click)="addPower()"> + </button>
                       </td>
                   </tr>
               </table>
@@ -264,7 +264,7 @@
         <p class="field-title">INVESTMENT POLICIES</p>
         <div class="shoppingCartItemsContainer" id="style-5">
             <div *ngFor="let item of cartCollection">
-                <button class="itemButton" mat-raised-button color="primary" (click)="removeFromCart(item);">
+                <button [disabled]="this.buttonsEnabled" class="itemButton" mat-raised-button color="primary" (click)="removeFromCart(item);">
                   <span class="item-title">{{item.title}}</span>
                   <mat-icon class="delete-icon">delete</mat-icon>
                 </button>
@@ -287,7 +287,7 @@
         <mat-divider></mat-divider>
         <p class="field-title">REMAINING BUDGET</p>
         <p class="bigger-text">{{this.PlayerVariables.budget |  number: '1.0-0'}}M€</p>
-        <button mat-button class="confirm-button" (click)="openConfirmationDialog()">Confirm<br>Investment</button>
+        <button [disabled]="this.buttonsEnabled" mat-button class="confirm-button" (click)="openConfirmationDialog()">Confirm<br>Investment</button>
     </div>
 </div>
 <div *ngIf="this.showTable" class="exergy-dist-table">

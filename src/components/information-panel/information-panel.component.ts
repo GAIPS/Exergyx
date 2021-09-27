@@ -15,6 +15,7 @@ export class InformationPanelComponent implements OnInit {
   value: number = 0;
   happiness: number = 0;
   currentRatio = 0;
+  currentRatioDiff = 0;
   renewableRatioArray: Array<number> = [];
 
   PlayerVariables: PlayerVariablesService;
@@ -34,6 +35,7 @@ export class InformationPanelComponent implements OnInit {
     this.happiness =this.PlayerVariables.utility;
 
     this.currentRatio = this.getRenewableRatio();
+    this.currentRatioDiff = this.getRenewableRatioDiff();
   }
 
   public getGdpDiff() {
@@ -108,7 +110,7 @@ export class InformationPanelComponent implements OnInit {
   public getRenewableRatioDiff() {
     var renewableRatioArray =  this.PlayerVariables.renewableRatioArray;
     var diff = 0;
-    if(renewableRatioArray.length > 2) {
+    if(renewableRatioArray.length > 1) {
       diff = renewableRatioArray[renewableRatioArray.length-1] - renewableRatioArray[renewableRatioArray.length-2];
     }
     return diff;

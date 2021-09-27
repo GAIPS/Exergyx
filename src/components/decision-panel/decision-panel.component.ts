@@ -19,6 +19,7 @@ export class DecisionPanelComponent implements OnInit {
   calculated_budget = 0;
   showTable = false;
   tab = "Transports";
+  buttonsEnabled = true;
 
 
 
@@ -91,6 +92,13 @@ export class DecisionPanelComponent implements OnInit {
         this.initial_model_loading();
         this.firstRun();
         sessionStorage.setItem("firstRunFlag", "false");
+        sessionStorage.setItem("gameOver", "false");
+      }
+
+      var gameOver = sessionStorage.getItem("gameOver");
+      console.log(gameOver);
+      if(gameOver == "true") {
+        this.buttonsEnabled = true;
       }
    }
 
@@ -442,30 +450,25 @@ export class DecisionPanelComponent implements OnInit {
 
   public checkGame() {
     if(this.PlayerVariables.current_year >= this.PlayerVariables.final_year) {
+      sessionStorage.setItem("gameOver", "true");
       this.validateGame();
     }
   }
 
   public validateGame() {
-    var emissionsSuccess = false;
-    var happynessSuccess = false;
-    if(this.PlayerVariables.co2_emissions <= this.PlayerVariables.final_year_emissions) {
-      emissionsSuccess = true;
-      if(this.PlayerVariables.utility >= this.PlayerVariables.utility_goals) {
-        happynessSuccess = true;
-        this.winGame();
-      }
-      else {
-        this.loseGame();
-      }
+    var emissionsSuccess = this.PlayerVariables.co2_emissions <= this.PlayerVariables.final_year_emissions;
+    var happynessSuccess = this.PlayerVariables.utility >= this.PlayerVariables.utility_goals;
+    if(emissionsSuccess && happynessSuccess) {
+      this.winGame();
     }
     else {
       this.loseGame();
     }
+     
   }
 
   public winGame() {
-    console.log("VICTORY!");
+
   }
 
   public loseGame() {
