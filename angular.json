@@ -41,13 +41,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "1mb"
                 }
               ],
               "fileReplacements": [
@@ -104,6 +104,14 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/exergyX",
+            "netlifyToken": "TmOAqHwfy8owsNv4LCtYE5wm4f9QhsimuFBK9rRAw_M",
+            "siteId": ""
           }
         }
       }
