@@ -19,7 +19,7 @@ export class DecisionPanelComponent implements OnInit {
   calculated_budget = 0;
   showTable = false;
   tab = "Transports";
-  buttonsEnabled = true;
+  buttonsEnabled = false;
 
 
 
@@ -97,7 +97,7 @@ export class DecisionPanelComponent implements OnInit {
 
       var gameOver = sessionStorage.getItem("gameOver");
       console.log(gameOver);
-      if(gameOver == "true") {
+      if(gameOver === "true") {
         this.buttonsEnabled = true;
       }
    }
@@ -416,7 +416,18 @@ export class DecisionPanelComponent implements OnInit {
     this.submitDecision();
     this.showActive = false;
     this.currentState.updateMenuSelection("info");
-    this.router.navigateByUrl("/information"); 
+    this.navigateTo();
+   
+  }
+
+  navigateTo() {
+    if(sessionStorage.getItem("gameOver")==="true") {
+      this.router.navigateByUrl("/result"); 
+    }
+    else {
+      this.router.navigateByUrl("/information"); 
+    }
+    
   }
 
   public decline() {
@@ -459,20 +470,12 @@ export class DecisionPanelComponent implements OnInit {
     var emissionsSuccess = this.PlayerVariables.co2_emissions <= this.PlayerVariables.final_year_emissions;
     var happynessSuccess = this.PlayerVariables.utility >= this.PlayerVariables.utility_goals;
     if(emissionsSuccess && happynessSuccess) {
-      this.winGame();
+      sessionStorage.setItem("isWin", "true");
     }
     else {
-      this.loseGame();
+      sessionStorage.setItem("isWin", "false");
     }
      
-  }
-
-  public winGame() {
-
-  }
-
-  public loseGame() {
-    console.log("GAME OVER!");
   }
 
   public updateHistory() {

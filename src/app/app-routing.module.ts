@@ -5,12 +5,14 @@ import { InformationPanelComponent } from 'src/components/information-panel/info
 import { DecisionPanelComponent } from 'src/components/decision-panel/decision-panel.component';
 import { HistoryPanelComponent } from 'src/components/history-panel/history-panel.component';
 import { WelcomePageComponent } from 'src/components/welcome-page/welcome-page.component';
+import { FinalViewComponent } from 'src/components/final-view/final-view.component';
 
 const routes: Routes = [
   { path: '', component: WelcomePageComponent},
   { path: 'information', component: InformationPanelComponent },
   { path: 'decision', component: DecisionPanelComponent },
   { path: 'history', component: HistoryPanelComponent },
+  {path: 'result', component: FinalViewComponent},
   { path: '**', component: WelcomePageComponent }
 ];
 

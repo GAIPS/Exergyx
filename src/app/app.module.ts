@@ -22,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
 import { WelcomePageComponent } from 'src/components/welcome-page/welcome-page.component';
+import { FinalViewComponent } from 'src/components/final-view/final-view.component';
 
 
 
@@ -32,6 +33,7 @@ import { WelcomePageComponent } from 'src/components/welcome-page/welcome-page.c
     HistoryPanelComponent,
     InformationPanelComponent,
     WelcomePageComponent,
+    FinalViewComponent
   
   ],
   imports: [
