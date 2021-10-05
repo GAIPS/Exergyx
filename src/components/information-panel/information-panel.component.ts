@@ -19,7 +19,8 @@ export class InformationPanelComponent implements OnInit {
   renewableRatioArray: Array<number> = [];
 
   PlayerVariables: PlayerVariablesService;
-  Model: GameModelService
+  Model: GameModelService;
+  currentNew: any = "";
 
 
 
@@ -27,6 +28,7 @@ export class InformationPanelComponent implements OnInit {
     this.PlayerVariables = playerVariables;
     this.Model = gameModelService;
     currentState.isOpened.next(true);
+    this.loadNews();
   }
   
   ngOnInit(): void {
@@ -132,6 +134,15 @@ export class InformationPanelComponent implements OnInit {
       diff = efficiencyArray[efficiencyArray.length-1] - efficiencyArray[efficiencyArray.length-2];
     }
     return diff*100;
+  }
+
+  public loadNews() {
+    var eventsArray = this.Model.initEvents();
+    var min = 0;
+    var max = eventsArray.length;
+    var randomIndex = Math.floor(Math.random() * (max - min)) + min;
+
+    this.currentNew = eventsArray[randomIndex]; 
   }
 
 }
