@@ -129,7 +129,8 @@
     <mat-divider></mat-divider>
     <div class=gdp-group>
       <div class="gdp-title">
-        <mat-icon class="info-icon">info_outline</mat-icon>
+        <mat-icon matTooltip="The country's gross domestic product this year which depends on labor and capital production factors and the general productivity of production factors. 
+        The overall productivity of the factors of production increases with the country's exergetic efficiency. GDP is equal to consumption plus investment plus the export balance. The investment is used to increase the capital production factor and to invest in policies that allow to electrify the sectors or to install renewable power. The fraction of the investment that goes to each order is fixed over time and determined independently of the player's decisions." matTooltipPosition="above" class="info-icon">info_outline</mat-icon>
         <p class="field-title" style="margin-left: 8px;">GDP</p>
       </div>
       <div class="gdp-values">
@@ -140,7 +141,8 @@
     <mat-divider></mat-divider>
     <div class=happiness-group>
       <div class="happiness-title">
-        <mat-icon class="info-icon">info_outline</mat-icon>
+        <mat-icon matTooltip="An index that indicates the average happiness of the country's citizen in relation to the starting year of the game. Happiness increases with consumption and decreases with greenhouse gas emissions. 
+        A number greater than 1 indicates that there has been an increase in happiness (and vice versa)." matTooltipPosition="above" class="info-icon">info_outline</mat-icon>
         <p class="field-title" style="margin-left: 8px;">POPULATION<br> HAPPINESS</p>
       </div>
       <div class="happiness-values">
@@ -151,7 +153,7 @@
     <mat-divider></mat-divider>
     <div class=expenditure-group>
       <div class="expenditure-title">
-        <mat-icon class="info-icon">info_outline</mat-icon>
+        <mat-icon matTooltip="Part of the GDP that is available for families to spend on consumption." matTooltipPosition="above" class="info-icon">info_outline</mat-icon>
         <p class="field-title" style="margin-left: 8px;">EXPENDITURE</p>
       </div>
       <div class="expenditure-values">
@@ -166,7 +168,7 @@
     <mat-divider></mat-divider>
     <div class=gdp-group>
       <div class="gdp-title">
-        <mat-icon class="info-icon">info_outline</mat-icon>
+        <mat-icon matTooltip="The renewable power includes hydro, solar, wind onshore and wind offshore." matTooltipPosition="above" class="info-icon">info_outline</mat-icon>
         <p class="field-title" style="margin-left: 8px;">INSTALLED<br>RENEWABLE<br> POWER</p>
       </div>
       <div class="gdp-values">
@@ -177,7 +179,8 @@
     <mat-divider></mat-divider>
     <div class=gdp-group>
       <div class="gdp-title">
-        <mat-icon class="info-icon">info_outline</mat-icon>
+        <mat-icon matTooltip="The renewable electricity produced depends on the installed renewable power and on the capacity factor which depends on the renewable resource. 
+        Hidroelectricity also depends if it is a dry or wet year." matTooltipPosition="above" class="info-icon">info_outline</mat-icon>
         <p class="field-title" style="margin-left: 8px;">RENEWABLE<br>ELECTRICITY</p>
       </div>
       <div class="gdp-values">
@@ -188,7 +191,8 @@
     <mat-divider></mat-divider>
     <div class=gdp-group>
       <div class="gdp-title">
-        <mat-icon class="info-icon">info_outline</mat-icon>
+        <mat-icon matTooltip="
+        Ratio between renewable electricity and non-renewable electricity. The ratio increases with the increase in the installed renewable power." matTooltipPosition="above" class="info-icon">info_outline</mat-icon>
         <p class="field-title" style="margin-left: 8px;">RENEWABLE<br>RATIO</p>
       </div>
       <div class="gdp-values">
@@ -199,7 +203,8 @@
     <mat-divider></mat-divider>
     <div class=gdp-group>
       <div class="gdp-title">
-        <mat-icon class="info-icon">info_outline</mat-icon>
+        <mat-icon matTooltip="Greenhouse gas emissions result from the consumption of coal, oil and natural gas. And so they are associated with consumptions that are not electrified and fossil-based electricity. 
+        Fossil electricity is only produced if the renewable power is not enough to produce all the electricity needed." matTooltipPosition="above" class="info-icon">info_outline</mat-icon>
         <p class="field-title" style="margin-left: 8px;">CO2<br>EMISSIONS</p>
       </div>
       <div class="gdp-values">
@@ -210,7 +215,8 @@
     <mat-divider></mat-divider>
     <div class=gdp-group>
       <div class="gdp-title">
-        <mat-icon class="info-icon">info_outline</mat-icon>
+        <mat-icon matTooltip="The added efficiency in transforming final exergy to useful exergy. Efficiency varies with the sectoral composition of the economy and with the electrification of sectors. 
+        Greater efficiency increases overall factor productivity and therefore contributes to increasing GDP. The combined effect of the increase in exergetic efficiency associated with an increase in GDP translates into an increase in the demand for final energy (rebound effect)." matTooltipPosition="above" class="info-icon">info_outline</mat-icon>
         <p class="field-title" style="margin-left: 8px;">AGGREGATED<br>EFFICIENCY</p>
       </div>
       <div class="gdp-values">
@@ -220,7 +226,6 @@
     </div>
     <mat-divider></mat-divider>
     <div class="dist-table-title">
-      <mat-icon class="info-icon">info_outline</mat-icon>
       <p class="table-title" style="margin-left: 8px;">Exergy Destribution by Sector</p>
     </div>
       <table>
@@ -229,19 +234,18 @@
             <th class="table-header-cell">
               <div class = "table-header-aligner">
                 <p class="table-header-title">Economy Sector</p>
-                <mat-icon class="table-header-icon">info_outline</mat-icon>
               </div>
             </th>
             <th class="table-header-cell">
               <div class = "table-header-aligner">
                 <p class="table-header-title">Exergy Shares</p>
-                <mat-icon class="table-header-icon">info_outline</mat-icon>
+                <mat-icon matTooltip="It is determined by the exergy used by the different sectors represented. The distribution ('exergy shares') by the various sectors represented here always has the sum of 100%. The type of economy influences aggregate efficiency. " matTooltipPosition="above" class="table-header-icon">info_outline</mat-icon>
               </div>
             </th>
             <th class="table-header-cell">
               <div class = "table-header-aligner">
                 <p class="table-header-title">Eletrification</p>
-                <mat-icon class="table-header-icon">info_outline</mat-icon>
+                <mat-icon matTooltip="Electrification represents the percentage of energy in each sector that is obtained through electricity. This percentage can increase up to 100%. The electrification of each sector increases the efficiency of that sector because the use of electricity is more efficient than other energy vectors. The electrification of each sector also contributes to increase electricity consumption and therefore will have to be accompanied by the installation of renewable power so that this electricity is not of fossil origin and therefore contributes to the decarbonization of the economy." matTooltipPosition="above"  class="table-header-icon">info_outline</mat-icon>
               </div>
             </th>
           </tr>
@@ -275,23 +279,6 @@
     <p class="section-title">◖ EVENTS INFORMATION</p>
    
     <p class="card-title">Natural Events</p>
-    <mat-card class="natural-event-card">
-      <div class="insideContainer">
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-          </p>
-        </mat-card-content>
-      </div>
-      <mat-card-actions>
-        <button class="decision-button" mat-raised-button color="warn">Pay Maintenance</button>
-      </mat-card-actions>
-    </mat-card>
-    <mat-divider></mat-divider>
-    <p class="card-title">Social Events</p>
     <mat-card class="natural-event-card">
       <div class="insideContainer">
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
