@@ -141,3 +141,52 @@ mat-cell {
 .footer-space {
   height: 10vh;
 }
+
+thead {
+  background-color: #009de0;
+  border-left: solid #009de0 1px;
+  border-top: solid #009de0 1px;
+}
+
+th:nth-child(1) {
+  border-top-left-radius: 6px;
+}
+
+th:nth-last-child(1) {
+  border-top-right-radius: 6px;
+}
+
+.table-header-aligner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0px;
+}
+
+.table-header-title {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+  margin: 0px;
+}
+
+tr {
+  background-color: rgba(158, 219, 244, 0.4);
+}
+
+tbody > tr > td:nth-last-child(1) {
+  text-align: center;
+}
+tbody > tr > td:nth-last-child(2) {
+  text-align: center;
+}
+
+td {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: #68a1b4;
+}

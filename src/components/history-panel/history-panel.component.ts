@@ -1,10 +1,6 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-import * as Chart from 'chart.js';
-import { ChartDataSets, ChartOptions, ChartPluginsOptions } from 'chart.js';
+import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Politic } from 'src/interfaces/politic';
 import { CurrentStateService } from 'src/services/current-state.service';
 import { GameModelService } from 'src/services/game-model.service';
@@ -34,11 +30,16 @@ export class HistoryPanelComponent implements OnInit{
   public selectedYearExpenditure: number = 0;
   public selectedYearEmissions: number = 0;
   public selectedYearAggregatedEfficiency: number = 0;
+  public selectedYearCapital: number = 0;
+  public selectedYearLabour: number = 0;
+  public selectedYeartest: number = 0;
 
+  public PlayerVariables: PlayerVariablesService;
 
   constructor(currentState: CurrentStateService, private playerVariables: PlayerVariablesService, private model: GameModelService) 
   {
     currentState.isOpened.next(true);
+    this.PlayerVariables = playerVariables;
     this.model.emissoes_totais_do_ano.forEach(element => {
       let convertedValue = element/1000000000;
       let roundedValue = Math.round(convertedValue * 100) / 100;
@@ -66,7 +67,9 @@ export class HistoryPanelComponent implements OnInit{
     this.selectedYearExpenditure = playerVariables.expenditureHistory[this.currentTabIndex+1];
     this.selectedYearEmissions = this.dataArray[this.currentTabIndex];
     this.selectedYearAggregatedEfficiency = playerVariables.aggregatedEfficiencyHistory[this.currentTabIndex+1];
-    
+    this.selectedYearCapital = model.capital_do_ano[this.currentTabIndex+1]; 
+    this.selectedYearLabour = model.labour_do_ano[this.currentTabIndex+1];
+    this.selectedYeartest = model.investimento_para_capital_do_ano[this.currentTabIndex+1];
    }
 
   title: string = "HISTORY PANEL";
@@ -155,6 +158,9 @@ export class HistoryPanelComponent implements OnInit{
     this.selectedYearExpenditure = this.playerVariables.expenditureHistory[this.currentTabIndex+1];
     this.selectedYearEmissions = this.dataArray[this.currentTabIndex];
     this.selectedYearAggregatedEfficiency = this.playerVariables.aggregatedEfficiencyHistory[this.currentTabIndex+1];
+    this.selectedYearCapital = this.model.capital_do_ano[this.currentTabIndex+1];
+    this.selectedYearLabour = this.model.labour_do_ano[this.currentTabIndex+1];
+    this.selectedYeartest = this.model.investimento_para_capital_do_ano[this.currentTabIndex+1];
   }
   onTabChange2(event: MatTabChangeEvent) {
     

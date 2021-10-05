@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CurrentStateService } from 'src/services/current-state.service';
 
@@ -10,7 +10,7 @@ import { CurrentStateService } from 'src/services/current-state.service';
 export class WelcomePageComponent implements OnInit {
 
 
-  constructor(private service: CurrentStateService, private router: Router) {
+  constructor(private service: CurrentStateService, private router: Router, private zone: NgZone) {
     service.isOpened.next(false);
    }
 
@@ -22,6 +22,19 @@ export class WelcomePageComponent implements OnInit {
     localStorage.setItem("optionSelected", "decision");
     this.router.navigateByUrl("/decision");
     this.service.updateMenuSelection("decision");
+    
+    
+  
+  }
+
+  goWin() {
+    sessionStorage.setItem("isWin", "true");
+    this.router.navigateByUrl("/result");
+  }
+
+  goLose() {
+    sessionStorage.setItem("isWin", "false");
+    this.router.navigateByUrl("/result");
   
   }
 

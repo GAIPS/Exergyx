@@ -69,7 +69,7 @@ export class DecisionPanelComponent implements OnInit {
    current_ratio = 33.95
    simulator_used = false //true when the model debug simulator is used
  
-   total_cost = 0
+   total_cost = 0;
    
 
   PlayerVariables: PlayerVariablesService;
@@ -141,7 +141,7 @@ export class DecisionPanelComponent implements OnInit {
   }
 
   public reducePower() {
-    var pricePerYear = this.PlayerVariables.cost_per_gigawatt/4;
+    var pricePerYear = this.PlayerVariables.cost_per_gigawatt;
     var ticCost = 0.1*pricePerYear;
     var tempVal = this.powerToInstall - 0.1;
     if(tempVal >= 0) {
@@ -155,7 +155,7 @@ export class DecisionPanelComponent implements OnInit {
   }
 
   public addPower() {
-    var pricePerYear = this.PlayerVariables.cost_per_gigawatt/4;
+    var pricePerYear = this.PlayerVariables.cost_per_gigawatt;
     var ticCost = 0.1*pricePerYear;
     var tempVal = this.powerToInstall + 0.1;
     var tempcalc= this.PlayerVariables.budget - ticCost;
@@ -218,7 +218,7 @@ export class DecisionPanelComponent implements OnInit {
     this.PlayerVariables.electrification_by_sector_percentage_residential = this.Model.shares_exergia_final_residencial_eletricidade_do_ano[this.Model.ano_atual_indice] * 100.0;
     this.PlayerVariables.electrification_by_sector_percentage_services = this.Model.shares_exergia_final_servicos_eletricidade_do_ano[this.Model.ano_atual_indice] * 100.0;
     
-    this.PlayerVariables.budget = this.Model.pib_do_ano[this.Model.ano_atual_indice]*0.01;
+    this.PlayerVariables.budget = this.Model.pib_do_ano[this.Model.ano_atual_indice]*0.03;
 
      // Storage of the history of the player's decisions
      this.decisions_investment_renewables = [this.PlayerVariables.investment_renewables_percentage];
@@ -244,7 +244,7 @@ export class DecisionPanelComponent implements OnInit {
      this.renewable_ratio = [];
      this.current_ratio = 33.95;
      this.simulator_used = false; //true when the model debug simulator is used
-     this.total_cost = 0;
+     this.total_cost = this.addedPoliticsCost + this.totalPowerCost;
      this.calculated_budget = 0;
   }
 
@@ -258,13 +258,6 @@ export class DecisionPanelComponent implements OnInit {
 	
   this.cartCollection.forEach(politic => {
     var impactArray = politic.impact;
-    if(this.PlayerVariables.investment_renewables_percentage < 60.00) {
-      this.PlayerVariables.investment_renewables_percentage += impactArray[2];
-    }
-    if(this.PlayerVariables.investment_renewables_percentage > 59.99) {
-      this.PlayerVariables.investment_renewables_percentage = 60.00;
-    }
-
     if(politic.type == "Transports") {
 			if(this.PlayerVariables.electrification_by_sector_level_transportation < 50) {
 				this.PlayerVariables.electrification_by_sector_level_transportation += impactArray[1];
@@ -308,7 +301,7 @@ export class DecisionPanelComponent implements OnInit {
     this.PlayerVariables.powerToInstallHistoryArray.push(this.powerToInstall);
     this.PlayerVariables.costOfInstallationHistoryArray.push(this.totalPowerCost);
 
-    this.PlayerVariables.budgetHistory.push(this.PlayerVariables.money*1000*0.01);
+    this.PlayerVariables.budgetHistory.push(this.PlayerVariables.money*1000*0.03);
     this.PlayerVariables.pibHistory.push(this.PlayerVariables.money*1000);
     this.PlayerVariables.expenditureHistory.push(this.PlayerVariables.expenditure*1000);
     this.PlayerVariables.aggregatedEfficiencyHistory.push(this.PlayerVariables.efficiency * 100);
@@ -322,6 +315,7 @@ export class DecisionPanelComponent implements OnInit {
     this.decisions_eletrification_industry.push(this.PlayerVariables.electrification_by_sector_level_industry);
     this.decisions_eletrification_residential.push(this.PlayerVariables.electrification_by_sector_level_residential);
     this.decisions_eletrification_services.push(this.PlayerVariables.electrification_by_sector_level_services);
+
     this.renewable_energy_amounts.push(this.PlayerVariables.renewable_energy);
     this.total_co2_emissions.push(this.PlayerVariables.co2_emissions);
  
@@ -353,7 +347,7 @@ export class DecisionPanelComponent implements OnInit {
   public updateModel() {
     this.Model.mudar_de_ano();
     this.Model.calcular_distribuicao_por_fonte();
-    this.Model.calcular_custo();
+    this.Model.calcular_custo(this.addedPoliticsCost + this.totalPowerCost);
     this.Model.calcular_investimento();
     this.Model.calcular_capital();
     this.Model.calcular_labour();
@@ -381,8 +375,8 @@ export class DecisionPanelComponent implements OnInit {
   public updateGameAfterModel() {
     this.PlayerVariables.current_year = this.Model.ano_atual;
     this.PlayerVariables.money = this.Model.pib_do_ano[this.Model.pib_do_ano.length-1];
-    this.calculated_budget = (this.PlayerVariables.money * 1000) * 0.01; //1% of PIB in Millions
-    this.PlayerVariables.budget = (this.PlayerVariables.money * 1000) * 0.01;
+    this.calculated_budget = (this.PlayerVariables.money * 1000) * 0.03; //1% of PIB in Millions
+    this.PlayerVariables.budget = (this.PlayerVariables.money * 1000) * 0.03;
     this.PlayerVariables.expenditure = this.Model.consumo_do_ano[this.Model.consumo_do_ano.length-1];
     this.PlayerVariables.utility = this.Model.utilidade_do_ano[this.Model.ano_atual_indice];
     this.PlayerVariables.co2_emissions = this.Model.emissoes_totais_do_ano[this.Model.ano_atual_indice] * Math.pow(10, -9);
@@ -401,6 +395,13 @@ export class DecisionPanelComponent implements OnInit {
     this.PlayerVariables.electrification_by_sector_percentage_industry = this.Model.shares_exergia_final_industria_eletricidade_do_ano[this.Model.ano_atual_indice] * 100.0;
     this.PlayerVariables.electrification_by_sector_percentage_residential = this.Model.shares_exergia_final_residencial_eletricidade_do_ano[this.Model.ano_atual_indice] * 100.0;
     this.PlayerVariables.electrification_by_sector_percentage_services = this.Model.shares_exergia_final_servicos_eletricidade_do_ano[this.Model.ano_atual_indice] * 100.0;
+
+    this.PlayerVariables.sharesTransportationHistory.push([this.PlayerVariables.economy_type_percentage_transportation,this.PlayerVariables.electrification_by_sector_percentage_transportation]);
+    this.PlayerVariables.sharesIndustryHistory.push([this.PlayerVariables.economy_type_percentage_industry,this.PlayerVariables.electrification_by_sector_percentage_industry]);
+    this.PlayerVariables.sharesResidentialHistory.push([this.PlayerVariables.economy_type_percentage_residential,this.PlayerVariables.electrification_by_sector_percentage_residential]);
+    this.PlayerVariables.sharesServicesHistory.push([this.PlayerVariables.economy_type_percentage_services,this.PlayerVariables.electrification_by_sector_percentage_services]);
+
+
   }
 
   public firstRun() {

@@ -84,11 +84,59 @@
                             <p class="bold-label"><b>BUDGET:</b> {{this.selectedYearBudget | number:'1.0-0'}} M€</p>
                             <p class="bold-label"><b>GDP:</b> {{this.selectedYearGDP | number:'1.0-0'}} M€</p>
                             <p class="bold-label"><b>POPULATION HAPPINESS:</b> {{this.selectedYearHappiness | number:'1.0-2'}}</p>
-                            <p class="bold-label"><b>EXPENDITURE:</b> {{this.selectedYearExpenditure | number:'1.0-0'}} M€</p>  
+                            <p class="bold-label"><b>EXPENDITURE:</b> {{this.selectedYearExpenditure | number:'1.0-0'}} M€</p> 
+                            <p class="bold-label"><b>CAPITAL:</b> {{this.selectedYearCapital | number:'1.0-0'}} M€</p>
+                            <p class="bold-label"><b>LABOUR:</b> {{this.selectedYearLabour}} Pax</p>  
+                            <p class="bold-label"><b>INVESTIMENTO CAPITAL:</b> {{this.selectedYeartest}} </p>  
                         </mat-tab>
                         <mat-tab label="Exergy Distribution">
                             <p class="bold-label"><b>CO2 EMISSIONS:</b> {{this.selectedYearEmissions | number:'1.0-2'}} MT</p>
                             <p class="bold-label"><b>AGGREGATED EFFICIENCY:</b> {{this.selectedYearAggregatedEfficiency | number:'1.0-2'}} %</p>
+                            <table>
+                                <thead>
+                                  <tr>
+                                    <th class="table-header-cell">
+                                      <div class = "table-header-aligner">
+                                        <p class="table-header-title">Economy Sector</p>
+                                      </div>
+                                    </th>
+                                    <th class="table-header-cell">
+                                      <div class = "table-header-aligner">
+                                        <p class="table-header-title">Exergy Shares</p>
+                                      </div>
+                                    </th>
+                                    <th class="table-header-cell">
+                                      <div class = "table-header-aligner">
+                                        <p class="table-header-title">Eletrification</p>
+                                      </div>
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Transports</td>
+                                    <td>{{this.PlayerVariables.sharesTransportationHistory[this.currentTabIndex][0] | number:'1.0-2'}}%</td>
+                                    <td>{{this.PlayerVariables.sharesTransportationHistory[this.currentTabIndex][1] | number:'1.0-2'}}%</td>
+                                  </tr>
+                                  <tr>
+                                    <td >Industry</td>
+                                    <td>{{this.PlayerVariables.sharesIndustryHistory[this.currentTabIndex][0] | number:'1.0-2'}}%</td>
+                                    <td>{{this.PlayerVariables.sharesIndustryHistory[this.currentTabIndex][1] | number:'1.0-2'}}%</td>
+                                  </tr>
+                                  <tr>
+                                    <td >Residential</td>
+                                    <td>{{this.PlayerVariables.sharesResidentialHistory[this.currentTabIndex][0] | number:'1.0-2'}}%</td>
+                                    <td>{{this.PlayerVariables.sharesResidentialHistory[this.currentTabIndex][1] | number:'1.0-2'}}%</td>
+                                  </tr>
+                                  <tr>
+                                    <td >Services</td>
+                                    <td>{{this.PlayerVariables.sharesServicesHistory[this.currentTabIndex][0] | number:'1.0-2'}}%</td>
+                                    <td>{{this.PlayerVariables.sharesServicesHistory[this.currentTabIndex][1] | number:'1.0-2'}}%</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <br>
+
                         </mat-tab>
                         <mat-tab label="Energetics"> 
                         </mat-tab>

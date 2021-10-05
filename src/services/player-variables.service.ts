@@ -18,6 +18,12 @@ export class PlayerVariablesService {
   expenditureHistory: Array<number> = [];
   aggregatedEfficiencyHistory: Array<number> = [];
 
+  //representation : [share, eletrification]
+  sharesTransportationHistory: Array<Array<number>> = [];
+  sharesIndustryHistory: Array<Array<number>> = [];
+  sharesResidentialHistory: Array<Array<number>> = [];
+  sharesServicesHistory: Array<Array<number>> = [];
+
 
 
   // Current year Variables
@@ -67,7 +73,7 @@ export class PlayerVariablesService {
   electrification_by_sector_level_services: number = 6;
 
   extra_year_text: string = "";
-  budget: number = this.money * 0.01;
+  budget: number = this.money * 0.03;
 
   renewableRatioArray: Array<number> = [];
 }

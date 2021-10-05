@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-final-view',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class FinalViewComponent implements OnInit {
 
   public isWin: boolean = false;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     var val = sessionStorage.getItem("isWin");
@@ -26,5 +27,11 @@ export class FinalViewComponent implements OnInit {
     }
 
   }
+
+  public restartGame() {
+    window.location.href = window.location.href;
+
+  }
+
 
 }

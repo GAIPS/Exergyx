@@ -1,26 +1,42 @@
 
-<div *ngIf="this.isWin" class="win">
-    
-
+<div *ngIf="this.isWin" class="group">
+  <div class="lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+  <div class="text-buttons"> 
+    <p class="text">YOU WON!</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button class="button glow-button" routerLink="/history">See History</button>
+    <button class="button glow-button" (click)="restartGame()">Play Again</button>
+  </div>
 </div>
 
-<div *ngIf="!this.isWin" class="loss">
-    <div class="lines">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
-      <div class="text-buttons"> 
-        <p class="text">VICTORY</p>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <button class="button glow-button">See History</button>
-      </div>
+<div *ngIf="!this.isWin" class="group">
+  <div class="lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+  <div class="text-buttons"> 
+    <p class="text-lost">YOU LOST!</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button class="button glow-button" routerLink="/history">See History</button>
+    <button class="button glow-button"(click)="restartGame()">Play Again</button>
+  </div>    
      
       
    
