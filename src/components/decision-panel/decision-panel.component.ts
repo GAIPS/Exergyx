@@ -81,8 +81,14 @@ export class DecisionPanelComponent implements OnInit {
       currentState.isOpened.next(true);
       this.PlayerVariables = playerVariable;
       this.Model = gameModel;
-      this.allPolitics =  gameModel.initPolitics();
-      this.politics = this.allPolitics[0];
+      this.allPolitics = gameModel.initPolitics();
+      var tempArray: Array<Politic> = [];
+      this.allPolitics[0].forEach(p => {
+        if (p.remove === false) {
+          tempArray.push(p);
+        }
+      });
+      this.politics = tempArray;
       this.selectedPolitic = this.politics[0];
       this.installedPower = this.PlayerVariables.total_installed_power;
       this.budget = this.PlayerVariables.budget;
@@ -262,24 +268,32 @@ export class DecisionPanelComponent implements OnInit {
 			if(this.PlayerVariables.electrification_by_sector_level_transportation < 50) {
 				this.PlayerVariables.electrification_by_sector_level_transportation += impactArray[1];
         this.PlayerVariables.economy_type_level_transportation += impactArray[0];
+        politic.isUsed = false;
+        if(politic.title === "Transports Eletrification") {
+          console.log("Found one!");
+          politic.remove = true;
+        }
       }
     }
 		else if(politic.type == "Industry") {
 			if(this.PlayerVariables.electrification_by_sector_level_industry < 50) {
 				this.PlayerVariables.electrification_by_sector_level_industry += impactArray[1];
         this.PlayerVariables.economy_type_level_transportation += impactArray[0];
+        politic.isUsed = false;
       }
     }
 		else if(politic.type == "Services") {
 			if(this.PlayerVariables.electrification_by_sector_level_services < 50){
 				this.PlayerVariables.electrification_by_sector_level_services += impactArray[1];	
         this.PlayerVariables.economy_type_level_transportation += impactArray[0];
+        politic.isUsed = false;
       }
     }	
 		else if(politic.type == "Residential"){
 			if(this.PlayerVariables.electrification_by_sector_level_residential < 50){
 				this.PlayerVariables.electrification_by_sector_level_residential += impactArray[1];
         this.PlayerVariables.economy_type_level_transportation += impactArray[0];
+        politic.isUsed = false;
       }
     }
 		else {
@@ -443,7 +457,13 @@ export class DecisionPanelComponent implements OnInit {
     var clickedTab = event.index;
     if(clickedTab == 0) {
       this.tab = "Transports";
-      this.politics = this.allPolitics[0];
+      var tempArray: Array<Politic> = [];
+      this.allPolitics[0].forEach(p => {
+        if(p.remove === false) {
+          tempArray.push(p);
+        }
+      });
+      this.politics = tempArray;
     }
     else if(clickedTab == 1) {
       this.tab ="Industry";
