@@ -799,3 +799,15 @@ tbody > tr > td {
     0% 0%
   );
 }
+
+.gdp-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.info-icon {
+  color: #50cbff;
+  cursor: help;
+}

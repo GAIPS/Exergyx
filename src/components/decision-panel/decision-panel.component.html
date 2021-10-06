@@ -285,8 +285,14 @@
             <td class="total-politic-cost"><p>{{this.addedPoliticsCost}}M€</p></td>
         </tr>
         <mat-divider></mat-divider>
-        <p class="field-title">REMAINING BUDGET</p>
-        <p class="bigger-text">{{this.PlayerVariables.budget |  number: '1.0-0'}}M€</p>
+        <div class="gdp-title">
+          <mat-icon matTooltip="Is the amount of money available for you to spend and invest accordingly to your strategy. It represents 3% of the country's GDP." 
+          matTooltipPosition="above" class="info-icon">info_outline</mat-icon>
+          <p class="field-title">REMAINING BUDGET</p>
+        </div>
+          <p class="bigger-text">{{this.PlayerVariables.budget |  number: '1.0-0'}}M€</p>
+     
+      <br>
         <button [disabled]="this.buttonsEnabled" mat-button class="confirm-button" (click)="openConfirmationDialog()">Confirm<br>Investment</button>
     </div>
 </div>

@@ -39,7 +39,7 @@ export class HistoryPanelComponent implements OnInit{
   constructor(currentState: CurrentStateService, private playerVariables: PlayerVariablesService, private model: GameModelService) 
   {
     currentState.isOpened.next(true);
-    this.PlayerVariables = playerVariables;
+    this.PlayerVariables = playerVariables
     this.model.emissoes_totais_do_ano.forEach(element => {
       let convertedValue = element/1000000000;
       let roundedValue = Math.round(convertedValue * 100) / 100;
@@ -80,12 +80,12 @@ export class HistoryPanelComponent implements OnInit{
   public barChartOptions: ChartOptions = {
     legend: {
       labels: {
-          filter: function(legendItem, chartData) {
-           if (legendItem.datasetIndex === 0) {
-             return false;
-           }
-          return true;
-          }
+          // filter: function(legendItem, chartData) {
+          //  if (legendItem.datasetIndex === 0) {
+          //    return false;
+          //  }
+          // return true;
+          // }
        }
    },
     responsive: true,
@@ -106,7 +106,7 @@ export class HistoryPanelComponent implements OnInit{
         position: 'left',
         type: 'linear',
         ticks: {
-          max:80,
+          
           beginAtZero:true
         },
         scaleLabel: {
@@ -135,7 +135,7 @@ export class HistoryPanelComponent implements OnInit{
   public barChartLabels = this.playerVariables.yearsArray;
   public barChartLegend = true;
   public barChartData: ChartDataSets[] = [
-    {data:[14,14,14,14,14,14,14,14,14], label: 'Goal', fill: false,   yAxisID: 'y', pointRadius:0},
+    {data:[14,14,14,14,14,14,14,14,14], label: 'Goal', fill: true,  yAxisID: 'y', pointRadius:0, backgroundColor: 'rgba(0,255,0,0.3)', borderColor: 'rgb(50,205,50)'},
     {data: this.dataArray, label: 'Co2 Emissions', fill: false,   yAxisID: 'y'},
     {data: this.happinessArray, label: 'Happiness', fill: false, yAxisID: 'y1' }
   ];
