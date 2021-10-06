@@ -488,12 +488,13 @@ export class DecisionPanelComponent implements OnInit {
   }
 
   public validateGame() {
-    var emissionsSuccess = this.PlayerVariables.co2_emissions <= this.PlayerVariables.final_year_emissions;
+    var emissionsSuccess = this.PlayerVariables.co2_emissions <= this.PlayerVariables.emission_goals;
     var happynessSuccess = this.PlayerVariables.utility >= this.PlayerVariables.utility_goals;
     if(emissionsSuccess && happynessSuccess) {
       sessionStorage.setItem("isWin", "true");
     }
     else {
+      
       sessionStorage.setItem("isWin", "false");
     }
      

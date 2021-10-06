@@ -145,4 +145,13 @@ export class InformationPanelComponent implements OnInit {
     this.currentNew = eventsArray[randomIndex]; 
   }
 
+  public getBudgetDiff() {
+    var budgetArray = this.playerVariables.budgetHistory;
+    var diff = 0;
+    if(budgetArray.length>1) {
+      diff = budgetArray[budgetArray.length-1] - budgetArray[budgetArray.length-2];
+    }
+    return diff;
+  }
+
 }

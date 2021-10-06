@@ -34,12 +34,25 @@ export class HistoryPanelComponent implements OnInit{
   public selectedYearLabour: number = 0;
   public selectedYeartest: number = 0;
 
+  title: string = "HISTORY PANEL";
+
+  
+  public tabs: Array<any> = [];
+
   public PlayerVariables: PlayerVariablesService;
 
   constructor(currentState: CurrentStateService, private playerVariables: PlayerVariablesService, private model: GameModelService) 
   {
     currentState.isOpened.next(true);
-    this.PlayerVariables = playerVariables
+
+    this.playerVariables.yearsArray.forEach(year => {
+      if(year < this.playerVariables.current_year) {
+        this.tabs.push(year);
+      }
+    });
+
+
+    this.PlayerVariables = playerVariables;
     this.model.emissoes_totais_do_ano.forEach(element => {
       let convertedValue = element/1000000000;
       let roundedValue = Math.round(convertedValue * 100) / 100;
@@ -71,11 +84,7 @@ export class HistoryPanelComponent implements OnInit{
     this.selectedYearLabour = model.labour_do_ano[this.currentTabIndex+1];
     this.selectedYeartest = model.investimento_para_capital_do_ano[this.currentTabIndex+1];
    }
-
-  title: string = "HISTORY PANEL";
-
   
-  public tabs: Array<any> = this.playerVariables.yearsArray;
 
   public barChartOptions: ChartOptions = {
     legend: {

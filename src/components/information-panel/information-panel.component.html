@@ -9,11 +9,13 @@
   <div class="column1">
     <p class="section-title">◖ MAIN INFORMATIONS</p>
     <mat-divider></mat-divider>
-    <p class="field-title">CURRENT YEAR</p>
-    <p class="bigger-text">{{this.PlayerVariables.current_year}}</p>
+        <p class="field-title" style="margin-left: 8px;">CURRENT YEAR</p>
+        <p class="bigger-text">{{this.PlayerVariables.current_year}}</p>
+        <p class="value-diff-left">+{{this.PlayerVariables.current_year-4 >= 2019 ? 4 : 0}} Years</p>
     <mat-divider></mat-divider>
-    <p class="field-title">BUDGET</p>
+    <p class="field-title" style="margin-left: 8px;">BUDGET</p>
     <p class="bigger-text">{{this.PlayerVariables.budget |  number: '1.0-0'}} M</p>
+    <p class="value-diff-left">{{this.getBudgetDiff() <= 0 ? '' : '+' }}{{this.getBudgetDiff() | number: '1.0-0'}} M€</p>
     <mat-divider></mat-divider>
     <div class="co2-box">
       <div class="co2-icon-container">
