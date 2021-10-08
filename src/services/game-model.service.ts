@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { naturalEventNew } from 'src/interfaces/naturalEventNew';
 import { Politic } from 'src/interfaces/politic';
 
 @Injectable({
@@ -889,56 +890,56 @@ export class GameModelService {
     return politicsArray;
   }
 
-  public initEvents() {
-    const naturalEvents = [
-      {
-        id: 1,
-        title:"A tornado strikes the country!",
-        description:"A tornado strikes the country, partially destroying its installed capacity.",
-        used:false,
-        effect: "capacity",
-        amount: -10,
-        type:"weather"
-      },
-      {
-        id: 2,
-        title:"It’s official: Hot, dry season is here!",
-        description:"The dry season has arrived, and as such the main sector affected is agriculture. However, due to this period it is expected that the hydropower production factor will decrease substantially.",
-        used:false,
-        effect: "hidro",
-        amount: -50,
-        type:"weather"
-      },
-      {
-        id: 3,
-        title:"Limits on Natural gas usage.",
-        description:"Government anounced some measures for the upcoming years, where they will impose some restrictions on the usage of natural gas.",
-        used:false,
-        effect: "gas",
-        amount: -20,
-        type:"weather"
-      },
-      {
-        id: 4,
-        title:"Everything looks promising!",
-        description:"Recent studies suggest a brighter future if we keep our path.",
-        used:false,
-        effect: "none",
-        amount: 0,
-        type:"weather"
-      },
-      {
-        id: 5,
-        title:"A cleaner Future",
-        description:"We are experiencing a huge development towards a cleaner future, fossil fuel free. Will our country be able to keep the pace?",
-        used:false,
-        effect: "none",
-        amount: 0,
-        type:"weather"
-      }
-    ]
+  public naturalEvents: Array<naturalEventNew> = [
+    {
+      id: 1,
+      title:"A tornado strikes the country!",
+      description:"A tornado strikes the country, partially destroying its installed capacity.",
+      used:false,
+      effect: "capacity",
+      amount: -10,
+      type:"weather"
+    },
+    {
+      id: 2,
+      title:"It’s official: Hot, dry season is here!",
+      description:"The dry season has arrived, and as such the main sector affected is agriculture. However, due to this period it is expected that the hydropower production factor will decrease substantially.",
+      used:false,
+      effect: "hidro",
+      amount: -50,
+      type:"weather"
+    },
+    {
+      id: 3,
+      title:"Limits on Natural gas usage.",
+      description:"Government anounced some measures for the upcoming years, where they will impose some restrictions on the usage of natural gas.",
+      used:false,
+      effect: "gas",
+      amount: -20,
+      type:"weather"
+    },
+    {
+      id: 4,
+      title:"Everything looks promising!",
+      description:"Recent studies suggest a brighter future if we keep our path.",
+      used:false,
+      effect: "none",
+      amount: 0,
+      type:"weather"
+    },
+    {
+      id: 5,
+      title:"A cleaner Future",
+      description:"We are experiencing a huge development towards a cleaner future, fossil fuel free. Will our country be able to keep the pace?",
+      used:false,
+      effect: "none",
+      amount: 0,
+      type:"weather"
+    }
+  ] 
 
-    return naturalEvents;
+  public getEvents() {
+    return this.naturalEvents;
   }
 
 }

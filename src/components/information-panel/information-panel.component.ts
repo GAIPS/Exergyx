@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { naturalEventNew } from 'src/interfaces/naturalEventNew';
 import { CurrentStateService } from 'src/services/current-state.service';
 
 import { GameModelService } from 'src/services/game-model.service';
@@ -20,7 +21,15 @@ export class InformationPanelComponent implements OnInit {
 
   PlayerVariables: PlayerVariablesService;
   Model: GameModelService;
-  currentNew: any = "";
+  currentNew: naturalEventNew = {
+    id:0,
+    title: "",
+    description: "",
+    effect: "",
+    type: "",
+    amount: 0,
+    used: false
+  };
 
 
 
@@ -137,12 +146,25 @@ export class InformationPanelComponent implements OnInit {
   }
 
   public loadNews() {
-    var eventsArray = this.Model.initEvents();
-    var min = 0;
-    var max = eventsArray.length;
-    var randomIndex = Math.floor(Math.random() * (max - min)) + min;
+    var eventsArray = this.Model.getEvents();
+    console.log(eventsArray);
+    eventsArray.forEach(e => {
+      if(e.used === true) {
+       let i = eventsArray.indexOf(e);
+       if(i > -1) {
+         eventsArray.splice(i,1);
+       }
+      }
+    });
 
-    this.currentNew = eventsArray[randomIndex]; 
+    var randomIndex = Math.floor(Math.random() * eventsArray.length);
+    this.currentState.updateActiveNew(this.playerVariables.current_year, eventsArray[randomIndex]);
+    this.currentState.activeNew.subscribe(eventNew => this.currentNew = eventNew);
+    this.Model.naturalEvents.forEach(e => {
+      if (e === this.currentNew) {
+        e.used = true;
+      }
+    });
   }
 
   public getBudgetDiff() {

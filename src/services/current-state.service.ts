@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { naturalEventNew } from 'src/interfaces/naturalEventNew';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,9 @@ export class CurrentStateService {
   decisionActive: BehaviorSubject<boolean>;
   historyActive: BehaviorSubject<boolean>;
   isOpened: BehaviorSubject<boolean>;
+  activeNew: BehaviorSubject<naturalEventNew>;
+  currentYear: number = 2019;
+
 
 
   constructor() {
@@ -17,6 +21,15 @@ export class CurrentStateService {
     this.decisionActive = new BehaviorSubject<boolean>(false);
     this.historyActive = new BehaviorSubject<boolean>(false);
     this.isOpened = new BehaviorSubject<boolean>(false);
+    this.activeNew = new BehaviorSubject<naturalEventNew>({
+      id:0,
+      title: "",
+      description: "",
+      effect: "",
+      type: "",
+      amount: 0,
+      used: false
+    });
   }
 
     isFirstRun = true;
@@ -42,5 +55,17 @@ export class CurrentStateService {
       this.decisionActive.next(false);
       this.historyActive.next(false);
     }
+  }
+
+  public updateActiveNew(currentYear: number, eventNew: naturalEventNew) {
+    if(this.currentYear < currentYear) {
+      this.activeNew.next(eventNew);
+      this.currentYear = currentYear;
+    }
+    
+  }
+
+  public getActiveNew(): BehaviorSubject<naturalEventNew> {
+    return this.activeNew;
   }
 }
