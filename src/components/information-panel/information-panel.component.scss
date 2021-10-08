@@ -376,12 +376,6 @@ td {
   padding-left: 2px;
 }
 
-.header-group {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .selected-title {
   font-family: Saira;
   font-style: normal;
@@ -412,7 +406,6 @@ td {
   display: flex;
   flex-direction: row;
   margin-left: 2px;
-  justify-content: center;
 }
 
 .card-text {
