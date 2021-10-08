@@ -25,8 +25,8 @@
                 Distribution Table</button>
     </div>
     <div class="column2">
-        <div class="policy-container" height="290">
-            <svg width="682.6" height="220" viewBox="0 0 1000 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="policy-container">
+            <!-- <svg width="682.6" height="220" viewBox="0 0 1000 350" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g width="650">
                     <path d="M0.5 289.5V42.6794L35.236 0.5H975.5V256.319L947.766 289.5H0.5Z" fill="url(#paint1_linear)"
                         stroke="#50CBFF" />
@@ -50,7 +50,7 @@
                     <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
                         <use xlink:href="#image0" transform="translate(0) scale(0.00255496)"/> 
                     </pattern>
-                    <image id="image0" xlink:href="https://material.angular.io/assets/img/examples/shiba2.jpg"/>
+                    <img id="image0" href=""/>
                     <linearGradient id="paint0_linear" x1="124" y1="6" x2="124" y2="241" gradientUnits="userSpaceOnUse">
                     <stop stop-color="#009DE0" stop-opacity="0.25"/>
                     <stop offset="1" stop-color="#009DE0"/>
@@ -62,7 +62,27 @@
                         <stop offset="1" stop-color="#009DE0" stop-opacity="0.08" />
                     </linearGradient>
                 </defs>
-            </svg>
+            </svg> -->
+            <mat-card class="example-card">
+              <div class="outter-div">
+              <div class="card-image">
+                <img mat-card-lg-image *ngIf="this.selectedPolitic?.type === 'Transports'" src="../../assets/IMG_Eletrico.png" >
+                <img mat-card-lg-image *ngIf="this.selectedPolitic?.type != 'Transports'" src="../../assets/Favicon_16x16.png" >
+              </div>
+              <mat-divider class="vertical-divider" role="separator" vertical style="height:70%"></mat-divider>
+              <div class="card-text">
+                <mat-card-title class="selected-title">{{this.selectedPolitic?.title}}</mat-card-title>
+                <div class="tag-background">
+                  <mat-card-subtitle class="tag-type">#{{this.selectedPolitic?.type}}</mat-card-subtitle>
+                </div>
+                <mat-card-content>
+                <p class="selected-desc-title">Description:</p>
+                <p class="selected-desc">{{this.selectedPolitic?.desc}}</p>
+                <p class="selected-price"><b>Price:</b> {{this.selectedPolitic?.price}} M€</p>
+                </mat-card-content>
+              </div>
+            </div>
+            </mat-card>
         </div>
         <div class="policies-table-container">
             <p class="section-title">◖ INVESTMENT POLICIES</p>
@@ -347,16 +367,29 @@
 
     <mat-card *ngIf = "showActive" class="confirmationPopup">
         <mat-card-header>
-            <mat-card-title>Warning</mat-card-title>
+            <mat-card-title>Please confirm your decisions before proceed to the next iteration.</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-         <p>
-            Are you sure about submitting your decisions now?
-            </p>
+         <div> 
+           <br>
+           <p class="overview-title">Politics:</p>
+           <ul>
+             <li class="overview-content" *ngFor="let item of this.cartCollection">{{item.title}}</li>
+           </ul>
+           <p class="overview-content">Total Policies Cost: {{this.addedPoliticsCost}}M€</p>
+           <mat-divider></mat-divider>
+           <br>
+           <p class="overview-title">Total Power to Install:</p>
+           <ul>
+             <li class="overview-content">Power: {{this.powerToInstall | number: '1.2-2'}} GW</li>
+           </ul>
+           <p class="overview-content">Cost: {{this.totalPowerCost |  number: '1.0-0'}}M€</p>
+           <p><b>Choosing to submit will simulate 4 years and take you to the next decision period.<br> This actions is irreversible.</b></p>
+         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button routerLink="information" (click)="confirm()" color="primary">YES</button>
-        <button mat-raised-button (click)="decline()" color="warn">NO</button>
+        <button mat-raised-button routerLink="information" (click)="confirm()" color="primary">SUBMIT</button>
+        <button mat-raised-button (click)="decline()" color="warn">BACK</button>
       </mat-card-actions>
     </mat-card>
 

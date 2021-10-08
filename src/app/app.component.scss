@@ -7,12 +7,18 @@
 
 .content {
   padding: 16px;
-  background: linear-gradient(71.68deg, #DEF7FF 3.33%, #FFFFFF 53.69%, #E4F8FF 100%);
+  background: linear-gradient(
+    71.68deg,
+    #def7ff 3.33%,
+    #ffffff 53.69%,
+    #e4f8ff 100%
+  );
 }
 
 .sidenav {
-  background: linear-gradient(180deg, #93EDED 0%, rgba(255, 255, 255, 0) 100%), #009DE0;
-  box-shadow: 0px 0px 6px #58CDFF, 0px 0px 24px 3px #9DE2FF;
+  background: linear-gradient(180deg, #93eded 0%, rgba(255, 255, 255, 0) 100%),
+    #009de0;
+  box-shadow: 0px 0px 6px #58cdff, 0px 0px 24px 3px #9de2ff;
   width: 90px;
   text-align: center;
 }

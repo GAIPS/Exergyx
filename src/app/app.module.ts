@@ -24,6 +24,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { WelcomePageComponent } from 'src/components/welcome-page/welcome-page.component';
 import { FinalViewComponent } from 'src/components/final-view/final-view.component';
 
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -54,6 +55,8 @@ import { FinalViewComponent } from 'src/components/final-view/final-view.compone
     MatTabsModule,
     ChartsModule,
     MatSortModule,
+    MatSnackBarModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

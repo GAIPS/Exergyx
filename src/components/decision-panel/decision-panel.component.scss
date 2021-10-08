@@ -7,6 +7,13 @@
   border-top-color: #50cbff;
 }
 
+.vertical-divider {
+  margin-left: 8px;
+  border-top-width: 2px;
+  border-top-color: #c2edff;
+  width: 2px;
+}
+
 .toolbar {
   background: linear-gradient(
     71.68deg,
@@ -91,84 +98,6 @@
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-}
-
-.svg-title {
-  font-family: Saira;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 26px;
-  fill: #50cbff;
-}
-
-.svg-type {
-  font-family: Saira;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 22px;
-  text-align: center;
-  fill: white;
-  text-anchor: middle;
-}
-
-.svg-desc {
-  font-family: Saira;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 22px;
-  color: #68a1b4;
-  word-wrap: break-word;
-  overflow: hidden;
-}
-
-.svg-desc-title {
-  font-family: Saira;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 22px;
-  fill: #68a1b4;
-}
-
-.svg-rect {
-  width: 150px;
-  height: 30px;
-  fill: #d4d900;
-}
-
-.svg-image {
-  width: 200px;
-  height: 300px;
-  -webkit-clip-path: polygon(
-    15% 0,
-    70% 0%,
-    100% 0,
-    100% 85%,
-    85% 100%,
-    30% 100%,
-    0 100%,
-    0 15%
-  );
-  clip-path: polygon(
-    15% 0,
-    70% 0%,
-    100% 0,
-    100% 85%,
-    85% 100%,
-    30% 100%,
-    0 100%,
-    0 15%
-  );
-}
-svg {
-  margin-left: 16px;
-}
-
-.svg-price {
-  font-family: Saira;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  color: #46555f;
 }
 
 .see-more-button {
@@ -810,4 +739,104 @@ tbody > tr > td {
 .info-icon {
   color: #50cbff;
   cursor: help;
+}
+
+.overview-title {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: #009de0;
+}
+
+.overview-content {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #49be8c;
+}
+
+.policy-container {
+  display: flex;
+  justify-content: center;
+  margin: 16px 16px;
+}
+.example-card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    95.26deg,
+    rgba(0, 157, 224, 0.04) 43.67%,
+    rgba(224, 246, 255, 0) 70.38%,
+    rgba(0, 157, 224, 0.08) 95.74%
+  );
+  width: 100%;
+  box-shadow: none;
+  border: 1px solid #50cbff;
+}
+
+.header-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.selected-title {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  color: #50cbff;
+}
+
+.selected-desc {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  color: #68a1b4;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.selected-desc-title {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #68a1b4;
+}
+
+.outter-div {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-text {
+  margin-left: 8px;
+}
+
+.tag-background {
+  background-color: #d4d900;
+  width: fit-content;
+}
+
+.tag-type {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  color: white;
+  margin: 4px;
+}
+
+.selected-price {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: #46555f;
+  text-align: right;
 }

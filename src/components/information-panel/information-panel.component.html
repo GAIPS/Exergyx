@@ -164,6 +164,8 @@
       </div>
     </div>
     <mat-divider></mat-divider>
+    <br>
+    <br>
   </div>
   <div class="column2">
     <p class="section-title">◖ ENERGY INFORMATIONS</p>
@@ -281,22 +283,25 @@
     <p class="section-title">◖ EVENTS INFORMATION</p>
    
     <p class="card-title">Natural Events</p>
-    <mat-card class="natural-event-card">
-      <mat-card-header>
-        <mat-card-title>{{this.currentNew.title}}</mat-card-title>
-        <mat-card-subtitle>{{this.currentNew.type}}</mat-card-subtitle>
-      </mat-card-header>
-      <div class="insideContainer">
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
-        <mat-card-content>
-          <p>
-           {{this.currentNew.description}}
-          </p>
-        </mat-card-content>
-      </div>
-      <!-- <mat-card-actions>
-        <button class="decision-button" mat-raised-button color="warn">Pay Maintenance</button>
-      </mat-card-actions> -->
+    <mat-card class="example-card">
+      <div class="outter-div">
+        <div class="card-image">
+          <img mat-card-lg-image src="../../assets/IMG_Tempestade.png" >
+
+        </div>
+        <mat-divider class="vertical-divider" role="separator" vertical style="height:70%"></mat-divider>
+        <div class="card-text">
+          <mat-card-title class="selected-title">{{this.currentNew.title}}</mat-card-title>
+          <div class="tag-background">
+            <mat-card-subtitle class="tag-type">#{{this.currentNew.type}}</mat-card-subtitle>
+          </div>
+          <mat-card-content>
+          <p class="selected-desc-title">Description:</p>
+          <p class="selected-desc">{{this.currentNew.description}}</p>
+          <p class="selected-price"><b>Price:</b>  M€</p>
+          </mat-card-content>
+        </div>
+    </div>
     </mat-card>
   </div>
 </div>

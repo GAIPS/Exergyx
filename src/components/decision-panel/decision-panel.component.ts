@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Politic } from 'src/interfaces/politic';
@@ -77,7 +78,7 @@ export class DecisionPanelComponent implements OnInit {
 
 
   constructor( playerVariable: PlayerVariablesService , gameModel: GameModelService, private route: ActivatedRoute,
-    private router: Router, private currentState: CurrentStateService ) {
+    private router: Router, private currentState: CurrentStateService, private snackBar: MatSnackBar) {
       currentState.isOpened.next(true);
       this.PlayerVariables = playerVariable;
       this.Model = gameModel;
@@ -427,9 +428,10 @@ export class DecisionPanelComponent implements OnInit {
     this.showTable = false;
   }
 
-  public confirm() {
+  async confirm() {
     this.submitDecision();
     this.showActive = false;
+    this.showToaster();
     this.currentState.updateMenuSelection("info");
     this.navigateTo();
    
@@ -440,6 +442,7 @@ export class DecisionPanelComponent implements OnInit {
       this.router.navigateByUrl("/result"); 
     }
     else {
+     
       this.router.navigateByUrl("/information"); 
     }
     
@@ -502,6 +505,13 @@ export class DecisionPanelComponent implements OnInit {
 
   public updateHistory() {
     this.PlayerVariables.policiesHistoryArray.set(this.PlayerVariables.current_year-4,this.cartCollection);
+  }
+
+  public showToaster() {
+    this.snackBar.open("Simulation completed!", "close", {
+      duration: 3000,
+
+    });
   }
 
 }

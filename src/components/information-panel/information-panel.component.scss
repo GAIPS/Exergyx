@@ -59,32 +59,6 @@
   margin-left: 20px;
 }
 
-.mat-card-image {
-  width: 244.5px;
-  height: 250.5px;
-  -webkit-clip-path: polygon(
-    15% 0,
-    70% 0%,
-    100% 0,
-    100% 85%,
-    85% 100%,
-    30% 100%,
-    0 100%,
-    0 15%
-  );
-  clip-path: polygon(
-    15% 0,
-    70% 0%,
-    100% 0,
-    100% 85%,
-    85% 100%,
-    30% 100%,
-    0 100%,
-    0 15%
-  );
-  box-shadow: 20px 20px 5px 0px rgba(0, 0, 0, 0.75);
-}
-
 .insideContainer {
   display: flex;
   flex-direction: row;
@@ -92,10 +66,6 @@
   margin-top: 5px;
   padding-top: 10px;
   padding-left: 10px;
-}
-
-.mat-card-content {
-  margin-left: 30px;
 }
 
 .decision-button {
@@ -390,4 +360,85 @@ td {
   font-weight: 500;
   font-size: 16px;
   color: #68a1b4;
+}
+
+.example-card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    95.26deg,
+    rgba(0, 157, 224, 0.04) 43.67%,
+    rgba(224, 246, 255, 0) 70.38%,
+    rgba(0, 157, 224, 0.08) 95.74%
+  );
+  width: 98%;
+  border: 1px solid #50cbff;
+  padding-left: 2px;
+}
+
+.header-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.selected-title {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  color: #50cbff;
+}
+
+.selected-desc {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  color: #68a1b4;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.selected-desc-title {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #68a1b4;
+}
+
+.outter-div {
+  display: flex;
+  flex-direction: row;
+  margin-left: 2px;
+  justify-content: center;
+}
+
+.card-text {
+  margin-left: 8px;
+}
+
+.tag-background {
+  background-color: #d4d900;
+  width: fit-content;
+}
+
+.tag-type {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  color: white;
+  margin: 4px;
+}
+
+.selected-price {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: #46555f;
+  text-align: right;
 }
