@@ -156,15 +156,18 @@ export class InformationPanelComponent implements OnInit {
        }
       }
     });
-
-    var randomIndex = Math.floor(Math.random() * eventsArray.length);
-    this.currentState.updateActiveNew(this.playerVariables.current_year, eventsArray[randomIndex]);
-    this.currentState.activeNew.subscribe(eventNew => this.currentNew = eventNew);
-    this.Model.naturalEvents.forEach(e => {
-      if (e === this.currentNew) {
-        e.used = true;
-      }
-    });
+    let yearsArray = this.playerVariables.yearsArray;
+    let compareIndex = yearsArray.indexOf(this.playerVariables.current_year);
+    if((compareIndex > 0) && (compareIndex % 2 != 0)) {
+      var randomIndex = Math.floor(Math.random() * eventsArray.length);
+      this.currentState.updateActiveNew(this.playerVariables.current_year, eventsArray[randomIndex]);
+      this.currentState.activeNew.subscribe(eventNew => this.currentNew = eventNew);
+      this.Model.naturalEvents.forEach(e => {
+        if (e === this.currentNew) {
+          e.used = true;
+        }
+      });
+    } 
   }
 
   public getBudgetDiff() {
