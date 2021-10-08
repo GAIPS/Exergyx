@@ -6,6 +6,6 @@ export interface Politic {
     desc: string;
     isUsed: boolean;
     remove: boolean;
-    type: String;
+    type: string;
     impact: Array<number>;
   }

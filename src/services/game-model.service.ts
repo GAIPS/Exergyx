@@ -807,21 +807,21 @@ export class GameModelService {
     { 
       id: 1, title: "Transports Eletrification", price: 200,
     prob: 0.5,
-    desc: "The government subsidizes the purchase of electric cars.",
+    desc: "The government subsidizes the purchase of electric cars. Improves sector eletrification.",
     isUsed: false,
     remove: false,
     type: "Transports",
     impact: [0,5] 
     },
     { 
-      id: 2, title: "Public Transportation Improvement", price: 450, prob: 0.6, desc: "The government will reward every person that switches from fuel car to eletric car." ,
+      id: 2, title: "Public Transportation Improvement", price: 450, prob: 0.6, desc: "The government will Invest on public transportation efficiency. Reduces Sector weight and improves sector eletrification. " ,
     isUsed:false,
     remove: false,
     type: "Transports",
     impact: [-2, 6]
     },
     {
-      id: 3, title: "Create Recharge Stations", price: 600, prob: 0.8, desc: "Create more recharge units all over the country.",
+      id: 3, title: "Create Recharge Stations", price: 600, prob: 0.8, desc: "Create more recharge units all over the country. Reduces Sector weight and improves sector eletrification.",
       isUsed: false,
       remove: false,
       type: "Transports",
@@ -833,7 +833,7 @@ export class GameModelService {
     {
       id: 1, title: "Industry Eletrification", price: 200,
       prob: 0.5,
-      desc: "Invest on Industry Eletrification, switching between fossil fuels to eletric power",
+      desc: "Invest on Industry Eletrification, switching between fossil fuels to eletric power. Improves sector eletrification.",
       isUsed: false,
       remove:false,
       type: "Industry",
@@ -842,7 +842,7 @@ export class GameModelService {
     {
       id: 2, title: "Improve industries efficiency", price: 400,
       prob: 0.5,
-      desc: "Pay a bonus to industries that replace older equipments by new ones that are more efficient.",
+      desc: "Pay a bonus to industries that replace older equipments by new ones that are more efficient. Reduces Sector weight.",
       isUsed: false,
       remove:false,
       type: "Industry",
@@ -854,7 +854,7 @@ export class GameModelService {
     {
       id: 1, title: "House Eletrification", price: 300,
       prob: 0.5,
-      desc: "Invest on House Eletrification, switching between fossil fuels to eletric power.",
+      desc: "Invest on House Eletrification, switching between fossil fuels to eletric power. Improves sector eletrification.",
       isUsed: false,
       remove:false,
       type: "Residential",
@@ -863,7 +863,7 @@ export class GameModelService {
     {
       id: 2, title: "House Isolation", price: 600,
       prob: 0.5,
-      desc: "Invest on House Isolation, switching from traditional windows and doors to double glass and isolation ones.",
+      desc: "Invest on House Isolation, switching from traditional windows and doors to double glass and isolation ones.Reduces Sector weight.",
       isUsed: false,
       remove:false,
       type: "Residential",
@@ -875,7 +875,7 @@ export class GameModelService {
     {
       id: 1, title: "Higher performance systems", price: 300,
       prob: 0.5,
-      desc: "Invest systems able to consume less power",
+      desc: "Invest systems able to consume less power. Reduces Sector weight and improves its eletrification.",
       isUsed: false,
       remove:false,
       type: "Services",
