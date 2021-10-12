@@ -6,4 +6,5 @@ export interface naturalEventNew {
     effect: string;
     amount: number;
     type: string;
+    affects: string;
 }

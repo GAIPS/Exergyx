@@ -28,7 +28,8 @@ export class CurrentStateService {
       effect: "",
       type: "",
       amount: 0,
-      used: false
+      used: false,
+      affects:""
     });
   }
 

@@ -85,9 +85,9 @@
                             <p class="bold-label"><b>GDP:</b> {{this.selectedYearGDP | number:'1.0-0'}} M€</p>
                             <p class="bold-label"><b>POPULATION HAPPINESS:</b> {{this.selectedYearHappiness | number:'1.0-2'}}</p>
                             <p class="bold-label"><b>EXPENDITURE:</b> {{this.selectedYearExpenditure | number:'1.0-0'}} M€</p> 
-                            <p class="bold-label"><b>CAPITAL:</b> {{this.selectedYearCapital | number:'1.0-0'}} M€</p>
+                            <!-- <p class="bold-label"><b>CAPITAL:</b> {{this.selectedYearCapital | number:'1.0-0'}} M€</p>
                             <p class="bold-label"><b>LABOUR:</b> {{this.selectedYearLabour}} Pax</p>  
-                            <p class="bold-label"><b>INVESTIMENTO CAPITAL:</b> {{this.selectedYeartest}} </p>  
+                            <p class="bold-label"><b>INVESTIMENTO CAPITAL:</b> {{this.selectedYeartest}} </p>   -->
                         </mat-tab>
                         <mat-tab label="Exergy Distribution">
                             <p class="bold-label"><b>CO2 EMISSIONS:</b> {{this.selectedYearEmissions | number:'1.0-2'}} MT</p>
@@ -139,6 +139,8 @@
 
                         </mat-tab>
                         <mat-tab label="Energetics"> 
+                          <p class="bold-label"><b>INSTALLED RENEWABLE POWER:</b> {{this.selectedYearRenewablePower | number:'1.0-2'}} GW</p>
+                          <p class="bold-label"><b>RENEWABLE ELECTRICITY:</b> {{this.selectedYearRenewableEletricity | number:'1.0-0'}} GWh</p>
                         </mat-tab>
                     </mat-tab-group>
                     

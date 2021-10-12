@@ -33,6 +33,8 @@ export class HistoryPanelComponent implements OnInit{
   public selectedYearCapital: number = 0;
   public selectedYearLabour: number = 0;
   public selectedYeartest: number = 0;
+  public selectedYearRenewablePower: number = 0;
+  public selectedYearRenewableEletricity: number = 0;
 
   title: string = "HISTORY PANEL";
 
@@ -83,6 +85,11 @@ export class HistoryPanelComponent implements OnInit{
     this.selectedYearCapital = model.capital_do_ano[this.currentTabIndex+1]; 
     this.selectedYearLabour = model.labour_do_ano[this.currentTabIndex+1];
     this.selectedYeartest = model.investimento_para_capital_do_ano[this.currentTabIndex+1];
+    this.selectedYearRenewablePower =  model.potencia_do_ano_solar[this.currentTabIndex+1] + 
+    model.potencia_do_ano_vento_offshore[this.currentTabIndex+1] + 
+    model.potencia_do_ano_vento[this.currentTabIndex+1] + 
+    model.POTENCIA_ANUAL_HIDRO;
+    this.selectedYearRenewableEletricity = model.eletricidade_renovavel_do_ano[this.currentTabIndex+1];
    }
   
 
@@ -170,9 +177,15 @@ export class HistoryPanelComponent implements OnInit{
     this.selectedYearCapital = this.model.capital_do_ano[this.currentTabIndex+1];
     this.selectedYearLabour = this.model.labour_do_ano[this.currentTabIndex+1];
     this.selectedYeartest = this.model.investimento_para_capital_do_ano[this.currentTabIndex+1];
-  }
-  onTabChange2(event: MatTabChangeEvent) {
+    this.selectedYearRenewablePower =  this.model.potencia_do_ano_solar[this.currentTabIndex+1] + 
+    this.model.potencia_do_ano_vento_offshore[this.currentTabIndex+1] + 
+    this.model.potencia_do_ano_vento[this.currentTabIndex+1] + 
+    this.model.POTENCIA_ANUAL_HIDRO;
+    this.selectedYearRenewableEletricity = this.model.eletricidade_renovavel_do_ano[this.currentTabIndex+1];
+   }
+   onTabChange2(event: MatTabChangeEvent) {
     
   }
 }
+
 

@@ -898,7 +898,8 @@ export class GameModelService {
       used:false,
       effect: "capacity",
       amount: -10,
-      type:"weather"
+      type:"weather",
+      affects:"Renewable capacity"
     },
     {
       id: 2,
@@ -907,7 +908,8 @@ export class GameModelService {
       used:false,
       effect: "hidro",
       amount: -50,
-      type:"weather"
+      type:"weather",
+      affects:"Hydro power"
     },
     {
       id: 3,
@@ -916,7 +918,8 @@ export class GameModelService {
       used:false,
       effect: "gas",
       amount: -20,
-      type:"weather"
+      type:"weather",
+      affects:"Gas production factor"
     },
     {
       id: 4,
@@ -925,7 +928,8 @@ export class GameModelService {
       used:false,
       effect: "none",
       amount: 0,
-      type:"weather"
+      type:"weather",
+      affects:""
     },
     {
       id: 5,
@@ -934,7 +938,8 @@ export class GameModelService {
       used:false,
       effect: "none",
       amount: 0,
-      type:"weather"
+      type:"weather",
+      affects:""
     }
   ] 
 

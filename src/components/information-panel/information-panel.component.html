@@ -298,7 +298,7 @@
           <mat-card-content>
           <p class="selected-desc-title">Description:</p>
           <p class="selected-desc">{{this.currentNew.description}}</p>
-          <p class="selected-price"><b>Price:</b>  M€</p>
+          <p *ngIf="this.currentNew.affects != ''" class="selected-price"><b>Aftereffect: </b>{{this.currentNew.affects}} : {{this.currentNew.amount}}%</p>
           </mat-card-content>
         </div>
     </div>

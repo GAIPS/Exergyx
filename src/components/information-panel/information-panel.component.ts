@@ -28,7 +28,8 @@ export class InformationPanelComponent implements OnInit {
     effect: "",
     type: "",
     amount: 0,
-    used: false
+    used: false,
+    affects:""
   };
 
 
