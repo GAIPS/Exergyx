@@ -1,0 +1,211 @@
+.slide0 {
+  background-image: url(../../assets/ExergyX_Onboarding_002.png);
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.slide1 {
+  background-image: url(../../assets/ExergyX_Onboarding_003.png);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+}
+.slide2 {
+  background-image: url(../../assets/ExergyX_Onboarding_004.png);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+}
+.slide3 {
+  background-image: url(../../assets/ExergyX_Onboarding_005.png);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+}
+.slide4 {
+  background-image: url(../../assets/ExergyX_Onboarding_006.png);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+}
+.slide5 {
+  background-image: url(../../assets/ExergyX_Onboarding_007.png);
+  background-size: cover;
+  min-width: 100%;
+  min-height: 100%;
+}
+.slide6 {
+  background-image: url(../../assets/ExergyX_Onboarding_008.png);
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+}
+
+.text-container0 {
+  height: 250px;
+  width: 100%;
+  position: absolute;
+  top: 75%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, #93eded 0%, rgba(255, 255, 255, 0) 100%),
+    #009de0;
+}
+
+.text-container1 {
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 2%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, #93eded 0%, rgba(255, 255, 255, 0) 100%),
+    #009de0;
+}
+
+.text-container2 {
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 2%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, #93eded 0%, rgba(255, 255, 255, 0) 100%),
+    #009de0;
+}
+
+.text-container3 {
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 2%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, #93eded 0%, rgba(255, 255, 255, 0) 100%),
+    #009de0;
+}
+
+.text-container4 {
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 2%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, #93eded 0%, rgba(255, 255, 255, 0) 100%),
+    #009de0;
+}
+
+.text-container5 {
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 2%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, #93eded 0%, rgba(255, 255, 255, 0) 100%),
+    #009de0;
+}
+
+.text-container6 {
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 2%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, #93eded 0%, rgba(255, 255, 255, 0) 100%),
+    #009de0;
+}
+
+.text-container7 {
+  height: 200px;
+  width: 100%;
+  position: absolute;
+  top: 2%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(180deg, #93eded 0%, rgba(255, 255, 255, 0) 100%),
+    #009de0;
+}
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  :nth-child(1) {
+    margin-left: 16px;
+  }
+
+  :nth-child(2) {
+    margin-right: 16px;
+  }
+}
+
+.description-title {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 100%;
+  /* or 48px */
+
+  text-align: center;
+  color: #ffffff;
+  margin-top: 20px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.description-text {
+  font-family: Saira;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 120%;
+  margin-left: 16px;
+  margin-right: 16px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.back-button,
+.skip-button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}

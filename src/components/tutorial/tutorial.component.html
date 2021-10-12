@@ -1,0 +1,14 @@
+
+<div class="container" [ngClass]="{'slide0' : this.currentIndex == 0, 'slide1' : this.currentIndex == 1, 'slide2' : this.currentIndex == 2, 'slide3' : this.currentIndex == 3,
+'slide4' : this.currentIndex == 4, 'slide5' : this.currentIndex == 5, 'slide6' : this.currentIndex == 6}">
+    <div [ngClass]="{'text-container0' : this.currentIndex == 0, 'text-container1' : this.currentIndex == 1,
+     'text-container2' : this.currentIndex == 2, 'text-container3' : this.currentIndex == 3,
+     'text-container4' : this.currentIndex == 4, 'text-container5' : this.currentIndex == 5, 'text-container6' : this.currentIndex == 6 }">
+        <p class="description-title">{{this.tutorials[this.currentIndex].title}}</p>
+        <p class="description-text">{{this.tutorials[this.currentIndex].text}}</p>
+        <div class="button-container">
+            <button (click)="this.back()" class="back-button"><i class="arrow left"></i> <strong> Back</strong> </button>
+            <button (click)="this.skip()" class="skip-button"><strong>Skip </strong><i class="arrow right"></i></button>
+        </div>  
+    </div>
+</div>

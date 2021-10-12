@@ -25,6 +25,7 @@ import { WelcomePageComponent } from 'src/components/welcome-page/welcome-page.c
 import { FinalViewComponent } from 'src/components/final-view/final-view.component';
 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { TutorialComponent } from 'src/components/tutorial/tutorial.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     HistoryPanelComponent,
     InformationPanelComponent,
     WelcomePageComponent,
-    FinalViewComponent
+    FinalViewComponent,
+    TutorialComponent
   
   ],
   imports: [
@@ -55,7 +57,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatTabsModule,
     ChartsModule,
     MatSortModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    
    
   ],
   providers: [],

@@ -67,7 +67,9 @@
               <div class="outter-div">
               <div class="card-image">
                 <img mat-card-lg-image *ngIf="this.selectedPolitic?.type === 'Transports'" src="../../assets/IMG_Eletrico.png" >
-                <img mat-card-lg-image *ngIf="this.selectedPolitic?.type != 'Transports'" src="../../assets/Favicon_16x16.png" >
+                <img mat-card-lg-image *ngIf="this.selectedPolitic?.type === 'Industry'" src="../../assets/Industry.png" >
+                <img mat-card-lg-image *ngIf="this.selectedPolitic?.type === 'Residential'" src="../../assets/Residence.png" >
+                <img mat-card-lg-image *ngIf="this.selectedPolitic?.type === 'Services'" src="../../assets/Services.png" >
               </div>
               <mat-divider class="vertical-divider" role="separator" vertical style="height:70%"></mat-divider>
               <div class="card-text">

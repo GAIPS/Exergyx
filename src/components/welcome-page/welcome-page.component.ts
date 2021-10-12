@@ -20,8 +20,8 @@ export class WelcomePageComponent implements OnInit {
 
   public initSystem() {
     localStorage.setItem("optionSelected", "decision");
-    this.router.navigateByUrl("/decision");
-    this.service.updateMenuSelection("decision");
+    this.router.navigateByUrl("/tutorial");
+    //this.service.updateMenuSelection("decision");
     
     
   
