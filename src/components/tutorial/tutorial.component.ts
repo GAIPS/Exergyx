@@ -59,6 +59,7 @@ export class TutorialComponent implements OnInit {
       this.currentIndex = newIndex;
     }
     else {
+      this.service.updateMenuSelection("decision");
       this.router.navigateByUrl("/decision");
     }
   }

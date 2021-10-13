@@ -476,8 +476,7 @@ export class DecisionPanelComponent implements OnInit {
     else {
      
       this.router.navigateByUrl("/information"); 
-    }
-    
+    }  
   }
 
   public decline() {
