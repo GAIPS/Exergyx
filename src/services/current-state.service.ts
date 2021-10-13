@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { naturalEventNew } from 'src/interfaces/naturalEventNew';
+import { Politic } from 'src/interfaces/politic';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,11 @@ export class CurrentStateService {
   isOpened: BehaviorSubject<boolean>;
   activeNew: BehaviorSubject<naturalEventNew>;
   currentYear: number = 2019;
+  cartCollection: BehaviorSubject<Set<Politic>>;
+  currentCartPrice: BehaviorSubject<number>;
+  powerToInstall: BehaviorSubject<number>;
+  totalPowerCost: BehaviorSubject<number>;
+
 
 
 
@@ -31,6 +37,10 @@ export class CurrentStateService {
       used: false,
       affects:""
     });
+    this.cartCollection = new BehaviorSubject<Set<Politic>>(new Set<Politic>());
+    this.currentCartPrice = new BehaviorSubject<number>(0);
+    this.powerToInstall = new BehaviorSubject<number>(0);
+    this.totalPowerCost = new BehaviorSubject<number>(0);
   }
 
     isFirstRun = true;
@@ -63,10 +73,14 @@ export class CurrentStateService {
       this.activeNew.next(eventNew);
       this.currentYear = currentYear;
     }
-    
   }
 
   public getActiveNew(): BehaviorSubject<naturalEventNew> {
     return this.activeNew;
   }
+
+  public getCartCollection(): BehaviorSubject<Set<Politic>> {
+    return this.cartCollection;
+  }
+
 }

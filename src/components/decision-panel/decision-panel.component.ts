@@ -107,7 +107,30 @@ export class DecisionPanelComponent implements OnInit {
       if(gameOver === "true") {
         this.buttonsEnabled = true;
       }
-   }
+      this.currentState.cartCollection.subscribe(x => {
+        if(x != null) {
+          this.cartCollection = x;
+        }
+      });
+
+      this.currentState.currentCartPrice.subscribe(x => {
+        if(x!= null) {
+          this.addedPoliticsCost = x;
+        }
+      });
+
+      this.currentState.totalPowerCost.subscribe(x => {
+        if(x != null) {
+          this.totalPowerCost = x;
+        }       
+      });
+
+      this.currentState.powerToInstall.subscribe(x => {
+        if(x != null) {
+          this.powerToInstall = x;
+        }
+      });
+    }
 
   ngOnInit(): void {
    
@@ -121,7 +144,9 @@ export class DecisionPanelComponent implements OnInit {
         if(tempcalc >= 0) {
           element.isUsed=!element.isUsed;
           this.cartCollection.add(element);
+          this.currentState.cartCollection.next(this.cartCollection);
           this.addedPoliticsCost += element.price;
+          this.currentState.currentCartPrice.next(this.addedPoliticsCost);
           this.PlayerVariables.budget -= element.price;
           return;
         }
@@ -143,7 +168,9 @@ export class DecisionPanelComponent implements OnInit {
   public removeFromCart(item: Politic) {
     item.isUsed=!item.isUsed;
     this.cartCollection.delete(item);
+    this.currentState.cartCollection.next(this.cartCollection);
     this.addedPoliticsCost -= item.price;
+    this.currentState.currentCartPrice.next(this.addedPoliticsCost);
     this.PlayerVariables.budget += item.price;
   }
 
@@ -153,8 +180,10 @@ export class DecisionPanelComponent implements OnInit {
     var tempVal = this.powerToInstall - 0.1;
     if(tempVal >= 0) {
       this.powerToInstall = tempVal;
+      this.currentState.powerToInstall.next(this.powerToInstall);
       this.PlayerVariables.budget += ticCost; 
       this.totalPowerCost = this.powerToInstall * pricePerYear;
+      this.currentState.totalPowerCost.next(this.totalPowerCost);
     }
     else {
       this.powerToInstall = 0;
@@ -170,7 +199,9 @@ export class DecisionPanelComponent implements OnInit {
       if(tempVal <= 10) {
         this.PlayerVariables.budget = tempcalc;
         this.powerToInstall = tempVal;
+        this.currentState.powerToInstall.next(this.powerToInstall);
         this.totalPowerCost = this.powerToInstall * pricePerYear;
+        this.currentState.totalPowerCost.next(this.totalPowerCost);
         
       }
       else {
@@ -183,7 +214,8 @@ export class DecisionPanelComponent implements OnInit {
     this.process_politic();
     this.processNextYear();
     this.updateHistory();
-    this.checkGame();    
+    this.checkGame();
+    this.clearCurrentState();    
   }
 
   public get_renewable_ratio() {
@@ -512,6 +544,13 @@ export class DecisionPanelComponent implements OnInit {
       duration: 3000,
 
     });
+  }
+
+  public clearCurrentState() {
+    this.currentState.powerToInstall.next(0);
+    this.currentState.totalPowerCost.next(0);
+    this.currentState.currentCartPrice.next(0);
+    this.currentState.cartCollection.next(new Set<Politic>());
   }
 
 }
