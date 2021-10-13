@@ -1,9 +1,49 @@
+<div class="consent-form" *ngIf="!this.consented">
+    <P class="consent-title">Informed Consent</P>
+    <br>
+    <p class="section-title">Purpose of the study</p>
+    <p class="section-text">You are invited to take part in a research study. Before you accept, we would like to help you understand the research and what participation you will be involved in. Please read through this informed consent and feel free to let us know if you need some clarifications.
+        This investigation is inserted in a MSc Thesis Project – “ExergyX: An Energy Management Game”, supervised by Prof. Rui Prada (IST, DEI) and Prof. Tânia Sousa (IST, DEM) with the purpose of gathering user opinions on several aspects of the game.
+        The analysis of the collected information will be part of the final dissertation.
+        </p>
+        <br>
+    <p class="section-title">Study Procedures</p>
+    <p class="section-text">If you wish to participate, we will not ask for any personal information. You will play a version of a game called “ExergyX” and afterwards, you will answer a user experience questionnaire and a system usability scale, to measure user experience and game usability, respectively. Then you will be asked to provide your opinion through some open answers questions.
+        All the answers provided will be analyzed with the sole purpose of studying and evaluating the current state of “ExergyX”.
+        </p>
+    <br>
+    <p class="section-title">Duration</p>
+    <p class="section-text">This study will take around 15-20 minutes consisting of the playing activity, which takes more or less 10-15 minutes, and the rest for the answering the questionnaires.</p>
+    <br>
+    <p class="section-title">Voluntary Participation</p>
+    <p class="section-text">Please understand that your participation here is purely voluntary. You will decide whether you will participate or not. Once you accept to participate in this study, you are free to leave and give up at any time. The participation starts when you accept the conditions included on this document.</p>
+    <br>
+    <p class="section-title">Contact Information</p>
+    <p class="section-text">If you have questions or concerns about this study, you can get in touch with the person responsible for this study at the email address tiago.s.taveira@tecnico.ulisboa.pt.</p>
+    <br>
+    <p class="section-title">Consent</p>
+    <p class="section-text">By pressing the “Proceed” button, you agree with the following statement.</p>
+    <p class="statement">“I voluntarily give my consent to participate in this study. I have read the information above. I was given the opportunity to ask questions and these were answered satisfactorily and to my contentment.”</p>
 
-<div class="container" [ngClass]="{'slide0' : this.currentIndex == 0, 'slide1' : this.currentIndex == 1, 'slide2' : this.currentIndex == 2, 'slide3' : this.currentIndex == 3,
-'slide4' : this.currentIndex == 4, 'slide5' : this.currentIndex == 5, 'slide6' : this.currentIndex == 6}">
-    <div [ngClass]="{'text-container0' : this.currentIndex == 0, 'text-container1' : this.currentIndex == 1,
-     'text-container2' : this.currentIndex == 2, 'text-container3' : this.currentIndex == 3,
-     'text-container4' : this.currentIndex == 4, 'text-container5' : this.currentIndex == 5, 'text-container6' : this.currentIndex == 6 }">
+    <button (click)="this.consented = true" class="consent-button">
+        Proceed
+    </button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+<div *ngIf="this.consented" class="container" [ngClass]="{'slide': this.currentIndex==0,'slide0' : this.currentIndex == 1, 'slide1' : this.currentIndex == 2,
+ 'slide2' : this.currentIndex ==3, 'slide3' : this.currentIndex == 4,
+'slide4' : this.currentIndex == 5, 'slide5' : this.currentIndex == 6, 'slide6' : this.currentIndex == 7, 'slide7': this.currentIndex == 8}">
+    <div [ngClass]="{'text-cotainer' : this.currentIndex == 0,'text-container0' : this.currentIndex == 1, 
+    'text-container1' : this.currentIndex ==2,
+     'text-container2' : this.currentIndex == 3, 'text-container3' : this.currentIndex == 4,
+     'text-container4' : this.currentIndex == 5, 'text-container5' : this.currentIndex == 6, 'text-container6' : this.currentIndex == 7, 'text-container7' : this.currentIndex == 8 }">
         <p class="description-title">{{this.tutorials[this.currentIndex].title}}</p>
         <p class="description-text">{{this.tutorials[this.currentIndex].text}}</p>
         <div class="button-container">
