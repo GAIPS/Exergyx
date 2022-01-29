@@ -26,6 +26,7 @@ import { FinalViewComponent } from 'src/components/final-view/final-view.compone
 
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TutorialComponent } from 'src/components/tutorial/tutorial.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { TutorialComponent } from 'src/components/tutorial/tutorial.component';
     ChartsModule,
     MatSortModule,
     MatSnackBarModule,
+    HttpClientModule
     
    
   ],

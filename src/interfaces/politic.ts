@@ -1,6 +1,6 @@
 export interface Politic {
     id: number;
-    title: String;
+    title: string;
     price: number;
     prob: number;
     desc: string;

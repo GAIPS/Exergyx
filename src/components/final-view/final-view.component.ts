@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CurrentStateService } from 'src/services/current-state.service';
+import { ServerService } from 'src/services/server.service';
 
 @Component({
   selector: 'app-final-view',
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
 export class FinalViewComponent implements OnInit {
 
   public isWin: boolean = false;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private serverService: ServerService, private currentState: CurrentStateService) { }
 
   ngOnInit(): void {
     var val = sessionStorage.getItem("isWin");
@@ -25,7 +27,32 @@ export class FinalViewComponent implements OnInit {
       default:
         break;
     }
+    this.getEvents();
+    this.createEvent();
 
+  
+
+  }
+
+  createEvent() {
+    let jsonObject: any = {}; 
+    let map = this.currentState.getStoreState(); 
+    map.forEach((value, key) => {  
+        jsonObject[key] = value;  
+    });  
+
+    let obj = JSON.stringify(jsonObject);
+    console.log(obj);
+    
+    this.serverService.createEvent(obj).then(() => {
+      this.getEvents();
+    });
+  }
+
+  getEvents() {
+    this.serverService.getEvents().then((response: any) => {
+      console.log('Response', response);
+    });
   }
 
   public restartGame() {

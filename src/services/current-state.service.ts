@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { decisionObject } from 'src/interfaces/decisionObject';
 import { naturalEventNew } from 'src/interfaces/naturalEventNew';
 import { Politic } from 'src/interfaces/politic';
+import { stateObject } from 'src/interfaces/stateObject';
+import { storeObject } from 'src/interfaces/storeObject';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +21,7 @@ export class CurrentStateService {
   currentCartPrice: BehaviorSubject<number>;
   powerToInstall: BehaviorSubject<number>;
   totalPowerCost: BehaviorSubject<number>;
+  storeState: Map<string,storeObject> = new Map<string,storeObject>();
 
 
 
@@ -83,4 +87,18 @@ export class CurrentStateService {
     return this.cartCollection;
   }
 
+  public updateStoreState(year: string, stateObj: stateObject, decisionObj: decisionObject) {
+    let currentStoreObj: storeObject = {
+      state: stateObj,
+      decisions: decisionObj
+    };
+    if(!this.storeState.has(year)) {
+      this.storeState.set(year, currentStoreObj);
+    }
+    console.log(this.storeState);
+  }
+
+  public getStoreState(): Map<string, storeObject> {
+    return this.storeState;
+  }
 }

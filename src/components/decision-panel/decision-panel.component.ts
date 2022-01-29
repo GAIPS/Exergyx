@@ -2,7 +2,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { decisionObject } from 'src/interfaces/decisionObject';
 import { Politic } from 'src/interfaces/politic';
+import { stateObject } from 'src/interfaces/stateObject';
 import { CurrentStateService } from 'src/services/current-state.service';
 import { GameModelService } from 'src/services/game-model.service';
 import { PlayerVariablesService } from 'src/services/player-variables.service';
@@ -422,7 +424,7 @@ export class DecisionPanelComponent implements OnInit {
   public updateGameAfterModel() {
     this.PlayerVariables.current_year = this.Model.ano_atual;
     this.PlayerVariables.money = this.Model.pib_do_ano[this.Model.pib_do_ano.length-1];
-    this.calculated_budget = (this.PlayerVariables.money * 1000) * 0.03; //1% of PIB in Millions
+    this.calculated_budget = (this.PlayerVariables.money * 1000) * 0.03; //3% of PIB in Millions
     this.PlayerVariables.budget = (this.PlayerVariables.money * 1000) * 0.03;
     this.PlayerVariables.expenditure = this.Model.consumo_do_ano[this.Model.consumo_do_ano.length-1];
     this.PlayerVariables.utility = this.Model.utilidade_do_ano[this.Model.ano_atual_indice];
@@ -461,6 +463,7 @@ export class DecisionPanelComponent implements OnInit {
   }
 
   async confirm() {
+    this.updateStorageState();
     this.submitDecision();
     this.showActive = false;
     this.showToaster();
@@ -550,6 +553,46 @@ export class DecisionPanelComponent implements OnInit {
     this.currentState.totalPowerCost.next(0);
     this.currentState.currentCartPrice.next(0);
     this.currentState.cartCollection.next(new Set<Politic>());
+  }
+
+  public updateStorageState() {
+    let currentStateObj: stateObject = {
+      budget: this.PlayerVariables.budget,
+      gdp: this.PlayerVariables.money*1000,
+      happiness: this.PlayerVariables.utility,
+      expenditure: this.PlayerVariables.expenditure*1000,
+      aggregatedEfficiency: this.PlayerVariables.efficiency*100,
+      co2Emissions:this.PlayerVariables.co2_emissions,
+      installedRenewablePower: this.PlayerVariables.total_installed_power,
+      renewableEletricity: this.PlayerVariables.renewable_energy,
+      renewableRatio:this.getRenewableRatio()
+    };
+
+    let policiesTitleArray: Array<string> = [];
+    this.cartCollection.forEach(politic => {
+      policiesTitleArray.push(politic.title);
+    });
+    let summedCosts = this.totalPowerCost + this.addedPoliticsCost;
+    let currentDecisionObject: decisionObject = {
+      politics: policiesTitleArray,
+      powerToInstall: `${this.powerToInstall}`,
+      totalCost: summedCosts
+    };
+
+    this.currentState.updateStoreState(`${this.PlayerVariables.current_year}`, currentStateObj, currentDecisionObject);
+
+  }
+
+  public getRenewableRatio() {
+    if(this.Model.eletricidade_nao_renovavel_do_ano.length > 0) {
+      var total_energy = this.Model.eletricidade_nao_renovavel_do_ano[this.Model.eletricidade_nao_renovavel_do_ano.length-1] + this.PlayerVariables.renewable_energy;
+      var result = Math.min(((this.PlayerVariables.renewable_energy/total_energy) * 100), 100);
+      this.PlayerVariables.renewableRatioArray.push(result);
+      return result;
+    }
+    else {
+      return 33.95;
+    }
   }
 
 }
