@@ -8,7 +8,7 @@ export class ServerService {
 
   constructor(private http: HttpClient) { }
 
-  private serverUrl = 'https://exergyx.tecnico.ulisboa.pt:8080';
+  private serverUrl = 'https://0.0.0.0:8080';
 
   private async request(method: string, url: string, data?: any) {
 
