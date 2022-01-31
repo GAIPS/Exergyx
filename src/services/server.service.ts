@@ -8,7 +8,7 @@ export class ServerService {
 
   constructor(private http: HttpClient) { }
 
-  private serverUrl = 'http://tst.nro.pt:8080';
+  private serverUrl = 'https://tst.nro.pt';
 
   private async request(method: string, url: string, data?: any) {
 
