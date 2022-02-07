@@ -135,7 +135,7 @@
 .button-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 
   :nth-child(1) {
     margin-left: 16px;
@@ -191,11 +191,23 @@
 }
 
 .back-button,
+.next-button,
 .skip-button {
-  background-color: transparent;
+  background-color: #f4fcff;
   border: none;
-  color: white;
+  color:#009de0;
+  border-radius: 0%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.back-button:hover,
+.next-button:hover,
+.skip-button:hover {
+  background-color: #009de0;
+  color: #f4fcff;
+  transition: ease-in-out;
 }
 
 .consent-title {
@@ -284,4 +296,11 @@
 .text-container7 {
   position: relative;
   top: 0;
+}
+
+.button-container-skip {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 32px;
 }

@@ -47,8 +47,14 @@
         <p class="description-title">{{this.tutorials[this.currentIndex].title}}</p>
         <p class="description-text">{{this.tutorials[this.currentIndex].text}}</p>
         <div class="button-container">
-            <button (click)="this.back()" class="back-button"><i class="arrow left"></i> <strong> Back</strong> </button>
-            <button (click)="this.skip()" class="skip-button"><strong>Skip </strong><i class="arrow right"></i></button>
+            <button (click)="this.back()" class="back-button"><mat-icon>skip_previous</mat-icon> <strong> Back</strong> </button>
+            <button (click)="this.next()" class="next-button"><strong>Next </strong><mat-icon>skip_next</mat-icon></button>
+            <button (click)="this.skip()" class="skip-button align-right"><strong>Skip </strong><mat-icon>fast_forward</mat-icon></button>
         </div>  
+        <br>
+        <br>
+        <div class="button-container-skip">
+        
+        </div>
     </div>
 </div>

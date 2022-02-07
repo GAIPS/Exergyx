@@ -59,7 +59,8 @@ import { HttpClientModule } from '@angular/common/http';
     ChartsModule,
     MatSortModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
     
    
   ],

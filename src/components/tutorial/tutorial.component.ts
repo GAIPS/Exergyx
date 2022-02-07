@@ -61,7 +61,7 @@ export class TutorialComponent implements OnInit {
 
   }
 
-  public skip() {
+  public next() {
     var newIndex = this.currentIndex + 1;
     if(newIndex <= this.tutorials.length-1) {
       this.currentIndex = newIndex;
@@ -70,6 +70,11 @@ export class TutorialComponent implements OnInit {
       this.service.updateMenuSelection("decision");
       this.router.navigateByUrl("/decision");
     }
+  }
+
+  public skip() {
+    this.service.updateMenuSelection("decision");
+    this.router.navigateByUrl("/decision");
   }
 
   public back() {
