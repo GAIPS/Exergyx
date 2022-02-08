@@ -16,14 +16,16 @@
       (click)="updateButtons('history')">
       <mat-icon>query_stats</mat-icon>
     </button>
-    <button class="menuIcon" mat-fab color="Basic" #tooltip="matTooltip"
-    matTooltip="Tutorial" matTooltipPosition="right" routerLink="tutorial">
-    <mat-icon>help</mat-icon>
-  </button>
-  <button class="menuIcon" mat-fab color="Basic" #tooltip="matTooltip"
-    matTooltip="Credits" matTooltipPosition="right" routerLink="">
-    <mat-icon>feedback</mat-icon>
-  </button>
+
+      <button class="menuIcon bottom" mat-fab color="Basic" #tooltip="matTooltip"
+      matTooltip="Tutorial" matTooltipPosition="right" routerLink="tutorial">
+      <mat-icon>help</mat-icon>
+    </button>
+    <button class="menuIcon bottom" mat-fab color="Basic" #tooltip="matTooltip"
+      matTooltip="Credits" matTooltipPosition="right" routerLink="">
+      <mat-icon>feedback</mat-icon>
+    </button>
+
   </mat-sidenav>
   <mat-sidenav-content class="content">
     <router-outlet></router-outlet>
