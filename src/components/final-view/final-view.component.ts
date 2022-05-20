@@ -42,7 +42,6 @@ export class FinalViewComponent implements OnInit {
     });  
 
     let obj = JSON.stringify(jsonObject);
-    console.log(obj);
     
     this.serverService.createEvent(obj).then(() => {
       this.getEvents();

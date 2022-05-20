@@ -27,6 +27,9 @@ import { FinalViewComponent } from 'src/components/final-view/final-view.compone
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { TutorialComponent } from 'src/components/tutorial/tutorial.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CreditsInfoComponent } from 'src/components/credits-info/credits-info.component';
+import { AdminPanelComponent } from 'src/components/admin-panel/admin-panel.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -37,7 +40,9 @@ import { HttpClientModule } from '@angular/common/http';
     InformationPanelComponent,
     WelcomePageComponent,
     FinalViewComponent,
-    TutorialComponent
+    TutorialComponent,
+    CreditsInfoComponent,
+    AdminPanelComponent
   
   ],
   imports: [
@@ -60,7 +65,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSortModule,
     MatSnackBarModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    FormsModule
     
    
   ],

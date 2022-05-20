@@ -22,6 +22,7 @@ export class CurrentStateService {
   powerToInstall: BehaviorSubject<number>;
   totalPowerCost: BehaviorSubject<number>;
   storeState: Map<string,storeObject> = new Map<string,storeObject>();
+  isAuthenticated: BehaviorSubject<boolean>;
 
 
 
@@ -45,6 +46,7 @@ export class CurrentStateService {
     this.currentCartPrice = new BehaviorSubject<number>(0);
     this.powerToInstall = new BehaviorSubject<number>(0);
     this.totalPowerCost = new BehaviorSubject<number>(0);
+    this.isAuthenticated = new BehaviorSubject<boolean>(false);
   }
 
     isFirstRun = true;
@@ -100,5 +102,12 @@ export class CurrentStateService {
 
   public getStoreState(): Map<string, storeObject> {
     return this.storeState;
+  }
+
+  public checkLogin(usr: string, pswd: string) {
+    if(usr ==='admin' && pswd ==='admin') {
+      return true;
+    }
+    return false;
   }
 }

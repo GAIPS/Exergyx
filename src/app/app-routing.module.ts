@@ -7,6 +7,8 @@ import { HistoryPanelComponent } from 'src/components/history-panel/history-pane
 import { WelcomePageComponent } from 'src/components/welcome-page/welcome-page.component';
 import { FinalViewComponent } from 'src/components/final-view/final-view.component';
 import { TutorialComponent } from 'src/components/tutorial/tutorial.component';
+import { CreditsInfoComponent } from 'src/components/credits-info/credits-info.component';
+import { AdminPanelComponent } from 'src/components/admin-panel/admin-panel.component';
 
 const routes: Routes = [
   { path: '', component: WelcomePageComponent},
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'history', component: HistoryPanelComponent },
   { path: 'result', component: FinalViewComponent },
   { path: 'tutorial', component: TutorialComponent },
+  { path: 'credits', component: CreditsInfoComponent },
+  { path: 'admin', component: AdminPanelComponent },
   { path: '**', component: WelcomePageComponent }
 ];
 

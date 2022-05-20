@@ -1,0 +1,14 @@
+<div *ngIf="!authenticated" class="logincontainer">
+    <h2>Login</h2>
+    <form #login="ngForm" (ngSubmit)="onSubmit(login)"> 
+        <input type="text" name="username" placeholder="username" required ngModel> 
+        <br/> 
+        <input type="password" name="password" placeholder="password" required ngModel> 
+        <br/> 
+        <input type="submit" value="submit"> 
+     </form>
+</div>
+<div *ngIf="authenticated" class="results">
+    <button (click)="loadResults()">Download Report</button>
+
+</div>
