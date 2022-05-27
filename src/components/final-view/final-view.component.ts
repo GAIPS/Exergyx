@@ -11,6 +11,9 @@ import { ServerService } from 'src/services/server.service';
 export class FinalViewComponent implements OnInit {
 
   public isWin: boolean = false;
+  public showId: boolean = false;
+  public submissionId: number = 0;
+
   constructor(private router: Router, private serverService: ServerService, private currentState: CurrentStateService) { }
 
   ngOnInit(): void {
@@ -29,9 +32,6 @@ export class FinalViewComponent implements OnInit {
     }
     this.getEvents();
     this.createEvent();
-
-  
-
   }
 
   createEvent() {
@@ -50,14 +50,18 @@ export class FinalViewComponent implements OnInit {
 
   getEvents() {
     this.serverService.getEvents().then((response: any) => {
-      console.log('Response', response);
     });
   }
 
   public restartGame() {
     window.location.href = window.location.href;
-
   }
 
-
+  public getSubmissionId() {
+    this.showId = true;
+    this.serverService.getEvents().then((response: any) => {
+      let key = Object.keys(response[response.length-1])[0];
+      this.submissionId = response[response.length-1][key];
+    });
+  }
 }

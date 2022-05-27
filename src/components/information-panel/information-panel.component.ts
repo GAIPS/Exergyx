@@ -148,7 +148,6 @@ export class InformationPanelComponent implements OnInit {
 
   public loadNews() {
     var eventsArray = this.Model.getEvents();
-    console.log(eventsArray);
     eventsArray.forEach(e => {
       if(e.used === true) {
        let i = eventsArray.indexOf(e);

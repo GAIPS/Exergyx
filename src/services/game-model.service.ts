@@ -706,9 +706,7 @@ export class GameModelService {
   // FUNCS 16) - EFICIÊNCIA AGREGADA (para cálculos em anos futuros)
   public calcular_eficiencia_agregada() {
     //atualização dos valores anteriormente calculados, usando os somatórios das partes
-    console.log("Exergia util do ano (antes da atualização): " + this.exergia_util_do_ano);
-    console.log("Exergia final do ano (antes da atualização): " + this.exergia_final_do_ano);
-
+   
     this.exergia_util_do_ano[this.ano_atual_indice] = this.exergia_util_transportes_do_ano[this.ano_atual_indice] +
       this.exergia_util_industria_do_ano[this.ano_atual_indice] + this.exergia_util_residencial_do_ano[this.ano_atual_indice] +
       this.exergia_util_servicos_do_ano[this.ano_atual_indice];
@@ -766,7 +764,6 @@ export class GameModelService {
     var maximo_produzido_por_gas_natural_TJ;
 
     if (this.eletricidade_nao_renovavel_do_ano[this.ano_atual_indice] <= 0.00) {
-      console.log("Eletricidade 100% renovável!");
       this.emissoes_nao_renovaveis_do_ano.push(0);
     }
     else if (this.eletricidade_nao_renovavel_do_ano[this.ano_atual_indice] <= this.MAXIMO_PRODUZIDO_POR_GAS_NATURAL) {
@@ -799,7 +796,6 @@ export class GameModelService {
     var utilidade_absoluta = ((Math.pow(this.consumo_do_ano[this.ano_atual_indice] * Math.pow(10, 9), 2)) *
       Math.exp((-1 * this.emissoes_totais_do_ano[this.ano_atual_indice]) / 10000000000)) / this.POPULACAO;
     var utilidade_relativa = utilidade_absoluta / this.UTILIDADE_DO_ANO_UM;
-    console.log("UTILIDADE ABS : " + this.consumo_do_ano[this.ano_atual_indice]) ;
     this.utilidade_do_ano.push(utilidade_relativa);
   }
 

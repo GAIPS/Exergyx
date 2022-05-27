@@ -11,7 +11,7 @@ export class TutorialComponent implements OnInit {
 
   public currentIndex: number = 0;
   private MIN_INDEX: number = 0;
-  public consented: boolean = false;
+  public consented: boolean = true;
 
   public tutorials = [
     {
@@ -82,10 +82,6 @@ export class TutorialComponent implements OnInit {
     if(newIndex >= this.MIN_INDEX) {
       this.currentIndex = newIndex;
     }
-  }
-
-  public confirmConsent() {
-    this.consented = true;
   }
 
 }

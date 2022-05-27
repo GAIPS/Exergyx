@@ -105,7 +105,6 @@ export class DecisionPanelComponent implements OnInit {
       }
 
       var gameOver = sessionStorage.getItem("gameOver");
-      console.log(gameOver);
       if(gameOver === "true") {
         this.buttonsEnabled = true;
       }
@@ -305,7 +304,6 @@ export class DecisionPanelComponent implements OnInit {
         this.PlayerVariables.economy_type_level_transportation += impactArray[0];
         politic.isUsed = false;
         if(politic.title === "Transports Eletrification") {
-          console.log("Found one!");
           politic.remove = true;
         }
       }
@@ -465,6 +463,7 @@ export class DecisionPanelComponent implements OnInit {
   async confirm() {
     this.updateStorageState();
     this.submitDecision();
+    this.updateLastyearState();
     this.showActive = false;
     this.showToaster();
     this.currentState.updateMenuSelection("info");
@@ -580,7 +579,28 @@ export class DecisionPanelComponent implements OnInit {
     };
 
     this.currentState.updateStoreState(`${this.PlayerVariables.current_year}`, currentStateObj, currentDecisionObject);
+  }
 
+  public updateLastyearState() {
+    if(this.PlayerVariables.current_year >= this.PlayerVariables.final_year) {
+      let currentStateObj: stateObject = {
+        budget: this.PlayerVariables.budget,
+        gdp: this.PlayerVariables.money*1000,
+        happiness: this.PlayerVariables.utility,
+        expenditure: this.PlayerVariables.expenditure*1000,
+        aggregatedEfficiency: this.PlayerVariables.efficiency*100,
+        co2Emissions:this.PlayerVariables.co2_emissions,
+        installedRenewablePower: this.PlayerVariables.total_installed_power,
+        renewableEletricity: this.PlayerVariables.renewable_energy,
+        renewableRatio:this.getRenewableRatio()
+      };
+      let currentDecisionObject: decisionObject = {
+        politics: [],
+        powerToInstall: "0",
+        totalCost: 0
+      };
+      this.currentState.updateStoreState(`${this.PlayerVariables.current_year}`, currentStateObj, currentDecisionObject);
+    }
   }
 
   public getRenewableRatio() {
@@ -594,5 +614,4 @@ export class DecisionPanelComponent implements OnInit {
       return 33.95;
     }
   }
-
 }

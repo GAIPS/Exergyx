@@ -1,8 +1,12 @@
 
 <div class="container">
-<p class="welcome-text">Welcome to</p>
-<img class="welcome-title" src="../../assets/welcome-title.png" />
-<button class="start-system-btn" (click)="initSystem()"><span> Start System</span></button>
-<!-- <button (click)="goWin()"><span> WIN</span></button>
-<button (click)="goLose()"><span> Lose</span></button> -->
+    <p class="welcome-text">Welcome to</p>
+    <img class="welcome-title" src="../../assets/welcome-title.png" />
+    <button class="start-system-btn" (click)="initSystem()"><span> Start System</span></button>
+    <button class="credits-btn" routerLink="credits">
+        <mat-icon>feedback</mat-icon>
+    </button>
+    <button class="admin-btn" routerLink="admin">
+        <mat-icon>supervisor_account</mat-icon>
+    </button>
 </div>

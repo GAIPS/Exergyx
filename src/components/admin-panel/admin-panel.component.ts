@@ -19,16 +19,17 @@ export class AdminPanelComponent implements OnInit {
   public password = "";
   public f!: NgForm;
   private resultObject: any = null;
-  public firstyear: any = null;
-  public firstyearValues = [];
-  public map = new Map<string, string>();
-  public map2 = new Map<string, string>();
-  public yearArray = ["2019","2023", "2027", "2031", "2035", "2039", "2043", "2047", "2051"];
+  public count: number = 0;
+  public lastDate = "";
+  public title = "Admin Panel";
 
 
   ngOnInit(): void {
    this.serverService.getEvents().then((response: any) => {
      this.resultObject = response;
+     let keys = Object.keys(this.resultObject);
+     this.count = keys.length;
+     this.lastDate = this.resultObject[keys.length-1].timeStamp;
    });
 
   }
@@ -88,13 +89,11 @@ export class AdminPanelComponent implements OnInit {
 
           for (var dKey in yearDecision) {
             let value = yearDecision[dKey];
-            this.map2.set(dKey, value);
             text += `\n     ${dKey} --> ${value}`;
           }
           text += `\n`;
           text += `\n`;
         }
-        
       }
       this.download(text);
     }
@@ -113,5 +112,74 @@ export class AdminPanelComponent implements OnInit {
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);  
     }, 0); 
-}
+  }
+
+  downloadCSV() {
+    if(this.resultObject != null) {
+      const replacer = (key: any, value: any) => (value === null ? '' : value);
+      let keys = Object.keys(this.resultObject);
+      var header = this.getCsvHeader();
+      var csv = [];
+
+      for (var innerObjKey in keys) {
+        let userEntry = this.resultObject[innerObjKey]; // each submited user entry
+        let stateObject = JSON.parse(userEntry.state); 
+        let stateObjectYearsKeys = Object.keys(stateObject);
+
+        for (var yearKey in stateObjectYearsKeys) {
+          let year = stateObjectYearsKeys[yearKey];
+          let yearState = stateObject[year].state;
+          let yearDecision = stateObject[year].decisions;
+
+          csv.push(header.map((fieldName) => {
+            let content = userEntry[fieldName] ? userEntry[fieldName] : (yearState[fieldName] ? yearState[fieldName] : yearDecision[fieldName]);
+            if(fieldName === "Year") {
+              content = year;
+            }
+            else if(fieldName === "state") {
+              content = "State";
+            }
+            else if(fieldName === "Decisions") {
+              content = "Decisions"
+            }
+            return JSON.stringify(content, replacer);
+          })
+          .join(';'));
+        }
+      }
+
+      csv.unshift(header.join(';'));
+      const csvArray = csv.join('\r\n');
+
+      const a = document.createElement('a');
+      const blob = new Blob([csvArray], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+
+      a.href = url;
+      a.download = 'myFile.csv';
+      a.click();
+      window.URL.revokeObjectURL(url);
+      a.remove();
+    }
+  }
+
+  getCsvHeader() {
+    let headerKeys = Object.keys(this.resultObject[0]);
+      var header: any[] = [headerKeys[0], "Year", headerKeys[1]];
+      let userEntry = this.resultObject[0]; // each submited user entry
+      let userObject = JSON.parse(userEntry.state);
+      let years = Object.keys(userObject);
+      let year = years[0];
+      let yearState = userObject[year].state;
+      let yearDecision = userObject[year].decisions;
+      for (var key in yearState) {
+        header.push(key);
+      }
+      header.push("Decisions");
+      for (var dKey in yearDecision) {
+        header.push(dKey);
+      }
+      header.push(headerKeys[2]);
+      return header;
+  }
 }

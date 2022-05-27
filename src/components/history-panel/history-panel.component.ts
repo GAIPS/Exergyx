@@ -75,7 +75,6 @@ export class HistoryPanelComponent implements OnInit{
     this.selectedYearInstalledPower = playerVariables.powerToInstallHistoryArray[this.currentTabIndex+1];
     this.selectedYearPowerCost = playerVariables.costOfInstallationHistoryArray[this.currentTabIndex+1];
     this.selectedYearBudget = playerVariables.budgetHistory[this.currentTabIndex+1];
-    console.log(this.happinessArray);
     
     this.selectedYearGDP = playerVariables.pibHistory[this.currentTabIndex+1];
     this.selectedYearHappiness = this.happinessArray[this.currentTabIndex];

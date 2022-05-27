@@ -97,7 +97,6 @@ export class CurrentStateService {
     if(!this.storeState.has(year)) {
       this.storeState.set(year, currentStoreObj);
     }
-    console.log(this.storeState);
   }
 
   public getStoreState(): Map<string, storeObject> {
