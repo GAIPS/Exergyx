@@ -1,0 +1,27 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.toolbar {
+    background: linear-gradient(
+      71.68deg,
+      #def7ff 3.33%,
+      #ffffff 53.69%,
+      #e4f8ff 100%
+    );
+  }
+  
+  .toolbar > h1 {
+    font-family: Saira;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 47px;
+    color: #009de0;
+  }
+
+.creditsContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

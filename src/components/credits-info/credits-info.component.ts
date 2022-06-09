@@ -9,6 +9,7 @@ export class CreditsInfoComponent implements OnInit {
 
   constructor() { }
 
+  public title = "Credits";
   ngOnInit(): void {
   }
 
