@@ -931,11 +931,21 @@ export class GameModelService {
       id: 5,
       title:"A cleaner Future",
       description:"We are experiencing a huge development towards a cleaner future, fossil fuel free. Will our country be able to keep the pace?",
-      used:false,
+      used: true,
       effect: "none",
       amount: 0,
       type:"weather",
       affects:""
+    },
+    {
+      id: 0,
+      title: "Nothing Relevant happened",
+      description: "",
+      used: false,
+      effect: "none",
+      amount: 0,
+      type: "Global",
+      affects: ""
     }
   ] 
 

@@ -23,10 +23,10 @@ export class InformationPanelComponent implements OnInit {
   Model: GameModelService;
   currentNew: naturalEventNew = {
     id:0,
-    title: "",
-    description: "",
+    title: "Nothing Relevant happened",
+    description: "Nothing relevant to show right now.",
     effect: "",
-    type: "",
+    type: "Global",
     amount: 0,
     used: false,
     affects:""
@@ -78,22 +78,12 @@ export class InformationPanelComponent implements OnInit {
   }
 
   public getInstalledPowerDiff() {
-    this.Model.potencia_do_ano_solar[this.Model.ano_atual_indice] + 
-    this.Model.potencia_do_ano_vento_offshore[this.Model.ano_atual_indice] + 
-    this.Model.potencia_do_ano_vento[this.Model.ano_atual_indice] + 
-    this.Model.POTENCIA_ANUAL_HIDRO;
+    var historyArray = this.PlayerVariables.powerToInstallHistoryArray;
 
     var diff = 0;
-    if(this.Model.potencia_do_ano_solar.length > 2) {
-      var oldVal = this.Model.potencia_do_ano_solar[this.Model.potencia_do_ano_solar.length-2] + 
-      this.Model.potencia_do_ano_vento_offshore[this.Model.potencia_do_ano_vento_offshore.length-2] +
-      this.Model.potencia_do_ano_vento[this.Model.potencia_do_ano_vento.length-2] + this.Model.POTENCIA_ANUAL_HIDRO;
-
-      var newVal = this.Model.potencia_do_ano_solar[this.Model.potencia_do_ano_solar.length-1] + 
-      this.Model.potencia_do_ano_vento_offshore[this.Model.potencia_do_ano_vento_offshore.length-1] +
-      this.Model.potencia_do_ano_vento[this.Model.potencia_do_ano_vento.length-1] + this.Model.POTENCIA_ANUAL_HIDRO;
-
-      diff = newVal - oldVal;
+    if(historyArray.length > 1) {
+      
+      diff = historyArray[historyArray.length-1] - historyArray[historyArray.length-2] < 0 ? 0 : historyArray[historyArray.length-1] - historyArray[historyArray.length-2];
     }
     return diff;
   }
@@ -167,7 +157,7 @@ export class InformationPanelComponent implements OnInit {
           e.used = true;
         }
       });
-    } 
+    }
   }
 
   public getBudgetDiff() {

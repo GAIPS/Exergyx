@@ -20,9 +20,9 @@
         <p class="field-title">RENEWABLE RATIO</p>
         <p class="bigger-text">{{this.get_renewable_ratio() |  number: '1.2-2' }} %</p>
         <button [disabled]="this.buttonsEnabled" *ngIf="!showTable" mat-button class="see-more-button" (click)="toggleTable()">See Exergy <br>
-             Distribution Table</button>
+             Shares per Sector</button>
         <button *ngIf="showTable" [disabled]="this.buttonsEnabled" mat-button class="see-more-button" (click)="toggleTable()">Hide Exergy <br>
-                Distribution Table</button>
+          Shares per Sector</button>
     </div>
     <div class="column2">
         <div class="policy-container">

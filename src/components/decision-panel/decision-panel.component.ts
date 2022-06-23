@@ -134,6 +134,7 @@ export class DecisionPanelComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    console.log("power to Install: " + this.powerToInstall);
    
   }
 
@@ -215,8 +216,9 @@ export class DecisionPanelComponent implements OnInit {
     this.process_politic();
     this.processNextYear();
     this.updateHistory();
+    this.clearCurrentState();
     this.checkGame();
-    this.clearCurrentState();    
+        
   }
 
   public get_renewable_ratio() {
@@ -344,6 +346,7 @@ export class DecisionPanelComponent implements OnInit {
   }
 
   public storeDecisionHistory() {
+
     this.PlayerVariables.investment_renewables_percentage += this.powerToInstall;
     this.PlayerVariables.powerToInstallHistoryArray.push(this.powerToInstall);
     this.PlayerVariables.costOfInstallationHistoryArray.push(this.totalPowerCost);
@@ -430,7 +433,9 @@ export class DecisionPanelComponent implements OnInit {
     this.PlayerVariables.economic_growth = 1;
     this.PlayerVariables.cost_per_gigawatt = this.Model.CUSTO_POR_GIGAWATT_INSTALADO;
     this.PlayerVariables.efficiency = this.Model.eficiencia_agregada_do_ano[this.Model.ano_atual_indice];
-    this.PlayerVariables.total_installed_power = this.Model.potencia_do_ano_solar[this.Model.ano_atual_indice] + this.Model.potencia_do_ano_vento_offshore[this.Model.ano_atual_indice] + this.Model.potencia_do_ano_vento[this.Model.ano_atual_indice] + this.Model.POTENCIA_ANUAL_HIDRO;
+    // this.PlayerVariables.total_installed_power = this.Model.potencia_do_ano_solar[this.Model.ano_atual_indice] + this.Model.potencia_do_ano_vento_offshore[this.Model.ano_atual_indice] + this.Model.potencia_do_ano_vento[this.Model.ano_atual_indice] + this.Model.POTENCIA_ANUAL_HIDRO;
+    this.PlayerVariables.total_installed_power += this.powerToInstall;
+    console.log(this.Model.eletricidade_renovavel_do_ano[this.Model.ano_atual_indice]);
     this.PlayerVariables.renewable_energy = this.Model.eletricidade_renovavel_do_ano[this.Model.ano_atual_indice];
     
     this.PlayerVariables.economy_type_percentage_transportation = this.Model.shares_exergia_final_transportes_do_ano[this.Model.ano_atual_indice] * 100.0 ;
