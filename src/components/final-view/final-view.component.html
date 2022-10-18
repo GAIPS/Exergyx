@@ -36,7 +36,6 @@
     <br>
     <br>
     <button class="button glow-button" routerLink="/history">See History</button>
-    <button class="button glow-button"(click)="restartGame()">Play Again</button>
     <button *ngIf="!this.showId" class="button glow-button"(click)="getSubmissionId()">Get Submission Id</button>
     <button *ngIf="this.showId" class="button" disabled>Submission Id: {{this.submissionId}}</button>
     <br>

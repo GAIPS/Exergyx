@@ -953,4 +953,8 @@ export class GameModelService {
     return this.naturalEvents;
   }
 
+  public getYearTotalFuelEnergy() {
+    return this.eletricidade_nao_renovavel_do_ano[this.eletricidade_nao_renovavel_do_ano.length-1]
+  }
+
 }

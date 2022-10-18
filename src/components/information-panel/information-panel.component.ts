@@ -169,4 +169,9 @@ export class InformationPanelComponent implements OnInit {
     return diff;
   }
 
+  public getFuelElectricityDiff() {
+    var diff = 0;
+    return diff;
+  }
+
 }

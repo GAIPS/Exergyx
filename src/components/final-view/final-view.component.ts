@@ -53,10 +53,6 @@ export class FinalViewComponent implements OnInit {
     });
   }
 
-  public restartGame() {
-    window.location.href = window.location.href;
-  }
-
   public getSubmissionId() {
     this.showId = true;
     this.serverService.getEvents().then((response: any) => {
