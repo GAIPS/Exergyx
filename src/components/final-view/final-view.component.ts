@@ -53,6 +53,10 @@ export class FinalViewComponent implements OnInit {
     });
   }
 
+  public restartGame() {
+    window.open("http://exergyx.tecnico.ulisboa.pt");
+  }
+
   public getSubmissionId() {
     this.showId = true;
     this.serverService.getEvents().then((response: any) => {
