@@ -32,4 +32,3 @@ There are some assumptions that will not be covered on this guide such as:
  1. Go to `/afs/.ist.utl.pt/groups/exergyx/web` and delete every file. (ATTENTION: do not delete any folder!) 
  2. Just copy all the content inside `./dist` and past it on the `/afs/.ist.utl.pt/groups/exergyx/web`
 
-
